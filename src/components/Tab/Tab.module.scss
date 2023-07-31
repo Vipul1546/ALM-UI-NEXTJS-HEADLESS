@@ -1,0 +1,36 @@
+.tab {
+    .tab-nav {
+        all: unset;
+        display: flex;
+
+        >li {
+            all: unset;
+            text-align: center;
+            cursor: pointer;
+            padding: 1.5rem 2.5rem;
+            background-color: #ccc;
+
+            &.active {
+                background-color: #000;
+                color: #fff;
+            }
+        }
+    }
+
+    .tab-content {
+        border: 1px solid #ccc;
+        padding: 1rem;
+    }
+
+    &.secondary {
+        display: flex;
+
+        .tab-nav {
+            flex-direction: column;
+        }
+
+        .tab-content {
+            flex: 1;
+        }
+    }
+}

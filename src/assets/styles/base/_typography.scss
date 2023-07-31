@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;800&display=swap');
+@import "./include-media";
+@import "../abstracts/mixins";
+
+%h1 {
+  @include defaultTypoStyles(24, 0, 30, 800);
+
+  @include media(">=tablet") {
+    @include defaultTypoStyles(50, 0, 66, 800);
+  }
+
+  @include media(">=desktop-lg") {
+    @include defaultTypoStyles(56, 0, 72, 800);
+  }
+}
+
+%h2 {
+  @include defaultTypoStyles(20, 0, 24, 800);
+
+  @include media(">=tablet") {
+    @include defaultTypoStyles(30, 0, 45, 800);
+  }
+
+  @include media(">=desktop-lg") {
+    @include defaultTypoStyles(34, 0, 51, 800);
+  }
+}
+
+%h3 {
+  @include defaultTypoStyles(18, 0, 20, 800);
+
+  @include media(">=tablet") {
+    @include defaultTypoStyles(20, 0, 26, 800);
+  }
+
+  @include media(">=desktop-lg") {
+    @include defaultTypoStyles(21, 0, 32, 800);
+  }
+}
+
+%h4 {
+  @include defaultTypoStyles(16, 0, 18);
+
+  @include media(">=tablet") {
+    @include defaultTypoStyles(16, 0, 21);
+  }
+
+  @include media(">=desktop-lg") {
+    @include defaultTypoStyles(16, 0, 21);
+  }
+}
+
+%p1 {
+  @include defaultTypoStyles(14, 0, 20);
+
+  @include media(">=tablet") {
+    @include defaultTypoStyles(14, 0, 18);
+  }
+
+  @include media(">=desktop-lg") {
+    @include defaultTypoStyles(16, 0, 18);
+  }
+}
+
+%p2 {
+  @include defaultTypoStyles(12, 0, 18);
+
+  @include media(">=tablet") {
+    @include defaultTypoStyles(14, 0, 18);
+  }
+
+  @include media(">=desktop-lg") {
+    @include defaultTypoStyles(14, 0, 21);
+  }
+}
+
+%p3 {
+  @include defaultTypoStyles(10, 0, 14);
+
+  @include media(">=tablet") {
+    @include defaultTypoStyles(12, 0, 18);
+  }
+
+  @include media(">=desktop-lg") {
+    @include defaultTypoStyles(12, 0, 18);
+  }
+}
+
+@mixin h1 {
+  @extend %h1;
+}
+
+@mixin h2 {
+  @extend %h2;
+}
+
+@mixin h3 {
+  @extend %h3;
+}
+
+@mixin h4 {
+  @extend %h4;
+}
+
+@mixin p1 {
+  @extend %p1;
+}
+
+@mixin p2 {
+  @extend %p2;
+}
+
+@mixin p3 {
+  @extend %p3;
+}
+
+.h1 {
+  @include h1;
+}
+
+.h2 {
+  @include h2;
+}
+
+.h3 {
+  @include h3;
+}
+
+.h4 {
+  @include h4;
+}
+
+.p1 {
+  @include p1;
+}
+
+.p2 {
+  @include p2;
+}
+
+.p3 {
+  @include p3;
+}

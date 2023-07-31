@@ -1,0 +1,93 @@
+// colors
+$white: #ffffff;
+$black: #000000;
+$gray: #666666;
+$primary: #008cba;
+$secondary: #e7e7e7;
+$success: #4caf50;
+$danger: #f44336;
+$disabled: #cccccc;
+$hover: #5b8c8c;
+
+@mixin outlined($color) {
+  background: $white;
+  border: 1px solid $color;
+  color: $color;
+  &:hover {
+    background-color: $hover;
+    // color: $black;
+    border: none;
+  }
+}
+
+.button {
+  border: none;
+  color: $white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &.primary {
+    background-color: $primary;
+    &.outlined {
+      @include outlined($primary);
+    }
+  }
+
+  &.secondary {
+    background-color: $secondary;
+    color: black;
+    &.outlined {
+      @include outlined($secondary);
+    }
+  }
+
+  &.success {
+    background-color: $success;
+    &.outlined {
+      @include outlined($success);
+    }
+  }
+
+  &.danger {
+    background-color: $danger;
+    &.outlined {
+      @include outlined($danger);
+    }
+  }
+  &:hover {
+    background-color: $hover;
+  }
+  &.disabled,
+  &:disabled,
+  &[disabled],
+  &.disabled:hover {
+    background-color: $disabled;
+    color: $gray;
+    cursor: not-allowed;
+    &.outlined {
+      @include outlined($disabled);
+    }
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.close {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
+.link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

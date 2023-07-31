@@ -1,0 +1,142 @@
+.card {
+  margin: 0 0 30px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 5%);
+  overflow: hidden;
+
+  .card-category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: linear-gradient(to top, #0000, #000000fa) #0000;
+    display: none;
+    width: 100%;
+    height: 40px;
+    transition: 0.3s ease all;
+
+    span {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      display: inline-block;
+      padding: 10px;
+    }
+  }
+
+  &:hover {
+    .card-category {
+      display: block;
+      transition: 0.3s ease all;
+    }
+  }
+
+  .card-thumb {
+    position: relative;
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .card-content {
+    padding: 10px 20px;
+
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px 0;
+
+      .card-comments {
+        display: flex;
+        align-items: center;
+      }
+
+      .card-like {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+
+  // PRIMARY CARD
+  &.primary {
+    max-width: 350px;
+
+    .card-content {
+      .card-list {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        justify-content: space-between;
+        margin: 0;
+      }
+    }
+  }
+
+  // SECONDARY CARD
+  &.secondary {
+    display: flex;
+    max-width: 800px;
+    width: 50%;
+
+    .card-content {
+      h3 {
+        margin: 0;
+      }
+    }
+
+    .author-box {
+      display: flex;
+      column-gap: 25px;
+      margin: 20px 0 0;
+
+      .author-image {
+        max-width: 50px;
+        height: 50px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50px;
+        }
+      }
+
+      .author-info {
+        h5 {
+          margin: 0;
+          font-size: 18px;
+        }
+
+        p {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+
+  // TERTIARY CARD
+  &.tertiary {
+    max-width: 350px;
+
+    .card-content {
+      h3 {
+        margin: 10px 0 0;
+      }
+
+      .card-list {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        justify-content: space-between;
+        margin: 0;
+      }
+    }
+  }
+}
