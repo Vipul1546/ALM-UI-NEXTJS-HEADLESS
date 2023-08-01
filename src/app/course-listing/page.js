@@ -8,6 +8,8 @@ import { getCatalogList, getCoursesList } from '@/services/alm';
 import styles from './page.module.scss';
 
 const Home = async () => {
+
+
   const data = await getCatalogList({
     'page[offset]': 0,
     'page[limit]': 10,
@@ -20,6 +22,8 @@ const Home = async () => {
     sort: 'name',
     'filter.ignoreEnhancedLP': true,
   });
+
+
   return (
     <>
       <Header />
@@ -29,10 +33,21 @@ const Home = async () => {
           <div className={styles['right-panel']}>
             <Flex container justifyContent='space-between' alignItems='center'>
               <h2>Courses Page</h2>
-              <label className={styles.sortBy}>Sort By: <Chevron className={styles.chevron} height={'10px'} width={'10px'} /></label>
+              <div>
+                <select name="sort" id="sort" className={styles.sortBy}>
+                  <option value="-1">Sort By</option>
+                  <option value="name">Name</option>
+                  <option value="date">Date</option>
+                  <option value="dateCreated">Date Created</option>
+                  <option value="dateEnrolled">Date Enrolled</option>
+                  <option value="rating">Rating</option>
+                </select>
+                <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
+              </div>
+
             </Flex>
 
-            <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
+            {/* <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
               {Array(4).fill().map((_, idx) => {
                 return <Card key={idx} variant={`${styles.primary}`}
                   imagePath={`https://picsum.photos/350/22${idx}`}
@@ -41,16 +56,28 @@ const Home = async () => {
                   likes={380}
                   comments={70} />
               })}
-            </Flex>
+            </Flex> */}
             <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
               {
-                courseList?.data?.map((course, idx) => <Card key={idx} variant={`${styles.primary}`}
-                  imagePath={`https://picsum.photos/350/22${idx}0`}
-                  altText={course?.attributes?.localizedMetadata[0]?.name}
-                  username={course?.attributes?.localizedMetadata[0]?.name}
-                  likes={380}
-                  comments={70} />
-                  // <h2>{course?.attributes?.name}</h2>
+                courseList?.data?.map((course, idx) => {
+                  const bannerImage = course.attributes.imageUrl != undefined ? course.attributes.imageUrl : `https://picsum.photos/350/22${idx}`;
+                  const authorName = course.attributes.authorNames != undefined ? course.attributes.authorNames[0] : 'User';
+
+                  return <Card
+                    key={idx}
+                    variant={'tertiary'}
+                    imagePath={bannerImage}
+                    altText={'test image'}
+                    authorName={authorName}
+                    authorTitle={course.attributes.imageUrl}
+                    students={`Rs. ${course.attributes.price}`}
+                    title={course.attributes.localizedMetadata[0].name}
+                    duration={`Duration: ${course.attributes.duration}`}
+                    icon={'fa-bookmark'}
+                    category={course.attributes.enrollmentType}
+                  />
+
+                }
                 )
               }
             </Flex>

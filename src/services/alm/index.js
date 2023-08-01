@@ -42,7 +42,7 @@ export const getCoursesList = async (param) => {
     const res = await fetch(`${ALM_API_URL}learningObjects?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth 4451f3029dd35e33bad1f6ece43e54f6',
+        Authorization: 'oauth ade041e5fcd24a37cd8c88cd919414ba',
       },
     });
     const data = await res.json();
