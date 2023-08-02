@@ -5,11 +5,10 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import SideBar from '@/components/SideBar';
 import { getCatalogList, getCoursesList } from '@/services/alm';
+import Listing from './Listing';
 import styles from './page.module.scss';
 
 const Home = async () => {
-
-
   const data = await getCatalogList({
     'page[offset]': 0,
     'page[limit]': 10,
@@ -23,7 +22,6 @@ const Home = async () => {
     'filter.ignoreEnhancedLP': true,
   });
 
-
   return (
     <>
       <Header />
@@ -33,30 +31,8 @@ const Home = async () => {
           <div className={styles['right-panel']}>
             <Flex container justifyContent='space-between' alignItems='center'>
               <h2>Courses Page</h2>
-              <div>
-                <select name="sort" id="sort" className={styles.sortBy}>
-                  <option value="-1">Sort By</option>
-                  <option value="name">Name</option>
-                  <option value="date">Date</option>
-                  <option value="dateCreated">Date Created</option>
-                  <option value="dateEnrolled">Date Enrolled</option>
-                  <option value="rating">Rating</option>
-                </select>
-                <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
-              </div>
-
+              <label className={styles.sortBy}>Sort By: <Chevron className={styles.chevron} height={'10px'} width={'10px'} /></label>
             </Flex>
-
-            {/* <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
-              {Array(4).fill().map((_, idx) => {
-                return <Card key={idx} variant={`${styles.primary}`}
-                  imagePath={`https://picsum.photos/350/22${idx}`}
-                  altText={'test image'}
-                  username={'John Doe'}
-                  likes={380}
-                  comments={70} />
-              })}
-            </Flex> */}
             <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
               {
                 courseList?.data?.map((course, idx) => {
@@ -94,6 +70,7 @@ const Home = async () => {
           </div>
         </Flex>
       </main>
+      <Listing courseList={courseList} />
       <Footer />
     </>
   );

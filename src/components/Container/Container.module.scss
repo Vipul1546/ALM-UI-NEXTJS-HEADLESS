@@ -1,5 +1,7 @@
 .container {
   display: block;
+  margin-inline: auto;
+
   &.flex {
     display: flex;
   }
