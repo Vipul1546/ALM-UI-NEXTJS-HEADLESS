@@ -15,7 +15,8 @@
     "prettier": "prettier --write .",
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build -s public",
+    "serve-storybook": "serve storybook-static"
   },
   "dependencies": {
     "eslint": "8.42.0",
