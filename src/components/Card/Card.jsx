@@ -1,8 +1,11 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styles from './Card.module.scss';
+
 const Card = props => {
   return (
     <div className={`${styles.card} ${styles[props.variant]}`}>
+      <Link href={props?.href || '#'}>
       <div className={styles['card-thumb']}>
         {props.category && (
           <div className={styles['card-category']}>
@@ -57,6 +60,7 @@ const Card = props => {
           </div>
         </div>
       </div>
+      </Link>
     </div>
   );
 };

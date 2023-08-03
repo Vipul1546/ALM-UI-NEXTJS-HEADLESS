@@ -49,8 +49,10 @@ const Listing = ({ courseList }) => {
                                     const authorName = course.attributes.authorNames != undefined ? course.attributes.authorNames[0] : 'User';
                                     const price = course.attributes.price != undefined ? 'Rs.' + course.attributes.price : 'Free';
 
+                                    const href = `/course/${course.id}`
                                     return <Card
                                         key={idx}
+                                        href={href}
                                         variant={'tertiary'}
                                         imagePath={bannerImage}
                                         altText={'test image'}

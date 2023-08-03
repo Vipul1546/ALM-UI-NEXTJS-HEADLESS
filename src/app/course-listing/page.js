@@ -2,6 +2,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { getCatalogList, getCoursesList } from '@/services/alm';
 import Listing from './Listing';
+import styles from './page.module.scss';
 
 const Home = async () => {
   const data = await getCatalogList({
