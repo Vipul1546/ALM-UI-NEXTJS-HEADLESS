@@ -83,7 +83,7 @@
   &.secondary {
     display: flex;
     max-width: 800px;
-    width: 50%;
+    // width: 50%;
 
     .card-content {
       h3 {
@@ -93,7 +93,7 @@
 
     .author-box {
       display: flex;
-      column-gap: 25px;
+      // column-gap: 25px;
       margin: 20px 0 0;
 
       .author-image {

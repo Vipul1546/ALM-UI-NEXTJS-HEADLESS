@@ -1,5 +1,4 @@
-$color-palette: (
-  "aqua": #00edff,
+$color-palette: ("aqua": #00edff,
   "blue": #00d5e5,
   "dark-blue": #00c6d5,
   "light-blue": #cbf7fa,
@@ -19,9 +18,8 @@ $color-palette: (
   "light-green": #ccf7e2,
   "yellow": #ef9f05,
   "light-yellow": #fceccd,
-  "red": #c00,
-  "light-red": #f5cccc
-);
+  "red": #fa0f00,
+  "light-red": #f5cccc);
 
 @function get-color($key: "primary") {
   @return map-get($color-palette, $key);
@@ -31,4 +29,3 @@ $color-palette: (
   $result: map-get($color-palette, $key);
   @return rgba($result, $opacity);
 }
-

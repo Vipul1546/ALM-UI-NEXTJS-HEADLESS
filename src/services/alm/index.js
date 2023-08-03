@@ -1,9 +1,12 @@
+import { getEnv } from "../../utils/getEnv";
+
 /**
  * getToken - get access token for alm
  */
+
 const {
   ALM_CLIENT_ID, ALM_CLIENT_SECRET, ALM_TOKEN_URL, ALM_API_URL,
-} = process.env;
+} = getEnv();
 
 export const getToken = async () => {
   const body = {
@@ -27,7 +30,7 @@ export const getCatalogList = async (param) => {
     const res = await fetch(`${ALM_API_URL}catalogs?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth db9129afdb6c4b870a24f2f68daee989',
+        Authorization: 'oauth e9d7317f3000772b73f9394675f86465',
       },
     });
     const data = await res.json();
@@ -42,7 +45,7 @@ export const getCoursesList = async (param) => {
     const res = await fetch(`${ALM_API_URL}learningObjects?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth db9129afdb6c4b870a24f2f68daee989',
+        Authorization: 'oauth e9d7317f3000772b73f9394675f86465',
       },
     });
     const data = await res.json();

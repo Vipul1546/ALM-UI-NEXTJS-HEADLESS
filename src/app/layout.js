@@ -2,6 +2,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Inter } from 'next/font/google';
 import PropTypes from 'prop-types';
 import '../assets/styles/base/_reset.scss';
+import { AlmContextProvider } from '../context/almContext';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -13,7 +14,11 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang="en">
-    <body className={inter.className}>{children}</body>
+    <body className={inter.className}>
+      <AlmContextProvider>
+        {children}
+      </AlmContextProvider>
+    </body>
   </html>
 );
 

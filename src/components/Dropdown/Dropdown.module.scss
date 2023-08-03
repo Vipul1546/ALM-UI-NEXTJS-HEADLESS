@@ -1,0 +1,9 @@
+.sortBy {
+    cursor: pointer;
+    padding: rem(16px);
+    display: inline-block;
+
+    >svg {
+        transform: rotate(90deg);
+    }
+}

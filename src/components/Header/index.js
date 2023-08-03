@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Chevron from '../../assets/icons/Chevron';
 import IconBell from '../../assets/icons/IconBell';
 import IconSearch from '../../assets/icons/IconSearch';
@@ -11,6 +12,12 @@ const Header = () => {
         <header className={styles['main-header']}>
             <Flex container justifyContent='space-between' alignItems='center'>
                 <Logo />
+                <nav className={styles.nav}>
+                    <Link href="/">Home</Link>
+                    <Link href="/">My Learning</Link>
+                    <Link href="/">Courses</Link>
+                    <Link href="/">Find An Instructor</Link>
+                </nav>
                 <div className={styles.profile}>
                     <Flex gap={'1rem'} container alignItems='center'>
                         <div className={styles['search-group']}>
