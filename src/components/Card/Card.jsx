@@ -10,12 +10,14 @@ const Card = props => {
           </div>
         )}
         <img src={props.imagePath} alt={props.altText} />
+
+        {props.variant == 'tertiary' && <span className={styles['icon-play']}></span>}
       </div>
       <div className={styles['card-content']}>
         {props.variant == 'primary' && (
           <ul className={styles['card-list']}>
             <li>{props.username}</li>
-            <li>{props.likes} Likes</li>
+            {props.likes > 1 && <li>{props.likes} </li>}
           </ul>
         )}
 
@@ -47,6 +49,7 @@ const Card = props => {
 
         <div className={styles['card-bottom']}>
           <div className={styles['card-comments']}>
+            {props.variant == 'tertiary' && <i className="fas fa-user"></i>}
             {props.variant == 'tertiary' ? props.authorName : props.duration}
           </div>
           <div className={styles['card-like']}>

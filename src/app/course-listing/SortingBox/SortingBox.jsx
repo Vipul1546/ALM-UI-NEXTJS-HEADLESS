@@ -33,7 +33,6 @@ const SortingBox = ({ courseList, fetchState }) => {
       sort: value,
       'filter.ignoreEnhancedLP': true,
     });
-    console.log({ courseList });
     updateCourseListing({ ...courseList });
     setIsFetching(false);
     fetchState(false);
@@ -44,7 +43,6 @@ const SortingBox = ({ courseList, fetchState }) => {
       newUrlParams.set('sort', value);
       router.push(`${pathname}?${newUrlParams}`);
     });
-    console.log({ name, value });
   };
   return <Dropdown onchange={handleChange} />;
 };

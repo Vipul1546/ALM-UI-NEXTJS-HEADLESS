@@ -22,7 +22,6 @@ const Listing = ({ courseList }) => {
     useEffect(() => {
         updateCourseListing({ ...courseList })
         const { ALM_TOKEN_URL } = getEnv()
-        // console.log({ process, getEnv: getEnv(), kery: process.env.customKey, env_1: process.env.NEXT_PUBLIC_ALM_TOKEN_URL, env_2: ALM_TOKEN_URL })
     }, [])
 
     const handleFetchState = (stateFlag) => {
@@ -40,19 +39,7 @@ const Listing = ({ courseList }) => {
                             <SortingBox courseList={courseListing} fetchState={handleFetchState} />
                             <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
                         </div>
-
                     </Flex>
-
-                    {/* <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
-              {Array(4).fill().map((_, idx) => {
-                return <Card key={idx} variant={`${styles.primary}`}
-                  imagePath={`https://picsum.photos/350/22${idx}`}
-                  altText={'test image'}
-                  username={'John Doe'}
-                  likes={380}
-                  comments={70} />
-              })}
-            </Flex> */}
                     <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
                         {
                             isMutating
@@ -60,6 +47,7 @@ const Listing = ({ courseList }) => {
                                 : courseListing?.data?.map((course, idx) => {
                                     const bannerImage = course.attributes.imageUrl != undefined ? course.attributes.imageUrl : `https://picsum.photos/350/22${idx}`;
                                     const authorName = course.attributes.authorNames != undefined ? course.attributes.authorNames[0] : 'User';
+                                    const price = course.attributes.price != undefined ? 'Rs.' + course.attributes.price : 'Free';
 
                                     return <Card
                                         key={idx}
@@ -68,7 +56,7 @@ const Listing = ({ courseList }) => {
                                         altText={'test image'}
                                         authorName={authorName}
                                         authorTitle={course.attributes.imageUrl}
-                                        students={`Rs. ${course.attributes.price}`}
+                                        students={price}
                                         title={course.attributes.localizedMetadata[0].name}
                                         duration={`Duration: ${course.attributes.duration}`}
                                         icon={'fa-bookmark'}

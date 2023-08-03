@@ -20,7 +20,10 @@ const Home = async () => {
   return (
     <>
       <Header />
-      <Listing courseList={courseList} />
+      <main className={styles.main}>
+        <Listing courseList={courseList} />
+
+      </main>
       <Footer />
     </>
   );

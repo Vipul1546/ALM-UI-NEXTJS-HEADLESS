@@ -1,9 +1,10 @@
 .card {
   margin: 0 0 30px;
   background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 10px 20px rgb(0 0 0 / 5%);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
   overflow: hidden;
+  cursor: pointer;
 
   .card-category {
     position: absolute;
@@ -54,6 +55,9 @@
       .card-comments {
         display: flex;
         align-items: center;
+        text-transform: capitalize;
+        color: #525a5c;
+        font-size: 14px;
       }
 
       .card-like {
@@ -67,6 +71,14 @@
   // PRIMARY CARD
   &.primary {
     max-width: 350px;
+
+    .card-thumb {
+      & img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+    }
 
     .card-content {
       .card-list {
@@ -125,9 +137,50 @@
   &.tertiary {
     max-width: 350px;
 
+
+
+    .card-thumb {
+      & img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .icon-play {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: url("https://demo.foxthemes.net/courseplus/assets/images/icon-play.svg") no-repeat;
+        background-size: auto 50%;
+        background-position: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 150ms ease-in-out;
+        transition: -webkit-transform 150ms ease-in-out;
+        transition: -webkit-transform 150ms ease-in-out;
+        transition: transform 150ms ease-in-out;
+        transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+        transform: scale(0);
+      }
+
+      &:hover {
+        .icon-play {
+          visibility: visible;
+          opacity: 1;
+          transform: scale(0.6);
+        }
+      }
+    }
+
     .card-content {
       h3 {
         margin: 10px 0 0;
+        color: #f91101;
+        font-weight: 600;
+        font-family: '__Inter_0ec1f4';
+        min-height: 45px;
       }
 
       .card-list {
@@ -136,6 +189,12 @@
         padding: 0;
         justify-content: space-between;
         margin: 0;
+      }
+    }
+
+    .card-comments {
+      i {
+        margin-right: 10px;
       }
     }
   }
