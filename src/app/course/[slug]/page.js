@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import { getCoursesDetails } from "@/services/alm";
+import FluidicPlayer from "./FludicPlayer";
 
 
 const Pdp = async ({ params }) => {
