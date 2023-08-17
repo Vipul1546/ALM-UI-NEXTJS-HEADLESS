@@ -6,7 +6,7 @@ import styles from './herobanner.module.scss';
 const HeroBanner = () => {
   return (
     <div className={styles.banner}>
-      <Container variant={styles.flex} background="none" width="85%">
+      <Container variant={styles.flex}>
         <Flex container justifyContent="space-between" alignItems="flex-end" height="100%">
           <summary className={styles.summary}>
             <Heading className={styles.title} type="h1" weight="heading-extra-bold">

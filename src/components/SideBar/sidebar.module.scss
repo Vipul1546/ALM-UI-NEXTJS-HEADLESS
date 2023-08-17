@@ -1,23 +1,27 @@
 .sidebar {
-    min-width: 300px;
+    min-width: rem($width-sidebar);
     background-color: get-color("white");
-    border-right: 1px solid rgb(229 231 235 / 100%);
-    padding: 1rem;
+    border-right: rem(1px) solid rgb(229 231 235 / 100%);
+    padding: rem(32px) rem(16px) rem(16px);
 
     h3 {
-        @extend %h3;
+        @extend %h4;
     }
 
     .link {
-        color: #fa0f00;
+        color: get-color('red');
         position: relative;
+
+        font: {
+            size: $font-size-base - 2;
+        }
 
         &::after {
             content: '';
-            background: #fa0f00;
+            background: get-color('red');
             width: 0;
             display: inline-block;
-            height: 1px;
+            height: rem(1px);
             position: absolute;
             bottom: 0;
             left: 0;
@@ -32,31 +36,23 @@
     }
 
     .filter-group {
-        margin-top: rem(24px);
+        margin-top: rem(16px);
 
         h5 {
             @extend %h4;
-
-            border-bottom: 1px solid #e7e7e7;
+            border-bottom: rem(1px) solid get-color('titanium-white');
             padding-bottom: rem(10px);
             margin-bottom: rem(6px);
             color: get-color('black');
 
             font: {
-                weight: $font-weight-bold;
+                size: $font-size-base - 2;
             }
         }
 
         li {
             >label {
                 padding: rem(10px) 0;
-            }
-
-
-            &:last-child {
-                >label {
-                    padding-bottom: 0;
-                }
             }
         }
     }

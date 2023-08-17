@@ -39,14 +39,14 @@
 }
 
 %h4 {
-  @include defaultTypoStyles(16, 0, 18);
+  @include defaultTypoStyles(16, 0, 18, 600);
 
   @include media(">=tablet") {
-    @include defaultTypoStyles(16, 0, 21);
+    @include defaultTypoStyles(16, 0, 21, 600);
   }
 
   @include media(">=desktop-lg") {
-    @include defaultTypoStyles(16, 0, 21);
+    @include defaultTypoStyles(16, 0, 21, 600);
   }
 }
 

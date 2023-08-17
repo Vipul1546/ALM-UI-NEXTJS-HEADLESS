@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import { getCoursesDetails } from "@/services/alm";
-import FluidicPlayer from "./FludicPlayer";
+import DetailPage from "./courseDetails/courseDetails";
 
 
 const Pdp = async ({ params }) => {
@@ -23,19 +23,11 @@ const Pdp = async ({ params }) => {
             {
                 false
                     ? <h2>Course "{slug}" not found.</h2>
-                    : <div>
-                        <h1> {attributes?.localizedMetadata[0]?.name}</h1>
-                        <p>{attributes?.localizedMetadata[0]?.overview}</p>
-                    </div>
+                    : <DetailPage data={data} />
             }
-            <FluidicPlayer
-                data={data}
-                testData
-                loid='course:6037764'
-                accountId='116411'
-                userId='19381376'
-                token='0712d892a44e2bdd2354ff525eeb7903'
-            />
+
+
+
         </>
     )
 }

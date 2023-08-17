@@ -50,3 +50,11 @@ export const Tertiary = () => (
     category={'Original'}
   ></Card>
 );
+
+export const TextIcon = () => (
+  <Card
+    variant={'texticon'}
+    title={'Creative writing: Crafting Personal Essays with impact'}
+    icon={'fa-play'}
+  ></Card>
+);

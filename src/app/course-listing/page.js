@@ -4,7 +4,8 @@ import { getCatalogList, getCoursesList } from '@/services/alm';
 import Listing from './Listing';
 import styles from './page.module.scss';
 
-const Home = async () => {
+const CourseListing = async ({ searchParams }) => {
+  const { sort = 'name' } = searchParams;
   const data = await getCatalogList({
     'page[offset]': 0,
     'page[limit]': 10,
@@ -14,7 +15,7 @@ const Home = async () => {
     'page[limit]': 10,
     'filter.loTypes': 'course',
     'filter.catalogIds': 163584,
-    sort: 'name',
+    sort: decodeURIComponent(sort),
     'filter.ignoreEnhancedLP': true,
   });
 
@@ -23,11 +24,10 @@ const Home = async () => {
       <Header />
       <main className={styles.main}>
         <Listing courseList={courseList} />
-
       </main>
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default CourseListing;

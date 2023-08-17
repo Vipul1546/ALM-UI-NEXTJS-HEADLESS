@@ -1,44 +1,36 @@
 import PropTypes from 'prop-types';
+import styles from './CTA.module.scss';
 
-const CTA = ({
-  tag,
-  variant,
-  children,
-  href,
-  type,
-  onClick,
-}) => {
-  let Tag = tag;
+const CTA = ({ variant, children, href, type, addOnClass, onClick }) => {
+  let Tag = 'button';
   if (href !== '') {
     Tag = 'a';
-  } 
+  }
+  console.log(variant);
   const createCTA = () => (
     <Tag
-      className={variant}
+      className={`${styles.button} ${styles[variant]} ${styles[addOnClass]}`}
       onClick={onClick}
       type={Tag !== 'a' ? type : null}
-      href={Tag === 'a' ? href : null}
-    >
+      href={Tag === 'a' ? href : null}>
       {children}
     </Tag>
   );
-  return (
-    createCTA()
-  ); 
+  return createCTA();
 };
 
 CTA.propTypes = {
-  tag: PropTypes.string,
   variant: PropTypes.string.isRequired,
+  addOnClass: PropTypes.string,
   children: PropTypes.node.isRequired,
   href: PropTypes.string,
   type: PropTypes.string,
   onClick: PropTypes.func,
 };
 CTA.defaultProps = {
-  tag: 'button',
   href: '',
   type: 'button',
   onClick: () => {},
+  addOnClass: '',
 };
 export default CTA;

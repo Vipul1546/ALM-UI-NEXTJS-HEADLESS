@@ -20,7 +20,7 @@ const Home = () => {
       <HeroBanner />
       <main className={styles.main}>
         <section className={styles['count-home']}>
-          <Container width='85%' background='none'>
+          <Container>
             <ul>
               <li>
                 <Counter startValue={0} endValue={332} />
@@ -42,7 +42,7 @@ const Home = () => {
           </Container>
         </section>
         <section className={styles.insights}>
-          <Container width="90%" background="none">
+          <Container>
             <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">Insights</Heading>
             <ul>
               <li>
@@ -65,7 +65,7 @@ const Home = () => {
           </Container>
         </section>
         <section className={styles['category-section']}>
-          <Container width="90%" background="none">
+          <Container>
             <Flex margin='0 0 32px' container justifyContent='space-between' alignItems='center'>
               <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">Recommended Courses</Heading>
               <Link className={styles.link} variant={'link'} href="#">
@@ -90,7 +90,7 @@ const Home = () => {
           </Container>
         </section>
         <section className={styles.sectionSkills}>
-          <Container width="85%" background="none">
+          <Container>
             <Flex container justifyContent='space-between' alignItems='center'>
               <div className={styles.elem}>
                 {/* <i className='fas fa-js'></i> */}
@@ -112,7 +112,7 @@ const Home = () => {
           </Container>
         </section>
         <section className={styles.testimonial}>
-          <Container width="85%" background="none">
+          <Container>
             <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">What our customer say</Heading>
             <Slider dots={false}
               slidesToShow={4}
@@ -194,7 +194,7 @@ const Home = () => {
           </Container>
         </section>
         <section className={styles['last-preview']}>
-          <Container width="90%" background="none">
+          <Container>
             <Flex margin='0 0 32px' container justifyContent='space-between' alignItems='center'>
               <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">
                 Resume Last Tuts

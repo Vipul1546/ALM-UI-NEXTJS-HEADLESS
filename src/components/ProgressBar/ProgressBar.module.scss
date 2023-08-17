@@ -1,18 +1,19 @@
 .progressbar {
-  width: '100%';
-  background-color: 'whitesmoke';
-  border-radius: 2.5rem;
+  width: 100%;
+  background-color: get-color('smoke-white');
+  border-radius: rem(40px);
+
   & .progress {
-    height: '100%';
-    border-radius: 2.5rem;
+    height: 100%;
+    border-radius: rem(40px);
     display: flex;
     justify-content: end;
     align-items: center;
 
     &__text {
-      color: 'black';
-      font-weight: 900;
-      padding-right: 1rem;
+      color: get-color('solid-black');
+      font-weight: $font-weight-bold;
+      padding-right: rem(16px);
     }
   }
 }

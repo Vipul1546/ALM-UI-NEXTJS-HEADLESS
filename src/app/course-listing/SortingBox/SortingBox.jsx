@@ -8,10 +8,12 @@ import { useAlmContext } from '../../../context/almContext';
 
 const SortingBox = ({ courseList, fetchState }) => {
   const { courseListing, updateCourseListing } = useAlmContext();
-
+  const searchParams = useSearchParams()
+  const sort = searchParams.get('sort') || 'name'
+  
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const urlSearchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const [isFetching, setIsFetching] = useState(false);
 
@@ -39,12 +41,12 @@ const SortingBox = ({ courseList, fetchState }) => {
     startTransition(() => {
       // Refresh the current route and fetch new data from the server without
       // losing client-side browser or React state.
-      const newUrlParams = new URLSearchParams(searchParams.toString());
-      newUrlParams.set('sort', value);
+      const newUrlParams = new URLSearchParams(urlSearchParams.toString());
+      newUrlParams.set('sort', encodeURIComponent(value));
       router.push(`${pathname}?${newUrlParams}`);
     });
   };
-  return <Dropdown onchange={handleChange} />;
+  return <Dropdown onchange={handleChange} selectedOption={sort}/>;
 };
 
 export default SortingBox;

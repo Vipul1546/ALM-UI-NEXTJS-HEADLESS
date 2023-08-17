@@ -1,5 +1,5 @@
 .main-header {
-    padding: 1rem;
+    padding: rem(16px);
     z-index: 5;
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -11,8 +11,11 @@
     width: 100%;
 
     // box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
-    // background-color: get-color("light-red");
     // background-color: get-opaque-color("light-red", 0.25);
+    &.secondary {
+        border-bottom: rem(1px) solid get-color('titanium-white');
+    }
+
     .nav {
         transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -33,8 +36,11 @@
             box-shadow: inset 0 0 0 0 get-color('red');
             padding: 0 rem(16px);
             display: inline-flex;
-            font-weight: $font-weight-semi;
             transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            font: {
+                weight: $font-weight-semi;
+            }
 
             &:hover {
                 color: get-color('dark-black');
@@ -65,16 +71,16 @@
 
             .form-control {
                 all: unset;
-                padding: .5rem;
-                border-bottom: 1px solid #c2c2c2;
-                color: #444444;
-                padding-right: 30px;
+                padding: rem(8px);
+                border-bottom: rem(1px) solid get-color('light-grey');
+                color: get-color('light-black');
+                padding-right: rem(30px);
             }
 
             .Iconsearch {
                 position: absolute;
-                right: 10px;
-                bottom: 10px;
+                right: rem(10px);
+                bottom: rem(10px);
             }
         }
     }

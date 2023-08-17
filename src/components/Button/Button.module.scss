@@ -1,28 +1,28 @@
 .button {
   border: none;
-  color: white;
-  padding: 15px 32px;
+  color: get-color('white');
+  padding: rem(16px) rem(32px);
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: $font-size-base;
+  border-radius: rem(4px);
   cursor: pointer;
 
   &.primary {
-    background-color: #008cba;
+    background-color: get-color('blue');
   }
 
   &.secondary {
-    background-color: #e7e7e7;
-    color: black;
+    background-color: get-color('titanium-white');
+    color: get-color('solid-black');
   }
 
   &.success {
-    background-color: #4caf50;
+    background-color: get-color('green');
   }
 
   &.danger {
-    background-color: #f44336;
+    background-color: get-color('red');
   }
 }

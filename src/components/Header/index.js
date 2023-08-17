@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Chevron from '../../assets/icons/Chevron';
 import IconBell from '../../assets/icons/IconBell';
 import IconSearch from '../../assets/icons/IconSearch';
@@ -6,10 +8,10 @@ import IconUser from '../../assets/icons/IconUser';
 import Flex from '../Flex/Flex';
 import Logo from '../Logo/Logo';
 import styles from './header.module.scss';
-
 const Header = () => {
+    const isHeaderSecondary = usePathname() !== '/' ? 'secondary' : "";
     return (
-        <header className={styles['main-header']}>
+        <header className={`${styles['main-header']} ${styles[isHeaderSecondary]}`}>
             <Flex container justifyContent='space-between' alignItems='center'>
                 <Logo />
                 <nav className={styles.nav}>
@@ -29,7 +31,7 @@ const Header = () => {
                     </Flex>
                 </div>
             </Flex>
-        </header>
+        </header >
     )
 };
 

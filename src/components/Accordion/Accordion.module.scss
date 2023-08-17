@@ -1,11 +1,16 @@
 /* ACCORDION */
 .accordion {
-    border: 1px solid #eee;
+    font-family: inherit;
+    border: rem(1px) solid get-color('titanium-white');
 
     & h6 {
-        background-color: #ccc;
-        font-size: 1rem;
-        padding: 0.5rem;
+        background-color: get-color('light-grey');
+
+        font: {
+            size: $font-size-base;
+        }
+
+        padding: rem(8px);
         margin: 0;
         cursor: pointer;
 
@@ -26,15 +31,15 @@
         transition: all 0.2s ease-in-out;
 
         & p {
-            padding: 1rem;
+            padding: rem(16px);
             margin: 0;
         }
     }
 
     &.secondary {
         & h6 {
-            background-color: #000;
-            color: #fff;
+            background-color: get-color('solid-black');
+            color: get-color('white');
 
             svg {
                 transform: none;
@@ -55,13 +60,11 @@
             flex: 1;
             height: 590px;
             transition: all 0.2s ease-in-out;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            color: get-color('white');
+            @include center-flex;
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
+            border-radius: rem(20px);
 
             &::after {
                 content: "";
@@ -81,11 +84,11 @@
 
 
             .caption {
-                font-size: 1.8rem;
-                color: #fff;
+                font-size: $font-size-base + 8;
+                color: get-color('white');
                 position: absolute;
-                left: 1.5rem;
-                bottom: 1.5rem;
+                left: rem(24px);
+                bottom: rem(24px);
                 z-index: 1;
                 white-space: nowrap;
 
@@ -108,11 +111,6 @@
 
             &:hover {
                 flex: 3;
-
-                // >img {
-                //     transform: scale(1.2);
-                //     transition: all 0.5s ease-in-out;
-                // }
 
                 &::after {
                     transition: all 0.2s ease-in-out;

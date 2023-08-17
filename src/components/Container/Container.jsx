@@ -1,27 +1,21 @@
 import PropTypes from 'prop-types';
 import style from './Container.module.scss';
 
-const Container = ({
-  children, width, height, variant, background, 
-}) => (
-  <div className={`${style.container} ${variant}`} style={{ width, background, height }}>
+const Container = ({ children, variant, maxWidth }) => (
+  <div className={`${style.container} ${style[variant]}`} style={maxWidth ? { 'max-width': maxWidth } : {}}>
     {children}
   </div>
 );
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
-  width: PropTypes.string,
-  height: PropTypes.string,
   variant: PropTypes.string,
-  background: PropTypes.string,
+  maxWidth: PropTypes.string,
 };
 
 Container.defaultProps = {
-  width: '100%',
-  height: '100%',
   variant: 'container-block',
-  background: '#ffffff',
+  maxWidth: '',
 };
 
 export default Container;

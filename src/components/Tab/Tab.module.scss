@@ -7,19 +7,19 @@
             all: unset;
             text-align: center;
             cursor: pointer;
-            padding: 1.5rem 2.5rem;
-            background-color: #ccc;
+            padding: rem(24px) rem(40px);
+            background-color: get-color('light-grey');
 
             &.active {
-                background-color: #000;
-                color: #fff;
+                background-color: get-color('solid-black');
+                color: get-color('white');
             }
         }
     }
 
     .tab-content {
-        border: 1px solid #ccc;
-        padding: 1rem;
+        border: 1px solid get-color('light-grey');
+        padding: rem(16px);
     }
 
     &.secondary {
