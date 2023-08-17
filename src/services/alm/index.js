@@ -30,7 +30,7 @@ export const getCatalogList = async (param) => {
     const res = await fetch(`${ALM_API_URL}catalogs?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth e9d7317f3000772b73f9394675f86465',
+        Authorization: 'oauth f20ee451151134001fbcb7f3bedec1d1',
       },
     });
     const data = await res.json();
@@ -45,7 +45,7 @@ export const getCoursesList = async (param) => {
     const res = await fetch(`${ALM_API_URL}learningObjects?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth e9d7317f3000772b73f9394675f86465',
+        Authorization: 'oauth f20ee451151134001fbcb7f3bedec1d1',
       },
     });
     const data = await res.json();
@@ -61,7 +61,7 @@ export const getCoursesDetails = async (courseId = '', param) => {
     const res = await fetch(`${ALM_API_URL}learningObjects/${courseId}?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth e9d7317f3000772b73f9394675f86465',
+        Authorization: 'oauth f20ee451151134001fbcb7f3bedec1d1',
       },
     });
     const data = await res.json();
