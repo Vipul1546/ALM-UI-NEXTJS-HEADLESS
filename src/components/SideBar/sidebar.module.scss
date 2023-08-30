@@ -4,6 +4,17 @@
     border-right: rem(1px) solid rgb(229 231 235 / 100%);
     padding: rem(32px) rem(16px) rem(16px);
 
+    @include media("<tablet") {
+
+        position: fixed;
+        z-index: 1;
+        height: calc(100vh - 60px);
+        overflow: auto;
+        width: 100%;
+        top: rem(60px);
+
+    }
+
     h3 {
         @extend %h4;
     }

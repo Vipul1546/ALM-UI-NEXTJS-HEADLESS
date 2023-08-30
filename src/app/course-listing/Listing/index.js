@@ -4,39 +4,105 @@ import Chevron from '@/assets/icons/Chevron';
 import Card from '@/components/Card/Card';
 import Flex from '@/components/Flex/Flex';
 import SideBar from '@/components/SideBar';
+import { useAlmContext } from '@/context/almContext';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, useTransition } from 'react';
-import { useAlmContext } from '../../../context/almContext';
+import useWindowSize from '../../../utils/customhooks/useWindowSize';
 import SortingBox from '../SortingBox/SortingBox';
+import { getFiltersFromUrlParam } from '../helper';
 import styles from './listing.module.scss';
 
+
+import { FILTER_PARAM_MAPPING, LISTING } from '@/constants/almConstant';
+import { getCoursesList } from '@/services/alm';
 import { getEnv } from '../../../utils/getEnv';
 
-const Listing = ({ courseList }) => {
-    const { courseListing, updateCourseListing } = useAlmContext()
+const Listing = ({ courseList, FilterList, isServer }) => {
+    const { courseListing,
+        updateCourseListing,
+        filters,
+        appliedFilters,
+        updateFilters,
+        updateAppliedFilter
+    } = useAlmContext()
+    const router = useRouter();
+    const pathname = usePathname();
+    const urlSearchParams = useSearchParams();
     const [isPending, startTransition] = useTransition();
     const [isFetching, setIsFetching] = useState(false);
+    const [isClient, setIsClient] = useState(!isServer)
+    const searchParams = useSearchParams()
+
+    const [filterOpen, setFilterOpen] = useState(false);
+    const { width, height } = useWindowSize();
+    const isMobile = width < 768;
+
+    const { FILTERS } = LISTING
 
     // Create inline loading UI
     const isMutating = isFetching || isPending;
 
     useEffect(() => {
+        const allParams = getFiltersFromUrlParam(searchParams)
+        updateAppliedFilter({
+            ...appliedFilters,
+            filters: { ...allParams }
+        })
         updateCourseListing({ ...courseList })
+        updateFilters([...FilterList])
+        setIsClient(true)
         const { ALM_TOKEN_URL } = getEnv()
     }, [])
 
-    const handleFetchState = (stateFlag) => {
-        setIsFetching(stateFlag);
+    useEffect(() => {
+        if (isClient)
+            updateListing(appliedFilters)
+    }, [appliedFilters])
+
+    const updateListing = async (appliedFilters) => {
+        const { filters, sort } = appliedFilters
+        setIsFetching(true);
+        let listingParams = {
+            'page[limit]': 12,
+            'filter.loTypes': 'course',
+            'filter.catalogIds': 163584,
+            sort: sort?.value || 'name',
+            'filter.ignoreEnhancedLP': true,
+        }
+        if (Object.keys(filters).length > 0) {
+            for (const filter in filters) {
+                const filterName = filter.toLocaleLowerCase()
+                const filterParam = FILTER_PARAM_MAPPING[filterName]
+                if (filterParam)
+                    listingParams[filterParam] = [...filters[filter]]
+            }
+        }
+        const courseList = await getCoursesList({ ...listingParams });
+        updateCourseListing({ ...courseList });
+        startTransition(() => {
+            // Refresh the current route and fetch new data from the server without
+            // losing client-side browser or React state.
+            const newUrlParams = new URLSearchParams(urlSearchParams.toString());
+            if (sort?.value) newUrlParams.set('sort', encodeURIComponent(sort?.value));
+            if (Object.keys(filters).length > 0) {
+                for (const filter in filters) {
+                    newUrlParams.set(filter, encodeURIComponent(filters[filter]));
+                }
+            }
+            router.push(`${pathname}?${newUrlParams}`);
+        });
+        setIsFetching(false)
     }
 
     return (
         <main className={styles.main}>
             <Flex container justifyContent='flex-start'>
-                <SideBar />
+                {isMobile && !filterOpen ? <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}><i class="fa-solid fa-filter"></i></div> : isMobile && filterOpen ? <SideBar setFilterOpen={setFilterOpen} /> : <SideBar setFilterOpen={setFilterOpen} />}
                 <div className={styles['right-panel']}>
                     <Flex container justifyContent='space-between' alignItems='center'>
                         <h2>Courses Page</h2>
                         <div>
-                            <SortingBox courseList={courseListing} fetchState={handleFetchState} />
+                            <SortingBox />
                             <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
                         </div>
                     </Flex>

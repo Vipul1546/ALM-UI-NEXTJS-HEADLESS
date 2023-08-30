@@ -22,21 +22,18 @@ export default {
       options: ["button" , "sumit"],
       control: { type: "select" },
     },
+    tag:{
+      control: { type: "text" },
+    },
   },
   args: {
     variant: "primary",
+    tag: "button",
   },
 };
 
-export const Button = ({...args}) => {
-  let controls = {...args};
-  return (
-    <>
-      <p>Note 1 :- If we set href then the button will convert into anchor link</p>
-      <p>Note 2 :- Type will not get applied for anchor tag</p>
-      
-      <CTA variant={controls.variant} addOnClass={controls.addOnClass} type={controls.type}>
-          {controls.children?controls.children:controls.variant}
+export const CTAComponent = (args) => (
+      <CTA tag={args.tag} variant={args.variant} addOnClass={args.addOnClass} type={args.type} href={args.href}>
+          {args.children?args.children:args.variant}
       </CTA>
-    </>
-)};
+);

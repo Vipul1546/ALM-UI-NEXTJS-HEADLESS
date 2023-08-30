@@ -27,6 +27,7 @@ $hover: get-color('abbey');
   display: inline-block;
   font-size: $font-size-base;
   border-radius: rem(4px);
+  font-family: $font-family-primary;
   cursor: pointer;
 
   &.primary {
@@ -81,10 +82,4 @@ $hover: get-color('abbey');
   &.full-width {
     width: 100%;
   }
-}
-
-.close {
-  border: none;
-  background-color: transparent;
-  font-size: $font-size-base + 8;
 }

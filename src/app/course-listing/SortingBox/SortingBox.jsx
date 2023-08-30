@@ -1,50 +1,23 @@
 'use client';
 
-import { getCoursesList } from '@/services/alm';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState, useTransition } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Dropdown from '../../../components/Dropdown/Dropdown';
 import { useAlmContext } from '../../../context/almContext';
 
-const SortingBox = ({ courseList, fetchState }) => {
-  const { courseListing, updateCourseListing } = useAlmContext();
+const SortingBox = () => {
+  const { appliedFilters, updateAppliedFilter } = useAlmContext();
   const searchParams = useSearchParams()
   const sort = searchParams.get('sort') || 'name'
-  
-  const router = useRouter();
-  const pathname = usePathname();
-  const urlSearchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
-  const [isFetching, setIsFetching] = useState(false);
-
-  // Create inline loading UI
-  const isMutating = isFetching || isPending;
-
-  useEffect(() => {
-    updateCourseListing({ ...courseList });
-  }, []);
 
   const handleChange = async e => {
-    const { name, value } = e.target;
-    setIsFetching(true);
-    fetchState(true);
-    const courseList = await getCoursesList({
-      'page[limit]': 10,
-      'filter.loTypes': 'course',
-      'filter.catalogIds': 163584,
-      sort: value,
-      'filter.ignoreEnhancedLP': true,
-    });
-    updateCourseListing({ ...courseList });
-    setIsFetching(false);
-    fetchState(false);
-    startTransition(() => {
-      // Refresh the current route and fetch new data from the server without
-      // losing client-side browser or React state.
-      const newUrlParams = new URLSearchParams(urlSearchParams.toString());
-      newUrlParams.set('sort', encodeURIComponent(value));
-      router.push(`${pathname}?${newUrlParams}`);
-    });
+    const { value } = e.target;
+    const temp = {...appliedFilters}
+    temp.sort = {value}
+    updateAppliedFilter({
+      ...temp
+    })
+
+    return
   };
   return <Dropdown onchange={handleChange} selectedOption={sort}/>;
 };

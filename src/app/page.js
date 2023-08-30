@@ -1,5 +1,7 @@
 'use client'
+import IconUser from '@/assets/icons/IconUser';
 import Card from '@/components/Card/Card';
+import Carousel from '@/components/Carousel/Carousel';
 import Container from '@/components/Container/Container';
 import Counter from '@/components/Counter';
 import Flex from '@/components/Flex/Flex';
@@ -8,12 +10,40 @@ import Header from '@/components/Header';
 import Heading from '@/components/Heading/Heading';
 import HeroBanner from '@/components/HeroBanner';
 import Link from 'next/link';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
 import styles from './page.module.scss';
 
 const Home = () => {
+  const testimonialCarousel = {
+    arrows: true,
+    slidesToShow: 4,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [{
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1
+      }
+    }]
+  }
+
+  const lastPrevCarousel = {
+    arrows: true,
+    slidesToShow: 3,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [{
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1
+      }
+    }]
+  }
+
+
   return (
     <>
       <Header />
@@ -72,21 +102,21 @@ const Home = () => {
                 View All
               </Link>
             </Flex>
-            <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
-              {Array(8).fill().map((_, idx) => {
-                return <Card key={idx} variant={'tirtiary'}
+            <Carousel settings={testimonialCarousel}>
+              {Array(6).fill().map((_, idx) => {
+                return <Card key={idx} variant={'tertiary'}
                   imagePath={`https://picsum.photos/350/22${idx}`}
 
                   altText={'test image'}
                   authorName={'John Doe'}
                   authorTitle={'React Native'}
                   students={`Rs. 1400`}
-                  title={'React Native'}
+                  title={'React Native Recommended Courses'}
                   duration={`Duration: 45:00`}
-                  icon={'fa-bookmark'}
+                  icon={<IconUser />}
                   category={'some type'} />
               })}
-            </Flex>
+            </Carousel>
           </Container>
         </section>
         <section className={styles.sectionSkills}>
@@ -114,11 +144,7 @@ const Home = () => {
         <section className={styles.testimonial}>
           <Container>
             <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">What our customer say</Heading>
-            <Slider dots={false}
-              slidesToShow={4}
-              slidesToScroll={2}
-              autoplay={false}
-              autoplaySpeed={3000}>
+            <Carousel settings={testimonialCarousel}>
               <div className={styles.card}>
                 <p>The explanations are clear, the teachers are responsible and friendly, and the homework is real practice</p>
                 <div className={styles['reviews__card-author']}>
@@ -190,7 +216,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </Slider>
+            </Carousel>
           </Container>
         </section>
         <section className={styles['last-preview']}>
@@ -203,27 +229,23 @@ const Home = () => {
                 View All
               </Link>
             </Flex>
-            <Slider dots={false}
-              slidesToShow={2}
-              slidesToScroll={2}
-              autoplay={true}
-              autoplaySpeed={3000}>
+            <Carousel settings={lastPrevCarousel}>
               {Array(4).fill().map((_, idx) => {
                 return <Card
                   key={idx}
-                  variant={'secondary'}
+                  variant={'tertiary'}
                   imagePath={`https://picsum.photos/350/22${idx}`}
                   altText={'test image'}
-                  authorName={'Lorem'}
-                  authorTitle={'Ipsume'}
-                  students={`Rs. 1400`}
-                  title={'React Native'}
-                  duration={`Duration: 45:00`}
-                  icon={'fa-bookmark'}
-                  category={'some type'}
+                  authorName={'Roxane Gay'}
+                  authorTitle={'Writer & Editor'}
+                  students={'43,221 Students'}
+                  title={'Creative writing: Crafting Personal Essays with impact'}
+                  duration={'1h 1m'}
+                  icon={<IconUser />}
+                  category={'Original'}
                 />
               })}
-            </Slider>
+            </Carousel>
 
           </Container>
         </section>

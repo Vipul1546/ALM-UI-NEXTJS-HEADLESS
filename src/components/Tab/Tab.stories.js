@@ -1,10 +1,14 @@
 import Tab from './Tab';
-import styles from './Tab.module.scss';
 
 export default {
-    title: 'Tab',
+    title: "Tab",
     component: Tab,
-};
+    argTypes: {
+        variant: {
+            options: ["primary" , "secondary"],
+            control: { type: "radio" },
+        },
+    },
+  };
 
-export const Primary = () => <Tab variant={`${styles.primary}`}>Primary</Tab>;
-export const Secondary = () => <Tab variant={`${styles.secondary}`}>secondary</Tab>;
+export const TabComponent = (args) => <Tab variant={args.variant}>{args.variant}</Tab>;

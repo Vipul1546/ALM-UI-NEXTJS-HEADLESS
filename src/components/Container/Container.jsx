@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import style from './Container.module.scss';
 
 const Container = ({ children, variant, maxWidth }) => (
-  <div className={`${style.container} ${style[variant]}`} style={maxWidth ? { 'max-width': maxWidth } : {}}>
+  <div
+    className={`${style.container} ${style[variant] ? style[variant] : ''}`}
+    style={maxWidth ? { 'max-width': maxWidth } : {}}>
     {children}
   </div>
 );

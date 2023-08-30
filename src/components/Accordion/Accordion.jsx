@@ -18,13 +18,17 @@ const AccoElem = ({ item, active, setActive, variant, iconType }) => {
   };
   const variantToggle = () => {
     if (iconType === 'plus') {
-      return active ? <IconMinus height={14} fill="#fff" /> : <IconPlus height={14} width={14} fill="#fff" />;
+      return active ? (
+        <IconMinus height={14} fill="#fff" className={styles['icon-minus']} />
+      ) : (
+        <IconPlus height={14} width={14} fill="#fff" />
+      );
     } else {
-      return <Chevron height={14} width={14} />;
+      return <Chevron height={14} width={14} fill={variant === 'primary' ? '#000' : '#fff'} />;
     }
   };
   return (
-    <div className={`${styles.accordion} ${variant}`}>
+    <div className={`${styles.accordion} ${styles[variant]}`}>
       <h6 onClick={toggle} className={active ? styles.active : ''}>
         <Flex container justifyContent={'space-between'} alignItems={'center'}>
           {item.tabNav}
@@ -42,7 +46,7 @@ const Accordion = ({ variant = 'primary', iconType }) => {
   if (variant.includes('hover-image')) {
     return (
       <>
-        <div className={`${styles.accordion} ${variant}`}>
+        <div className={`${styles.accordion} ${styles[variant]}`}>
           {Array(5)
             .fill(1)
             .map((_, i) => (

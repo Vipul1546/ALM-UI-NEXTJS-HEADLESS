@@ -30,7 +30,7 @@ export const getCatalogList = async (param) => {
     const res = await fetch(`${ALM_API_URL}catalogs?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth f20ee451151134001fbcb7f3bedec1d1',
+        Authorization: 'oauth ae6d81a0b0af2b36529f55d9dc90c947',
       },
     });
     const data = await res.json();
@@ -45,7 +45,7 @@ export const getCoursesList = async (param) => {
     const res = await fetch(`${ALM_API_URL}learningObjects?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth f20ee451151134001fbcb7f3bedec1d1',
+        Authorization: 'oauth ae6d81a0b0af2b36529f55d9dc90c947',
       },
     });
     const data = await res.json();
@@ -56,16 +56,30 @@ export const getCoursesList = async (param) => {
 };
 
 export const getCoursesDetails = async (courseId = '', param) => {
-  console.log({ url: `${ALM_API_URL}learningObjects/${courseId}` })
   try {
     const res = await fetch(`${ALM_API_URL}learningObjects/${courseId}?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth f20ee451151134001fbcb7f3bedec1d1',
+        Authorization: 'oauth ae6d81a0b0af2b36529f55d9dc90c947',
       },
     });
     const data = await res.json();
-    console.log(data);
+    return data;
+  } catch (err) {
+    console.error({ err })
+  }
+};
+
+export const getskills = async (id) => {
+  console.log('asdf', `${ALM_API_URL}skils/`)
+  try {
+    const res = await fetch(`${ALM_API_URL}skills/`, {
+      headers: {
+        Accept: 'application/vnd.api+json',
+        Authorization: 'oauth ae6d81a0b0af2b36529f55d9dc90c947',
+      },
+    });
+    const data = await res.json();
     return data;
   } catch (err) {
     console.error({ err })

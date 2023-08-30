@@ -16,6 +16,24 @@
         border-bottom: rem(1px) solid get-color('titanium-white');
     }
 
+    @include media("<tablet") {
+        background-color: get-color('white');
+    }
+
+    .hamburger {
+        position: absolute;
+        top: rem(20px);
+        right: rem(16px);
+    }
+
+    .flexWrapper {
+        @include media("<tablet") {
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+        }
+    }
+
     .nav {
         transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -46,7 +64,14 @@
                 color: get-color('dark-black');
                 box-shadow: inset 0 -9px 0 0 get-color('red');
             }
+
+            @include media("<tablet") {
+                display: block;
+                padding: rem(16px) 0;
+            }
         }
+
+
     }
 
     .profile {

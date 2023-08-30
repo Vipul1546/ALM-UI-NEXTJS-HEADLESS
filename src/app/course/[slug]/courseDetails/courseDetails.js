@@ -1,6 +1,7 @@
 'use client';
 import Flex from '@/components/Flex/Flex';
 
+import IconPlay from '@/assets/icons/IconPlay';
 import Card from '@/components/Card/Card';
 import Modal from '@/components/Modal/Modal';
 import { useState } from 'react';
@@ -68,11 +69,11 @@ const CourseDetails = ({ data }) => {
                             onClick={togleModal}
                             variant={'texticon'}
                             title={title}
-                            icon="fa-play"
+                            icon={<IconPlay />}
                           ></Card>
 
                           {modalData.isModalEnable && (
-                            <Modal title={title} onCloseModal={togleModal} onSuccess={sucessModal}>
+                            <Modal variant='modal-lg' title={title} onCloseModal={togleModal} onSuccess={sucessModal}>
                               <div className={styles['video-container']}>
                                 <FluidicPlayer
                                   loid={res.id}

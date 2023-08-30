@@ -1,133 +1,150 @@
 /* ACCORDION */
 .accordion {
-    font-family: inherit;
-    border: rem(1px) solid get-color('titanium-white');
+  font-family: inherit;
+  border: rem(1px) solid get-color('titanium-white');
 
-    & h6 {
-        background-color: get-color('light-grey');
+  & h6 {
+    background-color: get-color('light-grey');
 
-        font: {
-            size: $font-size-base;
-        }
-
-        padding: rem(8px);
-        margin: 0;
-        cursor: pointer;
-
-        svg {
-            transition: all 0.2s ease-in-out;
-        }
-
-        &.active {
-            svg {
-                transition: all 0.2s ease-in-out;
-                transform: rotate(90deg);
-            }
-        }
+    font: {
+      size: $font-size-base;
     }
 
-    & .content {
-        overflow: hidden;
+    padding: rem(8px);
+    margin: 0;
+    cursor: pointer;
+
+    svg {
+      transition: all 0.2s ease-in-out;
+    }
+
+    &.active {
+      svg {
         transition: all 0.2s ease-in-out;
+        transform: rotate(90deg);
 
-        & p {
-            padding: rem(16px);
-            margin: 0;
+        &.icon-minus {
+          transform: none;
+          transition: none;
         }
+      }
     }
+  }
 
-    &.secondary {
-        & h6 {
-            background-color: get-color('solid-black');
-            color: get-color('white');
+  & .content {
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
 
-            svg {
-                transform: none;
-                transition: none;
-            }
+    & p {
+      padding: rem(16px);
+      margin: 0;
+    }
+  }
+
+  &.secondary {
+    & h6 {
+      background-color: get-color('solid-black');
+      color: get-color('white');
+    }
+  }
+
+  &.hover-image {
+    border: 0 none;
+    display: flex;
+    max-width: 70%;
+    margin: auto;
+
+    .item {
+      cursor: pointer;
+      margin: 0;
+      flex: 1;
+      height: 590px;
+      transition: all 0.2s ease-in-out;
+      color: get-color('white');
+      @include center-flex;
+      position: relative;
+      overflow: hidden;
+      border-radius: rem(20px);
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0.25;
+        transition: all 0.2s ease-in-out;
+        background: linear-gradient(
+            to top,
+            black 0%,
+            rgba(0, 0, 0, 0.995) 8.2%,
+            rgba(0, 0, 0, 0.981) 16%,
+            rgba(0, 0, 0, 0.958) 23.4%,
+            rgba(0, 0, 0, 0.926) 30.4%,
+            rgba(0, 0, 0, 0.885) 37.3%,
+            rgba(0, 0, 0, 0.835) 43.8%,
+            rgba(0, 0, 0, 0.776) 50.2%,
+            rgba(0, 0, 0, 0.709) 56.5%,
+            rgba(0, 0, 0, 0.633) 62.6%,
+            rgba(0, 0, 0, 0.548) 68.7%,
+            rgba(0, 0, 0, 0.455) 74.8%,
+            rgba(0, 0, 0, 0.354) 81%,
+            rgba(0, 0, 0, 0.244) 87.2%,
+            rgba(0, 0, 0, 0.126) 93.5%,
+            rgba(0, 0, 0, 0) 100%
+          )
+          left center/100% no-repeat;
+      }
+
+      > img {
+        height: 100%;
+        position: absolute;
+        inset: 0;
+      }
+
+      .caption {
+        font-size: $font-size-base + 8;
+        color: get-color('white');
+        position: absolute;
+        left: rem(24px);
+        bottom: rem(24px);
+        z-index: 1;
+        white-space: nowrap;
+
+        > h2 {
+          margin: 0;
+          opacity: 0;
         }
-    }
 
-    &.hover-image {
-        border: 0 none;
-        display: flex;
-        max-width: 70%;
-        margin: auto;
-
-        .item {
-            cursor: pointer;
-            margin: 0;
-            flex: 1;
-            height: 590px;
-            transition: all 0.2s ease-in-out;
-            color: get-color('white');
-            @include center-flex;
-            position: relative;
-            overflow: hidden;
-            border-radius: rem(20px);
-
-            &::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                opacity: .25;
-                transition: all 0.2s ease-in-out;
-                background: linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.995) 8.2%, rgba(0, 0, 0, 0.981) 16%, rgba(0, 0, 0, 0.958) 23.4%, rgba(0, 0, 0, 0.926) 30.4%, rgba(0, 0, 0, 0.885) 37.3%, rgba(0, 0, 0, 0.835) 43.8%, rgba(0, 0, 0, 0.776) 50.2%, rgba(0, 0, 0, 0.709) 56.5%, rgba(0, 0, 0, 0.633) 62.6%, rgba(0, 0, 0, 0.548) 68.7%, rgba(0, 0, 0, 0.455) 74.8%, rgba(0, 0, 0, 0.354) 81%, rgba(0, 0, 0, 0.244) 87.2%, rgba(0, 0, 0, 0.126) 93.5%, rgba(0, 0, 0, 0) 100%) left center/100% no-repeat;
-            }
-
-            >img {
-                height: 100%;
-                position: absolute;
-                inset: 0;
-            }
-
-
-
-            .caption {
-                font-size: $font-size-base + 8;
-                color: get-color('white');
-                position: absolute;
-                left: rem(24px);
-                bottom: rem(24px);
-                z-index: 1;
-                white-space: nowrap;
-
-                >h2 {
-                    margin: 0;
-                    opacity: 0;
-                }
-
-                h2 {
-                    transition: all 0.2s ease-in-out;
-                    transform: translate(0, 100%);
-                }
-
-                >p {
-                    @extend h2;
-                    transform: translate(100%, 0);
-                    transition: all 0.45s ease-in-out;
-                }
-            }
-
-            &:hover {
-                flex: 3;
-
-                &::after {
-                    transition: all 0.2s ease-in-out;
-                    opacity: 0.75;
-                }
-
-                .caption {
-                    >p {
-                        opacity: 1;
-                        transform: none;
-                    }
-
-                    >h2 {
-                        @extend p;
-                    }
-                }
-            }
+        h2 {
+          transition: all 0.2s ease-in-out;
+          transform: translate(0, 100%);
         }
+
+        > p {
+          @extend h2;
+          transform: translate(100%, 0);
+          transition: all 0.45s ease-in-out;
+        }
+      }
+
+      &:hover {
+        flex: 3;
+
+        &::after {
+          transition: all 0.2s ease-in-out;
+          opacity: 0.75;
+        }
+
+        .caption {
+          > p {
+            opacity: 1;
+            transform: none;
+          }
+
+          > h2 {
+            @extend p;
+          }
+        }
+      }
     }
+  }
 }

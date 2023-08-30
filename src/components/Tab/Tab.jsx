@@ -6,7 +6,7 @@ import styles from './Tab.module.scss';
 const Tab = ({ variant = 'primary' }) => {
   const [nav, setNav] = useState(0);
   return (
-    <div className={`${styles.tab} ${variant}`}>
+    <div className={`${styles.tab} ${styles[variant]}`}>
       <ul className={styles['tab-nav']}>
         {dataObj &&
           Array.isArray(dataObj) &&

@@ -7,9 +7,26 @@
     background-size: cover;
     height: calc(100vh);
 
+    @include media("<tablet") {
+        padding-inline: rem(16px);
+    }
+
+    .flexWrpper {
+        @include media("<tablet") {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+        }
+    }
+
     img {
         display: flex;
         max-width: 45%;
+
+        @include media("<tablet") {
+            max-width: 100%;
+            display: block;
+        }
     }
 
     .summary {
@@ -19,12 +36,25 @@
         flex-direction: column;
         justify-content: center;
 
+        @include media("<tablet") {
+            padding: 0;
+            display: block
+        }
+
         h1 {
             @extend %h1;
             margin-bottom: rem(36px);
 
             span {
                 color: get-color('red');
+            }
+
+            @include media("<tablet") {
+                margin-block: rem(16px);
+
+                font: {
+                    size: $font-size-base + 4;
+                }
             }
         }
     }
@@ -38,18 +68,34 @@
             width: 100%;
             padding: rem(20px);
             padding-right: rem(60px);
+
+            @include media("<tablet") {
+                padding: rem(10px);
+                padding-right: rem(30px);
+            }
         }
 
         >button {
             position: absolute;
             right: rem(18px);
             top: rem(18px);
+
+            @include media("<tablet") {
+                right: rem(10px);
+                top: rem(10px);
+            }
         }
 
         i {
 
             font: {
                 size: rem($font-size-base + 8);
+            }
+
+            @include media("<tablet") {
+                font: {
+                    size: rem($font-size-base + 2);
+                }
             }
         }
     }
@@ -69,10 +115,19 @@
         align-items: center;
         margin: rem(20px) 0;
 
+        @include media("<tablet") {
+            display: block;
+        }
+
         >ul {
             display: flex;
             gap: rem(16px);
             margin-left: rem(16px);
+
+            @include media("<tablet") {
+                display: block;
+                margin: 0;
+            }
 
             >li {
                 cursor: pointer;
@@ -86,6 +141,11 @@
                 &:hover {
                     background-color: get-color('red');
                     color: get-color('white');
+                }
+
+                @include media("<tablet") {
+                    text-align: center;
+                    margin: rem(16px) 0 0;
                 }
             }
         }

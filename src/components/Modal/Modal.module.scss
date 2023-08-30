@@ -14,10 +14,11 @@
 
     & .modal-content {
       background-color: get-color('white');
-      width: 80%;
-      height: 90%;
+      width: 60%;
+      height: auto;
       padding: rem(16px);
       border-radius: rem(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
 
       & .modal-header {
         position: relative;
@@ -29,13 +30,16 @@
             size: $font-size-base + 4;
             weight: $font-weight-semi;
           }
-
         }
 
         & button.close {
           position: absolute;
           right: 0;
           top: 0;
+          border: none;
+          background-color: transparent;
+          font-size: $font-size-base + 8;
+          cursor: pointer;
         }
       }
 
@@ -50,6 +54,20 @@
         justify-content: end;
         gap: rem(24px);
       }
+    }
+  }
+
+  &.modal-lg {
+    .modal-content {
+      width: 80%;
+      height: auto;
+    }
+  }
+
+  &.modal-sm {
+    .modal-content {
+      width: 40%;
+      height: auto;
     }
   }
 }

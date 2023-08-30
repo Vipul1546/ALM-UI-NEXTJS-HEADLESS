@@ -11,7 +11,7 @@
     top: 0;
     left: 0;
     z-index: 1;
-    background: linear-gradient(to top, #0000, #000000fa) #0000;
+    background: linear-gradient(to top, get-color('black'), get-color('solid-black-shadow')) get-color('black');
     display: none;
     width: 100%;
     height: rem(40px);
@@ -110,8 +110,6 @@
 
     .author-box {
       display: flex;
-
-      // column-gap: 25px;
       margin: rem(20px) 0 0;
 
       .author-image {

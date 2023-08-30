@@ -16,11 +16,20 @@
     padding: 0 rem(24px);
     width: calc(100% - 300px);
     background-color: get-color('smoke-white');
+
+    @include media("<tablet") {
+      width: 100%;
+      padding: 0 rem(16px);
+    }
   }
 
   & .list-row {
     >* {
       flex: 0 0 23.97%;
+
+      @include media("<tablet") {
+        flex: 0 0 100%;
+      }
     }
   }
 
@@ -32,6 +41,19 @@
     >svg {
       transform: rotate(90deg);
     }
+  }
+
+  .btn-float {
+    position: fixed;
+    bottom: rem(20px);
+    right: rem(20px);
+    background-color: get-color('red');
+    border-radius: 50%;
+    color: get-color('white');
+    z-index: 1;
+    padding: rem(16px);
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -47,27 +69,6 @@
   }
 }
 
-@media (prefers-reduced-motion) {}
-
-/* Mobile */
-@media (width <=700px) {}
-
-/* Tablet and Smaller Desktop */
-@media (width >=701px) and (width <=1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
 
 @keyframes rotate {
   from {

@@ -16,8 +16,15 @@ const Counter = ({ startValue, endValue }) => {
     if (entry.isIntersecting) {
       // Increment the counter until the endValue is reached
       const interval = setInterval(() => {
-        setCount(prevCount => prevCount + 1);
-      }, 100); // Adjust the interval time as needed
+        setCount(prevState => {
+          if (prevState < endValue) {
+            return prevState + 1;
+          } else {
+            return prevState;
+          }
+        });
+      }, 120); // Adjust the interval time as needed
+
       if (count >= endValue) {
         clearInterval(interval);
       }

@@ -1,6 +1,11 @@
 .main {
   .section-heading {
     @extend %h2;
+
+    @include media("<tablet") {
+      text-align: center;
+    }
+
   }
 
   .link {
@@ -26,24 +31,29 @@
     }
   }
 
-  .list-row {
-    >* {
-      flex-grow: 0;
-      flex-shrink: 0;
-      flex-basis: 23.98%;
-    }
-  }
-
   .category-section {
     padding: rem(60px) 0;
+
+    @include media("<tablet") {
+      padding: rem(32px) 0;
+    }
   }
 
   .last-preview {
     padding: rem(60px) 0;
     background-color: get-color('daintree');
 
+    @include media("<tablet") {
+      padding: rem(32px) 0;
+    }
+
     .section-heading {
       color: get-color('white');
+
+      @include media("<tablet") {
+        text-align: center;
+      }
+
     }
   }
 
@@ -51,13 +61,21 @@
     padding: rem(60px) 0;
     background-color: get-color('smoke-white');
 
+    @include media("<tablet") {
+      padding: rem(32px) 0;
+    }
+
 
     .card {
       margin-top: rem(32px);
       border-radius: 16px;
       background-color: get-color('white');
-      box-shadow: 0 64px 50px -32px rgba(6, 7, 37, .03);
+      box-shadow: 0 64px 50px -32px rgb(6 7 37 / 3%);
       padding: rem(24px);
+
+      p {
+        min-height: 80px;
+      }
 
       .reviews__card-author {
         margin-top: rem(24px);
@@ -67,6 +85,7 @@
         >img {
           border-radius: 50%;
           max-width: 60px;
+          height: 60px;
 
           &+div {
             display: flex;
@@ -93,7 +112,13 @@
     color: get-color('white');
 
     .elem {
-      @extend %h2
+      @extend %h2;
+
+      @include media("<tablet") {
+        font: {
+          size: $font-size-base;
+        }
+      }
     }
   }
 }
@@ -101,20 +126,41 @@
 .count-home {
   padding: rem(60px) 0;
 
+  @include media("<tablet") {
+    padding: rem(32px) 0;
+  }
+
   ul {
     display: flex;
     justify-content: space-between;
 
+    @include media("<tablet") {
+      display: block;
+    }
+
     li {
       text-align: center;
       font-size: $font-size-base + 8;
+
+      @include media("<tablet") {
+        font-size: $font-size-base;
+        display: inline-block;
+        width: 42%;
+        margin: rem(10px);
+      }
 
       span {
         margin-bottom: rem(16px);
         padding-bottom: rem(16px);
         border-bottom: rem(3px) solid get-color('red');
         @extend %h2;
+
         display: block;
+
+        @include media("<tablet") {
+          margin-bottom: rem(8px);
+          padding-bottom: rem(8px);
+        }
       }
     }
   }
@@ -123,14 +169,33 @@
 .insights {
   padding: rem(60px) 0;
 
+  @include media("<tablet") {
+    padding: rem(32px) 0;
+  }
+
   ul {
     display: flex;
     justify-content: space-between;
+
+    @include media("<tablet") {
+      flex-wrap: wrap;
+    }
 
     li {
       padding: rem(32px);
       text-align: center;
       cursor: pointer;
+
+      @include media("<tablet") {
+        padding: rem(16px);
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 50%;
+
+        font: {
+          size: $font-size-base - 2;
+        }
+      }
 
       .thumb {
         display: flex;
@@ -142,6 +207,12 @@
         height: rem(180px);
         width: rem(180px);
         margin: rem(20px) auto;
+
+        @include media("<tablet") {
+          padding: rem(16px) 0;
+          height: rem(90px);
+          width: rem(90px);
+        }
       }
 
       &:hover {

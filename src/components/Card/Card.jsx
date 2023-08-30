@@ -1,80 +1,93 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import ImageNext from '../Image/ImageNext';
 import styles from './Card.module.scss';
 
-const Card = props => {
-  return (
-    <div className={`${styles.card} ${styles[props.variant]}`} onClick={props.onClick}>
-      <Link href={props?.href || 'javascript:void(0);'}>
-        {props.variant != 'texticon' ? (
-          <>
-            {' '}
-            <div className={styles['card-thumb']}>
-              {props.category && (
-                <div className={styles['card-category']}>
-                  <span>{props.category}</span>
-                </div>
-              )}
-              {props.imagePath && <img src={props.imagePath} alt={props.altText} />}
-
-              {props.variant == 'tertiary' && <span className={styles['icon-play']}></span>}
+const Card = ({
+  variant,
+  onClick,
+  href,
+  category,
+  imagePath,
+  altText,
+  username,
+  likes,
+  title,
+  authorImg,
+  authorAltText,
+  authorName,
+  authorTitle,
+  students,
+  duration,
+  icon,
+}) => {
+  let CardTag =
+    variant != 'texticon' ? (
+      <>
+        <div className={styles['card-thumb']}>
+          {category && (
+            <div className={styles['card-category']}>
+              <span>{category}</span>
             </div>
-            <div className={styles['card-content']}>
-              {props.variant == 'primary' && (
-                <ul className={styles['card-list']}>
-                  <li>{props.username}</li>
-                  {props.likes > 1 && <li>{props.likes} </li>}
-                </ul>
-              )}
+          )}
+          {imagePath && <ImageNext imagePath={imagePath} altText={altText} />}
 
-              {props.variant == 'secondary' && (
-                <>
-                  <h3>{props.title}</h3>
-                  <div className={styles['author-box']}>
-                    <div className={styles['author-image']}>
-                      <img src={props.authorImg} alt={props.authorAltText} />
-                    </div>
-                    <div className={styles['author-info']}>
-                      <h5>{props.authorName}</h5>
-                      <p>{props.authorTitle}</p>
-                      <p>{props.students}</p>
-                    </div>
-                  </div>
-                </>
-              )}
+          {variant == 'tertiary' && <span className={styles['icon-play']}></span>}
+        </div>
+        <div className={styles['card-content']}>
+          {variant == 'primary' && (
+            <ul className={styles['card-list']}>
+              <li>{username}</li>
+              {likes > 1 && <li>{likes} </li>}
+            </ul>
+          )}
 
-              {props.variant == 'tertiary' && (
-                <>
-                  <ul className={styles['card-list']}>
-                    <li>{props.students}</li>
-                    <li>{props.duration}</li>
-                  </ul>
-                  <h3>{props.title}</h3>
-                </>
-              )}
-
-              <div className={styles['card-bottom']}>
-                <div className={styles['card-comments']}>
-                  {props.variant == 'tertiary' && <i className="fas fa-user"></i>}
-                  {props.variant == 'tertiary' ? props.authorName : props.duration}
+          {variant == 'secondary' && (
+            <>
+              <h3>{title}</h3>
+              <div className={styles['author-box']}>
+                <div className={styles['author-image']}>
+                  <ImageNext imagePath={authorImg} altText={authorAltText} />
                 </div>
-                <div className={styles['card-like']}>
-                  <i className={`fas ${props.icon}`}></i>
+                <div className={styles['author-info']}>
+                  <h5>{authorName}</h5>
+                  <p>{authorTitle}</p>
+                  <p>{students}</p>
                 </div>
               </div>
+            </>
+          )}
+
+          {variant == 'tertiary' && (
+            <>
+              <ul className={styles['card-list']}>
+                <li>{students}</li>
+                <li>{duration}</li>
+              </ul>
+              <h3>{title}</h3>
+            </>
+          )}
+
+          <div className={styles['card-bottom']}>
+            <div className={styles['card-comments']}>
+              {variant == 'tertiary' && <i className="fas fa-user"></i>}
+              {variant == 'tertiary' ? authorName : duration}
             </div>
-          </>
-        ) : (
-          <>
-            <div className={styles['card-icon']}>
-              <i className={`fas ${props.icon}`}></i>
-            </div>
-            <div className={styles['card-content']}>
-              <h3>{props.title}</h3>
-            </div>
-          </>
-        )}
-      </Link>
+            <div className={styles['card-like']}>{icon}</div>
+          </div>
+        </div>
+      </>
+    ) : (
+      <>
+        <div className={styles['card-icon']}>{icon}</div>
+        <div className={styles['card-content']}>
+          <h3>{title}</h3>
+        </div>
+      </>
+    );
+  return (
+    <div className={`${styles.card} ${styles[variant]}`} onClick={onClick}>
+      {href ? <Link href={href}> {CardTag} </Link> : CardTag}
     </div>
   );
 };

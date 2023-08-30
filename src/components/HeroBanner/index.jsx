@@ -7,7 +7,12 @@ const HeroBanner = () => {
   return (
     <div className={styles.banner}>
       <Container variant={styles.flex}>
-        <Flex container justifyContent="space-between" alignItems="flex-end" height="100%">
+        <Flex
+          container
+          justifyContent="space-between"
+          alignItems="flex-end"
+          height="100%"
+          className={styles.flexWrpper}>
           <summary className={styles.summary}>
             <Heading className={styles.title} type="h1" weight="heading-extra-bold">
               We Have All Kinds Of <span>Courses</span> Collection
@@ -28,7 +33,7 @@ const HeroBanner = () => {
               </ul>
             </div>
           </summary>
-          <img src={'https://edon-ng.envytheme.com/assets/images/banner/banner-img.png'} alt="" />
+          <img src={'https://e-pora-next.vercel.app/assets/img/banner/banner-shape-01.png'} alt="" />
         </Flex>
       </Container>
     </div>
