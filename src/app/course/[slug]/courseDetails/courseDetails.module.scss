@@ -1,0 +1,143 @@
+.detail-page-container {
+  margin-top: rem(70px);
+
+  & .detail-page {
+    &__heading {
+      padding: rem(75px);
+      position: relative;
+      z-index: 0;
+
+      & .title {
+        color: get-color('white');
+        font-size: $font-size-base + 24;
+      }
+
+      & .description {
+        color: get-color('white');
+        font-size: $font-size-base + 8;
+      }
+
+      & .enrollnow {
+        position: absolute;
+        right: rem(32px);
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: get-color('white');
+        border-radius: rem(32px);
+        color: get-color('solid-black');
+        padding: rem(8px) rem(80px);
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to left, rgb(0 0 0 / 0%), rgb(0 0 0 / 98%)) rgb(0 0 0 / 0%);
+        z-index: -1;
+      }
+    }
+
+    &__body {
+      display: flex;
+      padding: rem(20px) rem(40px);
+      color: get-color('abbey');
+      font-size: $font-size-base;
+      background-color: get-color('smoke-white');
+
+      & .detail {
+        width: 70%;
+        margin: rem(10px);
+        padding: rem(25px);
+
+        & .description {
+          margin: rem(32px) 0;
+          color: get-color('solid-black');
+          line-height: rem(24px);
+          font-size: $font-size-base - 2;
+        }
+
+        & .video-container {
+          margin: rem(16px) 0 rem(32px);
+        }
+
+        & .list {
+          & .title {
+            font-size: $font-size-base + 2;
+            border-bottom: rem(1px) solid get-color('solid-grey');
+            padding-bottom: rem(5px);
+            margin-bottom: rem(16px);
+          }
+
+          & .content {
+            &>* {
+              width: 100%;
+              max-width: none;
+            }
+
+            & .section-title {
+              margin-bottom: rem(5px);
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              h6 {
+                font: {
+                  size: $font-size-base;
+                  weight: $font-weight-semi;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      & .card {
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+        margin: rem(10px);
+        padding: rem(24px);
+        background-color: get-color('white');
+
+
+        & .cource-detail-container {
+          height: rem(350px);
+          padding: rem(20px);
+
+          & .list {
+            & .listitem {
+              padding-bottom: rem(20px);
+            }
+          }
+
+          & .authorlist {
+            & .authortitle {
+              font-size: $font-size-base + 2;
+              color: get-color('light-grey');
+              padding: rem(16px) 0 0;
+              border-top: rem(1px) solid get-color('titanium-white');
+              margin: rem(10px) 0;
+            }
+          }
+        }
+      }
+
+      .tags {
+        list-style: none;
+        display: flex;
+        column-gap: rem(10px);
+        margin: rem(10px) 0;
+
+        li {
+          background-color: get-color('red');
+          padding: rem(2px) rem(10px);
+          color: get-color('white');
+          border-radius: rem(8px);
+        }
+      }
+    }
+  }
+}

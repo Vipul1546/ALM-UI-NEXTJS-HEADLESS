@@ -1,11 +1,11 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { Inter } from 'next/font/google';
+import { Outfit } from 'next/font/google';
 import PropTypes from 'prop-types';
 import '../assets/styles/base/_reset.scss';
 import { AlmContextProvider } from '../context/almContext';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const outfit = Outfit({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,7 +14,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang="en">
-    <body className={inter.className}>
+    <body className={outfit.className}>
       <AlmContextProvider>
         {children}
       </AlmContextProvider>

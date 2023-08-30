@@ -111,3 +111,9 @@ $baseFontSize: 16;
     -webkit-line-clamp: $line-clamp;
     overflow: hidden;
 }
+
+@mixin center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

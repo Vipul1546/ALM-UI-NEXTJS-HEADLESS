@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&display=swap');
 @import "./include-media";
 @import "../abstracts/mixins";
 
@@ -39,14 +39,14 @@
 }
 
 %h4 {
-  @include defaultTypoStyles(16, 0, 18);
+  @include defaultTypoStyles(16, 0, 18, 600);
 
   @include media(">=tablet") {
-    @include defaultTypoStyles(16, 0, 21);
+    @include defaultTypoStyles(16, 0, 21, 600);
   }
 
   @include media(">=desktop-lg") {
-    @include defaultTypoStyles(16, 0, 21);
+    @include defaultTypoStyles(16, 0, 21, 600);
   }
 }
 

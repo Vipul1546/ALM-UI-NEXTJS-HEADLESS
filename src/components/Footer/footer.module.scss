@@ -1,5 +1,21 @@
 .footer-main {
-    font-size: 12px;
-    background: #ededed;
-    padding: .75rem;
+    font-size: $font-size-base - 2;
+    background: get-color('titanium-white');
+    padding: rem(14px);
+
+    .flexWrapper {
+        @include media("<tablet") {
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+        }
+
+        >[class*='logo'] {
+            @include media("<tablet") {
+                margin-bottom: rem(16px);
+            }
+        }
+    }
+
+
 }

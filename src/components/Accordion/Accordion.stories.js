@@ -1,11 +1,22 @@
 import Accordion from './Accordion';
-import styles from './Accordion.module.scss';
 
 export default {
-    title: 'Accordion',
+    title: "Accordion",
     component: Accordion,
-};
+    argTypes: {
+        variant: {
+            options: ["primary" , "secondary", "hover-image"],
+            control: { type: "radio" },
+        },
+        iconType: {
+            options: ["default" , "plus"],
+            control: { type: "radio" },
+        },
+    },
+    args: {
+        variant: "primary",
+        iconType: "default",
+      },
+  };
 
-export const Primary = () => <Accordion variant={`${styles.primary}`}>Primary</Accordion>;
-export const Secondary = () => <Accordion variant={`${styles.secondary}`} iconType={'plus'}>Secondary</Accordion>;
-export const HoverImage = () => <Accordion variant={`${styles['hover-image']}`}>HoverImage</Accordion>;
+export const AccordionComponent = (args) => <Accordion variant={args.variant} iconType={args.iconType}>{args.variant}</Accordion>;

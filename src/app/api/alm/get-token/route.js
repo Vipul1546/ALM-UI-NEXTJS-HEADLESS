@@ -5,9 +5,7 @@ import { NextResponse } from 'next/server';
  * @returns 
  */
 export async function POST(request) { // eslint-disable-line
-  console.log('asdfghjk');
   const req = await request.text();
-  console.log({ req });
   const res = await fetch('https://captivateprime.adobe.com/oauth/token', {
     method: 'POST',
     // headers: {
@@ -20,7 +18,6 @@ export async function POST(request) { // eslint-disable-line
       code: '0d7f75039ebb5cf93734ec6e154df842',
     }),
   });
-  console.log({ res });
   const data = await res.json();
 
   return NextResponse.json(data);

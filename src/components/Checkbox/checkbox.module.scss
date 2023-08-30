@@ -14,18 +14,18 @@
 
         &::before {
             content: '';
-            height: rem(20);
-            width: rem(20);
-            border: 2px solid #012333;
+            height: rem(20px);
+            width: rem(20px);
+            border: rem(2px) solid get-color('daintree');
             border-radius: rem(4px);
         }
 
         &::after {
             content: '\2713';
-            color: #012333;
+            color: get-color('daintree');
             position: absolute;
-            font-size: rem(16px);
-            left: 4px;
+            font-size: $font-size-base;
+            left: rem(4px);
             font-weight: bold;
             top: -2px;
             transform: scale(0);

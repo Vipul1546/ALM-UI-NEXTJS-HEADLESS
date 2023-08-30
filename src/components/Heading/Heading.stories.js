@@ -1,38 +1,26 @@
 import Heading from './Heading';
 
 export default {
-  title: 'Heading',
+  title: "Heading",
   component: Heading,
+  argTypes: {
+    type: {
+          options: ["h1" , "h2", "h3", "h4", "h5", "h6"],
+          control: { type: "radio" },
+      },
+    weight:{
+      options: ["heading-thin" , "heading-extra-light","heading-light", "heading-normal", "heading-medium", "heading-semi-bold", "heading-bold", "heading-extra-bold", "heading-heavy"],
+      control: { type: "radio" },
+    },
+  },
+  type: {
+    type: "h1",
+    weight:"heading-thin",
+  },
 };
 
-export const HeadingVariation = () => (
-  <>
-    <Heading type="h1" weight="heading-thin">
+export const HeadingVariation = (args) => (
+    <Heading type={args.type} weight={args.weight}>
       This is sample text
     </Heading>
-    <Heading type="h2" weight="heading-extra-light">
-      This is sample text
-    </Heading>
-    <Heading type="h3" weight="heading-light">
-      This is sample text
-    </Heading>
-    <Heading type="h4" weight="heading-normal">
-      This is sample text
-    </Heading>
-    <Heading type="h5" weight="heading-medium">
-      This is sample text
-    </Heading>
-    <Heading type="h6" weight="heading-semi-bold">
-      This is sample text
-    </Heading>
-    <Heading type="h2" weight="heading-bold">
-      This is sample text
-    </Heading>
-    <Heading type="h4" weight="heading-extra-bold">
-      This is sample text
-    </Heading>
-    <Heading type="h3" weight="heading-heavy">
-      This is sample text
-    </Heading>
-  </>
 );

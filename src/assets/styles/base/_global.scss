@@ -21,16 +21,16 @@ body {
 }
 
 a {
-  color: get-color("orange");
+  color: get-color("red");
   text-decoration: underline;
 
   &:hover {
     text-decoration: none;
   }
-  
+
   &:active,
   &:visited {
-    color: get-color("orange");
+    color: get-color("red");
     text-decoration: none;
   }
 
@@ -199,20 +199,4 @@ strong,
 
 .bg-color--smoke-white {
   background-color: get-color("smoke-white");
-}
-
-// override style for react tooltip library component
-.__react_component_tooltip {
-  background: get-color("white") !important;
-  border: 1px solid get-color("nobel-grey") !important;
-  border-radius: rem(12px) !important;
-  box-shadow: 1px 3px 4px 0 get-color("solid-black-shadow");
-  color: get-color("solid-black") !important;
-  max-width: rem(300px);
-  opacity: 1 !important;
-  padding: 16px !important;
-
-  &::after {
-    border-bottom-color: get-color("nobel-grey") !important;
-  }
 }

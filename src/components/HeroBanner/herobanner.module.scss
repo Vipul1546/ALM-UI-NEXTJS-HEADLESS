@@ -1,39 +1,103 @@
 .banner {
-    background-color: #2b2b2b;
-    color: get-color('white');
-    @extend %h1;
+    // color: get-color('white');
     position: relative;
     overflow: hidden;
-    // mask-image: linear-gradient(to right, #000, transparent);
+    padding-top: rem(69px);
+    background: url('https://edon-ng.envytheme.com/banner-bg.e397b0299aadacaf.jpg') no-repeat;
+    background-size: cover;
+    height: calc(100vh);
 
-    mask-image: linear-gradient(to left, #f00, #000),
-        linear-gradient(to left, #000, #f00),
-        linear-gradient(to left, #f00, #000),
-        linear-gradient(to left, #000, #f00),
-        linear-gradient(to left, #f00, #000);
-    mask-size: 18% 70%;
-    mask-position: 0 100%, 25% 25%, 50% 50%, 75% 0, 100% 50%;
-    mask-repeat: no-repeat;
-
-    >img {
-        display: flex;
-        width: 100%;
-        // object-fit: cover;
+    @include media("<tablet") {
+        padding-inline: rem(16px);
     }
 
-    >h1 {
-        mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent 100%);
-        position: absolute;
-        right: 0;
-        top: 50%;
-        width: 50%;
-        background-color: #2b2b2b;
-        padding: rem(20px);
-        transform: translate(0, -50%);
-        animation: AnimleftRight 6s infinite;
-        // transform: translate(100%, -50%);
-        // opacity: 0;
-        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    .flexWrpper {
+        @include media("<tablet") {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+        }
+    }
+
+    img {
+        display: flex;
+        max-width: 45%;
+
+        @include media("<tablet") {
+            max-width: 100%;
+            display: block;
+        }
+    }
+
+    .summary {
+        padding-right: rem(60px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include media("<tablet") {
+            padding: 0;
+            display: block
+        }
+
+        h1 {
+            @extend %h1;
+            margin-bottom: rem(36px);
+
+            span {
+                color: get-color('red');
+            }
+
+            @include media("<tablet") {
+                margin-block: rem(16px);
+
+                font: {
+                    size: $font-size-base + 4;
+                }
+            }
+        }
+    }
+
+    .search {
+        position: relative;
+        border: 1px solid get-color('nobel-grey');
+        border-radius: rem(40px);
+
+        input {
+            width: 100%;
+            padding: rem(20px);
+            padding-right: rem(60px);
+
+            @include media("<tablet") {
+                padding: rem(10px);
+                padding-right: rem(30px);
+            }
+        }
+
+        >button {
+            position: absolute;
+            right: rem(18px);
+            top: rem(18px);
+
+            @include media("<tablet") {
+                right: rem(10px);
+                top: rem(10px);
+            }
+        }
+
+        i {
+
+            font: {
+                size: rem($font-size-base + 8);
+            }
+
+            @include media("<tablet") {
+                font: {
+                    size: rem($font-size-base + 2);
+                }
+            }
+        }
     }
 
     &::after {
@@ -44,6 +108,47 @@
         transition: all 0.2s ease-in-out;
         background: linear-gradient(to left, #000000, transparent);
         z-index: 1;
+    }
+
+    .popular-search {
+        display: flex;
+        align-items: center;
+        margin: rem(20px) 0;
+
+        @include media("<tablet") {
+            display: block;
+        }
+
+        >ul {
+            display: flex;
+            gap: rem(16px);
+            margin-left: rem(16px);
+
+            @include media("<tablet") {
+                display: block;
+                margin: 0;
+            }
+
+            >li {
+                cursor: pointer;
+                padding: rem(6px) rem(16px);
+                font-size: $font-size-base - 2;
+                color: get-color('red');
+                border: rem(1px) solid get-color('red');
+                border-radius: rem(20px);
+                transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+                &:hover {
+                    background-color: get-color('red');
+                    color: get-color('white');
+                }
+
+                @include media("<tablet") {
+                    text-align: center;
+                    margin: rem(16px) 0 0;
+                }
+            }
+        }
     }
 }
 

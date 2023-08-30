@@ -1,38 +1,38 @@
 // colors
-$white: #ffffff;
-$black: #000000;
-$gray: #666666;
-$primary: #008cba;
-$secondary: #e7e7e7;
-$success: #4caf50;
-$danger: #f44336;
-$disabled: #cccccc;
-$hover: #5b8c8c;
+$gray: get-color('solid-grey');
+$primary: get-color('dark-blue');
+$secondary: get-color('titanium-white');
+$success: get-color('green');
+$danger: get-color('red');
+$disabled: get-color('light-grey');
+$hover: get-color('abbey');
 
 @mixin outlined($color) {
-  background: $white;
+  background: get-color('white');
   border: 1px solid $color;
   color: $color;
+
   &:hover {
     background-color: $hover;
-    // color: $black;
     border: none;
   }
 }
 
 .button {
   border: none;
-  color: $white;
-  padding: 15px 32px;
+  color: get-color('white');
+  padding: rem(16px) rem(32px);
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: $font-size-base;
+  border-radius: rem(4px);
+  font-family: $font-family-primary;
   cursor: pointer;
 
   &.primary {
     background-color: $primary;
+
     &.outlined {
       @include outlined($primary);
     }
@@ -40,7 +40,7 @@ $hover: #5b8c8c;
 
   &.secondary {
     background-color: $secondary;
-    color: black;
+
     &.outlined {
       @include outlined($secondary);
     }
@@ -48,6 +48,7 @@ $hover: #5b8c8c;
 
   &.success {
     background-color: $success;
+
     &.outlined {
       @include outlined($success);
     }
@@ -55,13 +56,16 @@ $hover: #5b8c8c;
 
   &.danger {
     background-color: $danger;
+
     &.outlined {
       @include outlined($danger);
     }
   }
+
   &:hover {
     background-color: $hover;
   }
+
   &.disabled,
   &:disabled,
   &[disabled],
@@ -69,6 +73,7 @@ $hover: #5b8c8c;
     background-color: $disabled;
     color: $gray;
     cursor: not-allowed;
+
     &.outlined {
       @include outlined($disabled);
     }
@@ -76,18 +81,5 @@ $hover: #5b8c8c;
 
   &.full-width {
     width: 100%;
-  }
-}
-
-.close {
-  border: none;
-  background-color: transparent;
-  font-size: 1.5rem;
-}
-
-.link {
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
   }
 }
