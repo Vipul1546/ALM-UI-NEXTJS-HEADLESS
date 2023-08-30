@@ -69,6 +69,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
             sort: sort?.value || 'name',
             'filter.ignoreEnhancedLP': true,
         }
+        console.log({ listingParams })
         if (Object.keys(filters).length > 0) {
             for (const filter in filters) {
                 const filterName = filter.toLocaleLowerCase()
@@ -76,6 +77,11 @@ const Listing = ({ courseList, FilterList, isServer }) => {
                 if (filterParam)
                     listingParams[filterParam] = [...filters[filter]]
             }
+        }
+
+        // TODO: Need to remove this if condition
+        if (listingParams['filter.loTypes'].length <= 0) {
+            listingParams['filter.loTypes'] = ['course']
         }
         const courseList = await getCoursesList({ ...listingParams });
         updateCourseListing({ ...courseList });
