@@ -188,9 +188,7 @@
 
       @include media("<tablet") {
         padding: rem(16px);
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-basis: 50%;
+        flex: 0 0 50%;
 
         font: {
           size: $font-size-base - 2;
@@ -227,6 +225,10 @@
       }
     }
   }
+}
+
+.slick-slide {
+  padding: 0 10px;
 }
 
 /* Enable hover only on non-touch devices */
