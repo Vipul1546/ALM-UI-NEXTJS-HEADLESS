@@ -1,5 +1,6 @@
 'use client';
 import Flex from '@/components/Flex/Flex';
+import Script from 'next/script';
 
 import IconPlay from '@/assets/icons/IconPlay';
 import Card from '@/components/Card/Card';
@@ -40,6 +41,7 @@ const CourseDetails = ({ data }) => {
 
   return (
     <section className={styles['detail-page-container']}>
+      <Script strategy="lazyOnload" src="https://cpcontentsdev.adobe.com/public/publiccdn/playerInteractionLib.min.js" />
       <div className={styles['detail-page']}>
         <div className={styles['detail-page__heading']} style={headingBackGround}>
           <div className={styles.title}>{attributes?.localizedMetadata[0]?.name}</div>
@@ -73,13 +75,14 @@ const CourseDetails = ({ data }) => {
                           ></Card>
 
                           {modalData.isModalEnable && (
-                            <Modal variant='modal-lg' title={title} onCloseModal={togleModal} onSuccess={sucessModal}>
+                            <Modal variant='modal-lg' title={title} onCloseModal={togleModal} onSuccess={sucessModal} showButton={false}>
                               <div className={styles['video-container']}>
                                 <FluidicPlayer
-                                  loid={res.id}
+                                  loid={courseId}
+                                  loResourcesId={res?.id}
                                   accountId="116411"
                                   userId="19381376"
-                                  token="59c17d9c4a201c23bd491a719d793912"
+                                  token="d0f9fd7272d96f3082954306fda26049"
                                 />
                               </div>
                             </Modal>
