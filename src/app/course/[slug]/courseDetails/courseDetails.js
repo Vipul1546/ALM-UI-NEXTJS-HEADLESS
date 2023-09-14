@@ -79,7 +79,7 @@ const CourseDetails = ({ data }) => {
                                   loid={res.id}
                                   accountId="116411"
                                   userId="19381376"
-                                  token="e9d7317f3000772b73f9394675f86465"
+                                  token="59c17d9c4a201c23bd491a719d793912"
                                 />
                               </div>
                             </Modal>
