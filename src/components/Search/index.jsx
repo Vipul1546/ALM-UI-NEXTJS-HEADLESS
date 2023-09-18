@@ -1,13 +1,18 @@
 import { useAlmContext } from '@/context/almContext';
 import { searchSuggestions } from '@/services/alm';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './search.module.scss';
+
 
 const Search = () => {
   const { appliedFilters, updateAppliedFilter } = useAlmContext();
   const [suggestions, setSuggestions] = useState([]);
   const [fetch, setFetch] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const router = useRouter();
+  const urlSearchParams = useSearchParams();
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     let timeout = setTimeout(() => {
@@ -33,12 +38,14 @@ const Search = () => {
   };
 
   const getSearchResults = async text => {
+    const searchParam = text || searchParams.get('search')
     setSuggestions([]);
     setSearchValue('');
+    router.push(`/course-listing?search=${searchParam}`)
     updateAppliedFilter({
       ...appliedFilters,
       isSearch: true,
-      searchPhrase: text,
+      searchPhrase: searchParam,
     });
   };
 

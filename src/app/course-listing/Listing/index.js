@@ -45,9 +45,12 @@ const Listing = ({ courseList, FilterList, isServer }) => {
 
     useEffect(() => {
         const allParams = getFiltersFromUrlParam(searchParams)
+        const searchParam = searchParams.get('search')
         updateAppliedFilter({
             ...appliedFilters,
             filters: { ...allParams },
+            isSearch: !!searchParam,
+            searchPhrase: searchParam
         })
         updateFilters([...FilterList])
         updateCourseListing({ ...courseList })
