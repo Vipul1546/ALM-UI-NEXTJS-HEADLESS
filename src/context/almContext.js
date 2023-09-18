@@ -9,7 +9,9 @@ export const AlmContextProvider = ({ children }) => {
     const [filters, setFilters] = useState([]);
     const [appliedFilters, setAppliedFilters] = useState({
         filters: {},
-        sort: {}
+        sort: {},
+        isSearch: false,
+        searchPhrase: ''
     });
 
     const updateCourseListing = (courseListing) => {

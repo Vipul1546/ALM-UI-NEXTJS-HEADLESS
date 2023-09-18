@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './CTA.module.scss';
 
 const CTA = ({ tag, variant, children, href, type, addOnClass, onClick }) => {
-  let Tag = tag ? tag : 'button';
+  const Tag = tag ? tag : 'button';
 
   const createCTA = () => (
     <Tag

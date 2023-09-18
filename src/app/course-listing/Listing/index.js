@@ -13,14 +13,15 @@ import { getFiltersFromUrlParam } from '../helper';
 import styles from './listing.module.scss';
 
 
+import Container from '@/components/Container/Container';
+import Heading from '@/components/Heading/Heading';
 import { FILTER_PARAM_MAPPING, LISTING } from '@/constants/almConstant';
-import { getCoursesList } from '@/services/alm';
+import { getCoursesList, getSearchList } from '@/services/alm';
 import { getEnv } from '../../../utils/getEnv';
 
 const Listing = ({ courseList, FilterList, isServer }) => {
     const { courseListing,
         updateCourseListing,
-        filters,
         appliedFilters,
         updateFilters,
         updateAppliedFilter
@@ -46,10 +47,10 @@ const Listing = ({ courseList, FilterList, isServer }) => {
         const allParams = getFiltersFromUrlParam(searchParams)
         updateAppliedFilter({
             ...appliedFilters,
-            filters: { ...allParams }
+            filters: { ...allParams },
         })
-        updateCourseListing({ ...courseList })
         updateFilters([...FilterList])
+        updateCourseListing({ ...courseList })
         setIsClient(true)
         const { ALM_TOKEN_URL } = getEnv()
     }, [])
@@ -60,7 +61,8 @@ const Listing = ({ courseList, FilterList, isServer }) => {
     }, [appliedFilters])
 
     const updateListing = async (appliedFilters) => {
-        const { filters, sort } = appliedFilters
+        const { filters, sort, isSearch, searchPhrase } = appliedFilters
+        let courseList = {}
         setIsFetching(true);
         let listingParams = {
             'page[limit]': 12,
@@ -77,13 +79,21 @@ const Listing = ({ courseList, FilterList, isServer }) => {
                     listingParams[filterParam] = [...filters[filter]]
             }
         }
-        const courseList = await getCoursesList({ ...listingParams });
+        updateCourseListing({ ...courseList });
+        if (isSearch) {
+            listingParams = { ...listingParams, query: searchPhrase }
+            courseList = await getSearchList({ ...listingParams });
+        } else {
+            courseList = await getCoursesList({ ...listingParams });
+
+        }
         updateCourseListing({ ...courseList });
         startTransition(() => {
             // Refresh the current route and fetch new data from the server without
             // losing client-side browser or React state.
             const newUrlParams = new URLSearchParams(urlSearchParams.toString());
             if (sort?.value) newUrlParams.set('sort', encodeURIComponent(sort?.value));
+            if (isSearch) newUrlParams.set('search', encodeURIComponent(searchPhrase));
             if (Object.keys(filters).length > 0) {
                 for (const filter in filters) {
                     newUrlParams.set(filter, encodeURIComponent(filters[filter]));
@@ -96,48 +106,53 @@ const Listing = ({ courseList, FilterList, isServer }) => {
 
     return (
         <main className={styles.main}>
-            <Flex container justifyContent='flex-start'>
-                {isMobile && !filterOpen ? <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}><i class="fa-solid fa-filter"></i></div> : isMobile && filterOpen ? <SideBar setFilterOpen={setFilterOpen} /> : <SideBar setFilterOpen={setFilterOpen} />}
-                <div className={styles['right-panel']}>
-                    <Flex container justifyContent='space-between' alignItems='center'>
-                        <h2>Courses Page</h2>
-                        <div>
-                            <SortingBox />
-                            <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
-                        </div>
-                    </Flex>
-                    <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
-                        {
-                            isMutating
-                                ? <div>Loading...</div>
-                                : courseListing?.data?.map((course, idx) => {
-                                    const bannerImage = course.attributes.imageUrl != undefined ? course.attributes.imageUrl : `https://picsum.photos/350/22${idx}`;
-                                    const authorName = course.attributes.authorNames != undefined ? course.attributes.authorNames[0] : 'User';
-                                    const price = course.attributes.price != undefined ? 'Rs.' + course.attributes.price : 'Free';
+            <Container>
+                <Flex container justifyContent='flex-start'>
+                    {isMobile && !filterOpen ? <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}><i class="fa-solid fa-filter"></i></div> : isMobile && filterOpen ? <SideBar setFilterOpen={setFilterOpen} isMobile /> : <SideBar setFilterOpen={setFilterOpen} />}
+                    <div className={styles['right-panel']}>
+                        <Flex container justifyContent='space-between' alignItems='center'>
+                            <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">Courses Page</Heading>
+                            <div>
+                                <SortingBox />
+                                <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
+                            </div>
+                        </Flex>
+                        <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
+                            {
+                                isMutating
+                                    ? <div>Loading...</div> :
+                                    courseListing?.data?.length > 0 && !isMutating ?
+                                        (courseListing?.data?.map((course, idx) => {
+                                            const bannerImage = course.attributes.imageUrl != undefined ? course.attributes.imageUrl : `https://picsum.photos/350/22${idx}`;
+                                            const authorName = course.attributes.authorNames != undefined ? course.attributes.authorNames[0] : 'User';
+                                            const price = course.attributes.price != undefined ? 'Rs.' + course.attributes.price : 'Free';
 
-                                    const href = `/course/${course.id}`
-                                    return <Card
-                                        key={idx}
-                                        href={href}
-                                        variant={'tertiary'}
-                                        imagePath={bannerImage}
-                                        altText={'test image'}
-                                        authorName={authorName}
-                                        authorTitle={course.attributes.imageUrl}
-                                        students={price}
-                                        title={course.attributes.localizedMetadata[0].name}
-                                        duration={`Duration: ${course.attributes.duration}`}
-                                        icon={'fa-bookmark'}
-                                        category={course.attributes.enrollmentType}
-                                    />
+                                            const href = `/course/${course.id}`
+                                            return <Card
+                                                key={idx}
+                                                href={href}
+                                                variant={'tertiary'}
+                                                imagePath={bannerImage}
+                                                altText={'test image'}
+                                                authorName={authorName}
+                                                authorTitle={course.attributes.imageUrl}
+                                                students={price}
+                                                title={course.attributes.name || course.attributes.localizedMetadata[0].name}
+                                                duration={`Duration: ${course.attributes.duration}`}
+                                                icon={'fa-bookmark'}
+                                                category={course.attributes.enrollmentType}
+                                            />
 
-                                }
-                                )
-                        }
-                    </Flex>
-                </div>
-            </Flex>
+                                        }
+                                        ))
+                                        : <p> No Result Found </p>
+                            }
+                        </Flex>
+                    </div>
+                </Flex>
+            </Container>
         </main>
+
     )
 }
 

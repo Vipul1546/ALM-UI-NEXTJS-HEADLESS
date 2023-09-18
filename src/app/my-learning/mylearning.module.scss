@@ -1,0 +1,30 @@
+.wrapper {
+    // display: block;
+}
+
+.main {
+    padding-top: rem(70px);
+    background: get-color('smoke-white');
+
+    & .right-panel {
+        padding: 0 rem(24px);
+        width: calc(100% - 300px);
+        background-color: get-color('smoke-white');
+
+        @include media("<tablet") {
+            width: 100%;
+            padding: 0 rem(16px);
+        }
+
+        .category {}
+    }
+}
+
+.section-heading {
+    @extend %h3;
+    margin-block: rem(16px);
+
+    @include media("<tablet") {
+        text-align: center;
+    }
+}

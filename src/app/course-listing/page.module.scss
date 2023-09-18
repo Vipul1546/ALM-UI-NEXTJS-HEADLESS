@@ -6,7 +6,7 @@
   }
 
   h2 {
-    @extend %h2;
+    @extend %h3;
 
     margin-block: rem(16px);
   }

@@ -1,6 +1,7 @@
 .main {
   min-height: 100vh;
   padding-top: rem(69px);
+  background: get-color('smoke-white');
 
   font: {
     family: $font-family-primary;
@@ -25,7 +26,8 @@
 
   & .list-row {
     >* {
-      flex: 0 0 23.97%;
+      flex: 0 0 32%;
+      margin: 0;
 
       @include media("<tablet") {
         flex: 0 0 100%;

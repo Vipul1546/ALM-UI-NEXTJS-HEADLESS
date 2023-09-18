@@ -39,6 +39,35 @@ export const getCatalogList = async (param) => {
     console.error({ err })
   }
 };
+export const getSearchList = async (param) => {
+  try {
+    const res = await fetch(`${ALM_API_URL}search?${new URLSearchParams({ ...param, 'page[limit]': 10 })}`, {
+      headers: {
+        Accept: 'application/vnd.api+json',
+        Authorization: 'oauth d0f9fd7272d96f3082954306fda26049',
+      },
+    });
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error({ err })
+  }
+};
+
+export const searchSuggestions = async (e) => {
+  try {
+    const res = await fetch(`${ALM_API_URL}/search/suggestions?suggestionType=accountHistory&query=${e}&limit=10`, {
+      headers: {
+        Accept: 'application/vnd.api+json',
+        Authorization: 'oauth d0f9fd7272d96f3082954306fda26049',
+      },
+    });
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error({ err });
+  }
+};
 
 export const getCoursesList = async (param) => {
   try {
