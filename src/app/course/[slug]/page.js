@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getCoursesDetails } from "@/services/alm";
 import DetailPage from "./courseDetails/courseDetails";
@@ -26,7 +27,7 @@ const Pdp = async ({ params }) => {
                     : <DetailPage data={data} />
             }
 
-
+            <Footer />
 
         </>
     )

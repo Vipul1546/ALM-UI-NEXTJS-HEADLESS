@@ -3,10 +3,21 @@ import CTA from './CTA';
 export default {
   title: "CTA",
   component: CTA,
+  parameters: {
+    docs: {
+      description: {
+        component: 'CTA component documentation.',
+      },
+      story: { inline: true },
+      canvas: { sourceState: 'shown' },
+      source: { type: 'code' },
+    },
+  },
   argTypes: {
     variant: {
           options: ["primary" , "secondary", "success", "danger"],
           control: { type: "radio" },
+          description: "cta variations",
       },
     addOnClass:{
       options: ["outlined" , "full-width","disabled", "none"],

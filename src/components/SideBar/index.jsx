@@ -4,7 +4,7 @@ import Checkbox from '../Checkbox';
 import Flex from '../Flex/Flex';
 import styles from './sidebar.module.scss';
 
-const SideBar = ({ setFilterOpen }) => {
+const SideBar = ({ setFilterOpen, isMobile }) => {
   const { filters, appliedFilters, updateAppliedFilter } = useAlmContext();
 
   const selectHandler = (e, value, filterName) => {
@@ -13,7 +13,7 @@ const SideBar = ({ setFilterOpen }) => {
       typeof obj[filterName] === 'undefined' ? (obj[filterName] = [value]) : obj[filterName].push(value);
     else obj[filterName] = obj[filterName].filter(i => i !== value);
     updateAppliedFilter({
-      appliedFilters,
+      ...appliedFilters,
       filters: { ...obj },
     });
   };
@@ -50,9 +50,11 @@ const SideBar = ({ setFilterOpen }) => {
             </ul>
           </div>
         ))}
-      <CTA primary variant="primary" onClick={() => setFilterOpen(false)}>
-        Apply
-      </CTA>
+      {isMobile && (
+        <CTA primary variant="primary" onClick={() => setFilterOpen(false)}>
+          Apply
+        </CTA>
+      )}
     </aside>
   );
 };

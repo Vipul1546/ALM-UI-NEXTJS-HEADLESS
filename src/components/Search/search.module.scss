@@ -1,0 +1,40 @@
+// SEARCH
+.search-group {
+    position: relative;
+
+
+    .form-control {
+        all: unset;
+        padding: rem(8px);
+        border-bottom: rem(1px) solid get-color('light-grey');
+        color: get-color('light-black');
+        padding-right: rem(30px);
+    }
+
+    .Iconsearch {
+        position: absolute;
+        right: rem(10px);
+        bottom: rem(10px);
+    }
+
+    .list-group {
+        background-color: white;
+        padding-bottom: rem(10px) rem(5px);
+        width: 100%;
+        position: absolute;
+        top: rem(50px);
+
+        .list {
+            padding: rem(5px) rem(15px);
+            cursor: pointer;
+
+            &:hover {
+                background-color: aliceblue;
+            }
+
+            &-no-interact {
+                cursor: default;
+            }
+        }
+    }
+}
