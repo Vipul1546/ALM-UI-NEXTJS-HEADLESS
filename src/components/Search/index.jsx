@@ -61,9 +61,9 @@ const Search = () => {
       />
       <button className={styles.Iconsearch}></button>
       <ul className={styles['list-group']}>
-        {searchValue.length > 0 ? (
-          suggestions.length > 0 && fetch ? (
-            suggestions.map((suggestion, key) => {
+        {searchValue?.length > 0 ? (
+          suggestions?.length > 0 && fetch ? (
+            suggestions?.map((suggestion, key) => {
               return (
                 <li
                   aria-label="search suggestion"

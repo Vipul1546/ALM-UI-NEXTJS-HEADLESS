@@ -1,4 +1,8 @@
 .player {
-    width: rem(1024px);
-    height: rem(500px)
+    width: 100%;
+    height: rem(500px);
+    &__iframe{
+        width: 100%;
+        height: 100%;
+    }
 }
