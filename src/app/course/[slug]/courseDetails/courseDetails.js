@@ -5,6 +5,7 @@ import IconPlay from '@/assets/icons/IconPlay';
 import Card from '@/components/Card/Card';
 import Container from '@/components/Container/Container';
 import Modal from '@/components/Modal/Modal';
+import { getDuration } from '@/helper';
 import { useState } from 'react';
 import FluidicPlayer from '../FludicPlayer';
 import styles from './courseDetails.module.scss';
@@ -58,7 +59,7 @@ const CourseDetails = ({ data }) => {
                 <div className={styles.content}>
                   <div className={styles['section-title']}>
                     <h6 className={styles.h2}>Core Content</h6>
-                    <h6 className={styles.h2}>Duration: {attributes?.duration}</h6>
+                    <h6 className={styles.h2}>Duration: {getDuration(attributes?.duration)}</h6>
                   </div>
                   <Flex gap="16px">
                     {data?.included.map((res) => {

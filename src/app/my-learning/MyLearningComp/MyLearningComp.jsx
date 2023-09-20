@@ -6,6 +6,7 @@ import Container from '@/components/Container/Container';
 import Flex from '@/components/Flex/Flex';
 import Heading from '@/components/Heading/Heading';
 import SideBar from '@/components/SideBar';
+import { getDuration } from '@/helper';
 import { useState } from 'react';
 import useWindowSize from '../../../utils/customhooks/useWindowSize';
 import styles from '../mylearning.module.scss';
@@ -55,16 +56,12 @@ const MyLearningComp = () => {
                     return (
                       <Card
                         key={idx}
-                        variant={'tertiary'}
+                        variant={'in-progress'}
                         imagePath={`https://picsum.photos/350/22${idx}`}
                         altText={'test image'}
-                        authorName={'John Doe'}
-                        authorTitle={'React Native'}
-                        students={`Rs. 1400`}
                         title={'React Native Recommended Courses'}
-                        duration={`Duration: 45:00`}
-                        icon={<IconUser />}
-                        category={'some type'}
+                        duration={`Total: ${getDuration(200 * idx)}`}
+                        progress={idx * 15}
                       />
                     );
                   })}
@@ -88,7 +85,7 @@ const MyLearningComp = () => {
                         authorTitle={'React Native'}
                         students={`Rs. 1400`}
                         title={'React Native Recommended Courses'}
-                        duration={`Duration: 45:00`}
+                        duration={`Total: ${getDuration(100 * idx)}`}
                         icon={<IconUser />}
                         category={'some type'}
                       />
@@ -114,7 +111,7 @@ const MyLearningComp = () => {
                         authorTitle={'React Native'}
                         students={`Rs. 1400`}
                         title={'React Native Recommended Courses'}
-                        duration={`Duration: 45:00`}
+                        duration={`Total: ${getDuration(100 * idx)}`}
                         icon={<IconUser />}
                         category={'some type'}
                       />

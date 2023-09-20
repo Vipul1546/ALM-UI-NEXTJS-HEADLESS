@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -18,6 +19,13 @@ const Carousel = ({ settings, children }) => {
     ...defaultSettings,
     ...settings
   };
+
+  useEffect(() => {
+    const slickSlide = document.querySelectorAll('.slick-slide');
+    slickSlide.forEach(el => {
+      el.style.padding = '0 10px';
+    })
+  })
 
   return (
     <>

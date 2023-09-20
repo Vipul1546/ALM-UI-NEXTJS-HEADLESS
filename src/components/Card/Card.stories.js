@@ -35,6 +35,7 @@ export const Secondary = () => (
     title={'Creative writing: Crafting Personal Essays with impact'}
     duration={'1h 1m'}
     icon={<IconUser />}
+    href={'#'}
     category={'Original'}
   ></Card>
 );
@@ -61,5 +62,15 @@ export const TextIcon = () => (
     variant={'texticon'}
     title={'Creative writing: Crafting Personal Essays with impact'}
     icon={<IconPlay />}
+  ></Card>
+);
+
+export const InProgress = () => (
+  <Card
+    variant={'in-progress'}
+    imagePath={imgPath}
+    altText={'test image'}
+    title={'Creative writing: Crafting Personal Essays with impact'}
+    progress={10}
   ></Card>
 );
