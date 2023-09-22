@@ -1,7 +1,7 @@
 import Tab from './Tab';
 
 export default {
-    title: "Tab",
+    title: "components/Molecules/Tab",
     component: Tab,
     argTypes: {
         variant: {

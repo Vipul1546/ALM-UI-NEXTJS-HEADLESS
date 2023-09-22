@@ -2,7 +2,7 @@ import IconPlay from '../../assets/icons/IconPlay';
 import IconUser from '../../assets/icons/IconUser';
 import Card from './Card';
 export default {
-  title: 'Card',
+  title: 'components/Molecules/Card',
   component: Card,
 };
 

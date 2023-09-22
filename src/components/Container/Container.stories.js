@@ -1,7 +1,7 @@
 import Container from './Container';
 
 export default {
-  title: 'Container',
+  title: 'components/Atoms/Container',
   component: Container,
   parameters: {
     docs: {

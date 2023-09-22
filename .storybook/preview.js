@@ -41,6 +41,13 @@ const preview = {
       },
     },
     viewport: { viewports: customViewports },
+    options: {
+      storySort: {
+          method: 'alphabetical',
+          order: ['Welcome', 'Team','Design principles', 'Getting Started',['Installation', 'Development guide', '*'],'Releases', 'Components',],
+          locales: 'en-US',
+      }
+  },
   },
 };
 

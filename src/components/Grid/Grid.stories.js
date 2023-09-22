@@ -1,7 +1,7 @@
 import Grid from './Grid';
 
 export default {
-  title: 'Grid',
+  title: 'components/Atoms/Grid',
   component: Grid,
 };
 

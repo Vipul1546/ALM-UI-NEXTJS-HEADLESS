@@ -1,7 +1,7 @@
 import Separator from './Separator';
 
 export default {
-  title: "Separator",
+  title: "components/Atoms/Separator",
   component: Separator,
     argTypes: {
       height: {

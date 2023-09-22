@@ -1,7 +1,7 @@
 import ProgressBar from './ProgressBar';
 
 export default {
-  title: "ProgressBar",
+  title: "components/Atoms/ProgressBar",
   component: ProgressBar,
     argTypes: {
       height: {
