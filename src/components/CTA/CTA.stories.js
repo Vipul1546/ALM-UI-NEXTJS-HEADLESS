@@ -1,7 +1,7 @@
 import CTA from './CTA';
 
 export default {
-  title: "CTA",
+  title: "components/Atoms/CTA",
   component: CTA,
   parameters: {
     docs: {

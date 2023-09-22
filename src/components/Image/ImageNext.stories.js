@@ -4,7 +4,7 @@ import ImageNext from './ImageNext';
 import ImgStyle from './ImageNext.module.scss';
 
 export default {
-  title: 'ImageNext',
+  title: 'components/Atoms/ImageNext',
   component: ImageNext,
 };
 

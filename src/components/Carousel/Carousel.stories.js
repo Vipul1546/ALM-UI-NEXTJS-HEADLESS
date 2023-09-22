@@ -3,7 +3,7 @@ import Carousel from './Carousel';
 import { images } from './images';
 
 export default {
-  title: 'Carousel',
+  title: 'components/Molecules/Carousel',
   component: Carousel,
   argTypes: {
     arrows: {

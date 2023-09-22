@@ -3,7 +3,7 @@ import List from './List';
 import listStyle from './List.module.scss';
 
 export default {
-  title: 'List',
+  title: 'components/Atoms/List',
   component: List,
 };
 

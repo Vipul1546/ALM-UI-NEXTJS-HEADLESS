@@ -3,7 +3,7 @@ import CTA from '../CTA/CTA';
 import Modal from './Modal';
 
 export default {
-  title: "Modal",
+  title: "components/Organisms/Modal",
   component: Modal,
   argTypes: {
     variant: {

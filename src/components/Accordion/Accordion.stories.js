@@ -1,7 +1,7 @@
 import Accordion from './Accordion';
 
 export default {
-    title: "Accordion",
+    title: "components/Molecules/Accordion",
     component: Accordion,
     argTypes: {
         variant: {
