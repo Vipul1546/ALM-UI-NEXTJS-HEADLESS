@@ -31,6 +31,14 @@
     }
   }
 
+  .link-light {
+    color: get-color('white');
+
+    &::after {
+      background: get-color('white');
+    }
+  }
+
   .category-section {
     padding: rem(60px) 0;
 
@@ -227,8 +235,17 @@
   }
 }
 
-.slick-slide {
-  padding: 0 10px;
+.slick-prev::before, .slick-next::before {
+  font-size: 35px;
+  color: get-color('red');;
+}
+
+.slick-prev {
+  left: rem(-35px);
+}
+
+.slick-next {
+  right: rem(-55px);
 }
 
 /* Enable hover only on non-touch devices */

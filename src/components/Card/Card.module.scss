@@ -43,6 +43,33 @@
       width: 100%;
       height: 100%;
     }
+
+    .icon-play {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: url("./icon-play.svg") no-repeat;
+      background-size: auto 50%;
+      background-position: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 150ms ease-in-out;
+      transition: -webkit-transform 150ms ease-in-out;
+      transition: -webkit-transform 150ms ease-in-out;
+      transition: transform 150ms ease-in-out;
+      transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+      transform: scale(0);
+    }
+
+    &:hover {
+      .icon-play {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(0.6);
+      }
+    }
   }
 
   .card-content {
@@ -99,12 +126,26 @@
 
   // SECONDARY CARD
   &.secondary {
-    display: flex;
-    max-width: rem(800px);
+    a {
+      display: flex;
+      max-width: rem(800px);
+    }
+
+    .card-thumb {
+      flex: 0 0 40%;
+    }
+    
 
     .card-content {
+      flex: 0 0 60%;
+
       h3 {
-        margin: 0;
+        margin: rem(10px) 0 0;
+        color: get-color('red');
+        font-size: rem(20px);
+        font: {
+          weight: $font-weight-semi;
+        }
       }
     }
 
@@ -115,6 +156,7 @@
       .author-image {
         max-width: rem(50px);
         height: rem(50px);
+        margin-right: rem(20px);
 
         img {
           width: 100%;
@@ -151,33 +193,6 @@
         width: 100%;
         height: rem(220px);
         object-fit: cover;
-      }
-
-      .icon-play {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background: url("https://demo.foxthemes.net/courseplus/assets/images/icon-play.svg") no-repeat;
-        background-size: auto 50%;
-        background-position: center;
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 150ms ease-in-out;
-        transition: -webkit-transform 150ms ease-in-out;
-        transition: -webkit-transform 150ms ease-in-out;
-        transition: transform 150ms ease-in-out;
-        transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
-        transform: scale(0);
-      }
-
-      &:hover {
-        .icon-play {
-          visibility: visible;
-          opacity: 1;
-          transform: scale(0.6);
-        }
       }
     }
 
@@ -245,6 +260,49 @@
         color: get-color('light-black');
         margin: 0;
       }
+    }
+  }
+
+  // IN PROGRESS CARD
+  &.in-progress {
+    max-width: $width-sidebar + 50;
+
+    .card-thumb {
+      & img {
+        width: 100%;
+        height: rem(220px);
+        object-fit: cover;
+      }
+    }
+
+    .card-content {
+      h3 {
+        margin: 0;
+      }
+    }
+
+    .card-progress {
+      padding:0;
+      width:100%;
+      height:4px;
+      overflow:hidden;
+      background:#e5e5e5;
+    }
+
+    .card-bar {
+      position:relative;
+      float:left;
+      min-width:1%;
+      height:100%;
+      background:#fa0f00;
+    }
+
+    .card-percent {
+      color: #2d2f31;
+      margin: 5px 0;
+      font-weight: 400;
+      line-height: 1.4;
+      font-size: 16px;
     }
   }
 }

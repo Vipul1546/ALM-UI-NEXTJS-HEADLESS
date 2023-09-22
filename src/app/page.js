@@ -225,7 +225,7 @@ const Home = () => {
               <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">
                 Resume Last Tuts
               </Heading>
-              <Link className={styles.link} variant={'link'} href="#">
+              <Link className={`${styles.link} ${styles['link-light']}`} variant={'link'} href="#">
                 View All
               </Link>
             </Flex>

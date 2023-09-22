@@ -30,7 +30,7 @@ export const getCatalogList = async (param) => {
     const res = await fetch(`${ALM_API_URL}catalogs?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth d0f9fd7272d96f3082954306fda26049',
+        Authorization: 'oauth c431e274da4940e78a0c48be3ccf366d',
       },
     });
     const data = await res.json();
@@ -44,7 +44,7 @@ export const getSearchList = async (param) => {
     const res = await fetch(`${ALM_API_URL}search?${new URLSearchParams({ ...param, 'page[limit]': 10 })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth d0f9fd7272d96f3082954306fda26049',
+        Authorization: 'oauth c431e274da4940e78a0c48be3ccf366d',
       },
     });
     const data = await res.json();
@@ -59,7 +59,7 @@ export const searchSuggestions = async (e) => {
     const res = await fetch(`${ALM_API_URL}/search/suggestions?suggestionType=accountHistory&query=${e}&limit=10`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth d0f9fd7272d96f3082954306fda26049',
+        Authorization: 'oauth c431e274da4940e78a0c48be3ccf366d',
       },
     });
     const data = await res.json();
@@ -74,7 +74,7 @@ export const getCoursesList = async (param) => {
     const res = await fetch(`${ALM_API_URL}learningObjects?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth d0f9fd7272d96f3082954306fda26049',
+        Authorization: 'oauth c431e274da4940e78a0c48be3ccf366d',
       },
     });
     const data = await res.json();
@@ -89,7 +89,7 @@ export const getCoursesDetails = async (courseId = '', param) => {
     const res = await fetch(`${ALM_API_URL}learningObjects/${courseId}?${new URLSearchParams({ ...param })}`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth d0f9fd7272d96f3082954306fda26049',
+        Authorization: 'oauth c431e274da4940e78a0c48be3ccf366d',
       },
     });
     const data = await res.json();
@@ -105,7 +105,7 @@ export const getskills = async (id) => {
     const res = await fetch(`${ALM_API_URL}skills/`, {
       headers: {
         Accept: 'application/vnd.api+json',
-        Authorization: 'oauth d0f9fd7272d96f3082954306fda26049',
+        Authorization: 'oauth c431e274da4940e78a0c48be3ccf366d',
       },
     });
     const data = await res.json();

@@ -1,6 +1,7 @@
 import Container from '../Container/Container';
 import Flex from '../Flex/Flex';
 import Heading from '../Heading/Heading';
+import bannerImage from './banner-image-removebg-preview.png';
 import styles from './herobanner.module.scss';
 
 const HeroBanner = () => {
@@ -33,7 +34,7 @@ const HeroBanner = () => {
               </ul>
             </div>
           </summary>
-          <img src={'https://e-pora-next.vercel.app/assets/img/banner/banner-shape-01.png'} alt="" />
+          <img src={bannerImage.src} alt="" />
         </Flex>
       </Container>
     </div>

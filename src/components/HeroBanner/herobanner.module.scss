@@ -3,9 +3,11 @@
     position: relative;
     overflow: hidden;
     padding-top: rem(69px);
-    background: url('https://edon-ng.envytheme.com/banner-bg.e397b0299aadacaf.jpg') no-repeat;
+    // background: url('https://edon-ng.envytheme.com/banner-bg.e397b0299aadacaf.jpg') no-repeat;
     background-size: cover;
     height: calc(100vh);
+    background-color: get-color('titanium-white');
+    background-image: linear-gradient(to right, #ffffff, #ffc3be);
 
     @include media("<tablet") {
         padding-inline: rem(16px);

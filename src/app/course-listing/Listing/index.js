@@ -16,8 +16,10 @@ import styles from './listing.module.scss';
 import Container from '@/components/Container/Container';
 import Heading from '@/components/Heading/Heading';
 import { FILTER_PARAM_MAPPING, LISTING } from '@/constants/almConstant';
+import { getDuration } from '@/helper';
 import { getCoursesList, getSearchList } from '@/services/alm';
 import { getEnv } from '../../../utils/getEnv';
+import SwitchView from '../SwitchView/SwitchView';
 
 const Listing = ({ courseList, FilterList, isServer }) => {
     const { courseListing,
@@ -35,6 +37,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
     const searchParams = useSearchParams()
 
     const [filterOpen, setFilterOpen] = useState(false);
+    const [toggleView, setToggleView] = useState('list');
     const { width, height } = useWindowSize();
     const isMobile = width < 768;
 
@@ -106,6 +109,10 @@ const Listing = ({ courseList, FilterList, isServer }) => {
         });
         setIsFetching(false)
     }
+    const handleToggleClick = (type) => {
+
+        setToggleView(type)
+    }
 
     return (
         <main className={styles.main}>
@@ -115,7 +122,8 @@ const Listing = ({ courseList, FilterList, isServer }) => {
                     <div className={styles['right-panel']}>
                         <Flex container justifyContent='space-between' alignItems='center'>
                             <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">Courses Page</Heading>
-                            <div>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <SwitchView handleToggleClick={handleToggleClick} />
                                 <SortingBox />
                                 <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
                             </div>
@@ -129,21 +137,22 @@ const Listing = ({ courseList, FilterList, isServer }) => {
                                             const bannerImage = course.attributes.imageUrl != undefined ? course.attributes.imageUrl : `https://picsum.photos/350/22${idx}`;
                                             const authorName = course.attributes.authorNames != undefined ? course.attributes.authorNames[0] : 'User';
                                             const price = course.attributes.price != undefined ? 'Rs.' + course.attributes.price : 'Free';
-
+                                            const duration = getDuration(course.attributes.duration);
                                             const href = `/course/${course.id}`
+
                                             return <Card
                                                 key={idx}
                                                 href={href}
-                                                variant={'tertiary'}
+                                                variant={toggleView == 'list' ? 'secondary' : 'tertiary'}
                                                 imagePath={bannerImage}
                                                 altText={'test image'}
                                                 authorName={authorName}
-                                                authorTitle={course.attributes.imageUrl}
+                                                authorImg={course.attributes.imageUrl}
                                                 students={price}
                                                 title={course.attributes.name || course.attributes.localizedMetadata[0].name}
-                                                duration={`Duration: ${course.attributes.duration}`}
-                                                icon={'fa-bookmark'}
+                                                duration={`Duration: ${duration}`}
                                                 category={course.attributes.enrollmentType}
+                                                style={toggleView == 'grid' ? '' : { flex: '0 0 100%' }}
                                             />
 
                                         }

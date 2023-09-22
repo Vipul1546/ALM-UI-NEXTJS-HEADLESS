@@ -20,6 +20,8 @@ const Card = ({
   students,
   duration,
   icon,
+  progress,
+  style,
 }) => {
   let CardTag =
     variant != 'texticon' ? (
@@ -32,7 +34,7 @@ const Card = ({
           )}
           {imagePath && <ImageNext imagePath={imagePath} altText={altText} />}
 
-          {variant == 'tertiary' && <span className={styles['icon-play']}></span>}
+          {variant != 'texticon' && <span className={styles['icon-play']}></span>}
         </div>
         <div className={styles['card-content']}>
           {variant == 'primary' && (
@@ -41,7 +43,7 @@ const Card = ({
               {likes > 1 && <li>{likes} </li>}
             </ul>
           )}
-
+          {variant == 'in-progress' && <h3>{title}</h3>}
           {variant == 'secondary' && (
             <>
               <h3>{title}</h3>
@@ -57,7 +59,6 @@ const Card = ({
               </div>
             </>
           )}
-
           {variant == 'tertiary' && (
             <>
               <ul className={styles['card-list']}>
@@ -67,8 +68,17 @@ const Card = ({
               <h3>{title}</h3>
             </>
           )}
-
           <div className={styles['card-bottom']}>
+            {variant == 'in-progress' && (
+              <>
+                <div className={styles['card-progress']}>
+                  <div className={styles['card-bar']} style={{ width: `${progress}px` }}></div>
+                </div>
+                <p className={styles['card-percent']}>
+                  <span>{progress + '% completed'}</span>
+                </p>
+              </>
+            )}
             <div className={styles['card-comments']}>
               {variant == 'tertiary' && <i className="fas fa-user"></i>}
               {variant == 'tertiary' ? authorName : duration}
@@ -86,7 +96,7 @@ const Card = ({
       </>
     );
   return (
-    <div className={`${styles.card} ${styles[variant]}`} onClick={onClick}>
+    <div className={`${styles.card} ${styles[variant]}`} style={{ ...style }} onClick={onClick}>
       {href ? <Link href={href}> {CardTag} </Link> : CardTag}
     </div>
   );
