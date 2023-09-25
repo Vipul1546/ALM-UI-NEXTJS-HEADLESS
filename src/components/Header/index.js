@@ -29,7 +29,7 @@ const Header = () => {
                     {isMobile && !open ? '' : <><nav className={styles.nav}>
                         <Link href="/">Home</Link>
                         <Link href="/my-learning" className={usePathname() === '/my-learning' ? styles.active : ''}>My Learning</Link>
-                        <Link href="/course-listing">Courses</Link>
+                        <Link href="/course-listing" className={usePathname() === '/course-listing' ? styles.active : ''}>Courses</Link>
                         <Link href="/">Find An Instructor</Link>
                     </nav>
                         {!isMobile && <div className={styles.profile}>

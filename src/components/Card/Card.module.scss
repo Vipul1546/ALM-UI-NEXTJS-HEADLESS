@@ -229,6 +229,9 @@
     display: flex;
     max-width: 100%;
     border-radius: 0;
+    align-items: center;
+    padding: rem(8px) rem(10px);
+    gap: rem(20px);
 
     a {
       display: flex;

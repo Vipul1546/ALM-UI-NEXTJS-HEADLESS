@@ -1,6 +1,7 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Outfit } from 'next/font/google';
 import PropTypes from 'prop-types';
+import '../assets/styles/base/_normalize.scss';
 import '../assets/styles/base/_reset.scss';
 import { AlmContextProvider } from '../context/almContext';
 import './globals.css';

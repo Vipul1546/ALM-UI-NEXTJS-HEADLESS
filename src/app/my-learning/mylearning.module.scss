@@ -21,6 +21,13 @@
 }
 
 .section-heading {
+    position: sticky;
+    top: rem(69px);
+    background: #f6f6f6;
+    z-index: 2;
+    margin: 0;
+    padding: 1rem 0;
+    
     @extend %h3;
     margin-block: rem(16px);
 
