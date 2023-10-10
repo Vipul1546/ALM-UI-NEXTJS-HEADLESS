@@ -1,18 +1,18 @@
 export const dataObj = [
     {
-        tabNav: "a",
+        tabNav: "Tab1",
         content: "Lorem Ipsum A 🐰"
     },
     {
-        tabNav: "b",
+        tabNav: "Tab2",
         content: "Lorem Ipsum B 😛"
     },
     {
-        tabNav: "c",
+        tabNav: "Tab3",
         content: "Lorem Ipsum C 🐶"
     },
     {
-        tabNav: "d",
+        tabNav: "Tab3",
         content: "Lorem Ipsum D 👻"
     }
 ];

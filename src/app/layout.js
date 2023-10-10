@@ -1,9 +1,6 @@
-import '@fortawesome/fontawesome-free/css/all.min.css';
-// import { SessionProvider } from 'next-auth/react';
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { AlmContextProvider } from '@/context';
 import { AuthProvider } from '@/context/authContext';
-import { getServerSession } from "next-auth/next";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Outfit } from 'next/font/google';
 import PropTypes from 'prop-types';
 import '../assets/styles/base/_normalize.scss';
@@ -18,7 +15,6 @@ export const metadata = {
 };
 
 const RootLayout = async ({ children }) => {
-  const session = await getServerSession(authOptions)
   return (
     <html lang="en">
       <body className={outfit.className}>

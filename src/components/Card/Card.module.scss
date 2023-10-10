@@ -103,7 +103,7 @@
 
   // PRIMARY CARD
   &.primary {
-    max-width: $width-sidebar + 50;
+    //max-width: $width-sidebar + 50;
 
     .card-thumb {
       & img {
@@ -140,7 +140,7 @@
 
       h3 {
         margin: rem(10px) 0 0;
-        color: get-color('red');
+        color: get-color('black');
         font-size: rem(20px);
         font: {
           weight: $font-weight-semi;
@@ -196,7 +196,7 @@
     .card-content {
       h3 {
         margin: rem(10px) 0 0;
-        color: get-color('red');
+        color: get-color('black');
 
         font: {
           weight: $font-weight-semi;
@@ -264,7 +264,7 @@
 
   // IN PROGRESS CARD
   &.in-progress {
-    max-width: $width-sidebar + 50;
+    //max-width: $width-sidebar + 50;
 
     .card-thumb {
       & img {

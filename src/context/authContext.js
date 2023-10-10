@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
             client_id: process.env.NEXT_PUBLIC_ALM_CLIENT_ID,
             client_secret: process.env.NEXT_PUBLIC_ALM_CLIENT_SECRET,
             code,
-            scope: 'learner:read,learner:write'
+            scope: process.env.lEARNER_SCOPE
         }), {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
             const { data: user } = await api.get('/user')
             console.log({ user })
             setUser(user)
-            router.push('/my-learning')
+            router.push('/')
         }
     }
 

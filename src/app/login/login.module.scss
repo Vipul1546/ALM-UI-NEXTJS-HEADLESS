@@ -3,7 +3,8 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 20rem;
   background-size: cover;
 
   .contentWrap {
@@ -12,7 +13,8 @@
 
     @include media('<tablet') {
       max-width: 80%;
-      > img {
+
+      >img {
         display: none;
       }
     }
@@ -23,18 +25,21 @@
       backdrop-filter: saturate(100%) blur(6px);
       border-radius: rem(4px);
       margin-bottom: rem(8px);
-      > button {
+
+      >button {
         padding: rem(10px) rem(20px);
       }
 
       @include media('<tablet') {
         transform: none;
       }
-      & + label {
+
+      &+label {
         display: block;
         text-align: right;
         color: get-color('white');
         font-size: $font-size-base - 2;
+
         @include media('<tablet') {
           text-align: center;
         }
@@ -43,6 +48,7 @@
           font-weight: $font-weight-light;
           font-size: $font-size-base;
           position: relative;
+
           &::after {
             content: '';
             background: get-color('white');
