@@ -73,7 +73,6 @@ export const getskills = async (id) => {
   console.log("skilll")
   try {
     const res = await api.get('skills');
-    console.log({ res })
     return res?.data;
   } catch (err) {
     console.error({ err })

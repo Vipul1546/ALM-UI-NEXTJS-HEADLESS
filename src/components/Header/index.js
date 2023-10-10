@@ -43,8 +43,8 @@ const Header = () => {
                         <Link href="/course-listing" className={usePathname() === '/course-listing' ? styles.active : ''}>Courses</Link>
                         {isMobile && <div onClick={logInOutHandler}>{user ? 'Logout' : 'Login'}</div>}
                         <Link href="/" className={usePathname() === '/course-listing' ? styles.active : ''}>Catalogs</Link>
-                        <Link href="/" className={usePathname() === '/course-listing' ? styles.active : ''}>About Us</Link>
-                        <Link href="/" className={usePathname() === '/course-listing' ? styles.active : ''}>Contact Us</Link>
+                        <Link href="/" className={usePathname() === '/about-us' ? styles.active : ''}>About Us</Link>
+                        <Link href="/" className={usePathname() === '/contact-us' ? styles.active : ''}>Contact Us</Link>
                     </nav>
                         {!isMobile && <div className={styles.profile}>
                             <Flex gap={'1rem'} container alignItems='center'>

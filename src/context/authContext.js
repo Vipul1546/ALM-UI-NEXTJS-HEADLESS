@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
                 api.defaults.headers.Authorization = `Bearer ${token}`
                 api.defaults.headers.Accept = `application/vnd.api+json`
                 const { data: user } = await api.get('/user')
-                console.log({ user })
                 setUser(user)
             }
             setIsLoading(false)
