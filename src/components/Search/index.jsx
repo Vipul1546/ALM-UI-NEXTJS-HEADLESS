@@ -4,7 +4,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './search.module.scss';
 
-
 const Search = () => {
   const { appliedFilters, updateAppliedFilter } = useAlmContext();
   const [suggestions, setSuggestions] = useState([]);
@@ -12,7 +11,7 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
   const urlSearchParams = useSearchParams();
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     let timeout = setTimeout(() => {
@@ -38,10 +37,10 @@ const Search = () => {
   };
 
   const getSearchResults = async text => {
-    const searchParam = text || searchParams.get('search')
+    const searchParam = text || searchParams.get('search');
     setSuggestions([]);
     setSearchValue('');
-    router.push(`/course-listing?search=${searchParam}`)
+    router.push(`/course-listing?search=${searchParam}`);
     updateAppliedFilter({
       ...appliedFilters,
       isSearch: true,
@@ -59,7 +58,9 @@ const Search = () => {
         onKeyDown={handleKeyDown}
         onChange={e => setSearchValue(e.target.value)}
       />
-      <button className={styles.Iconsearch}></button>
+      <button className={styles.Iconsearch}>
+        <i className="fas fa-search"></i>
+      </button>
       <ul className={styles['list-group']}>
         {searchValue?.length > 0 ? (
           suggestions?.length > 0 && fetch ? (

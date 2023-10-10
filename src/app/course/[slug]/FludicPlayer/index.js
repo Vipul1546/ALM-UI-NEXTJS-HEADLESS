@@ -1,8 +1,11 @@
 'use client'
+import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import styles from './fluidicPlayer.module.scss';
 
-const FluidicPlayer = ({ loid, loResourcesId, accountId, userId, token }) => {
+
+const FluidicPlayer = ({ loid, loResourcesId, accountId, userId }) => {
+    const token = Cookies.get('token')
 
     useEffect(() => {
         const asdf = cpPlayerLib.getAllPlayers()

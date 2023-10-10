@@ -85,7 +85,6 @@ const CourseDetails = ({ data }) => {
                                     loResourcesId={res?.id}
                                     accountId="116411"
                                     userId="19381376"
-                                    token="c431e274da4940e78a0c48be3ccf366d"
                                   />
                                 </div>
                               </Modal>

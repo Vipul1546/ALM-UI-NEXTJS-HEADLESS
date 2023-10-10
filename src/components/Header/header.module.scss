@@ -1,114 +1,154 @@
 .main-header {
-    z-index: 5;
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    position: -webkit-sticky;
-    position: sticky;
-    position: fixed;
-    top: 0;
-    width: 100%;
+  z-index: 5;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  position: -webkit-sticky;
+  position: sticky;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
-    // box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
-    background-color: get-opaque-color("white", 0.75);
+  // box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  background-color: get-opaque-color('white', 0.75);
 
-    &.secondary {
-        border-bottom: rem(1px) solid get-color('titanium-white');
-    }
+  &.secondary {
+    border-bottom: rem(1px) solid get-color('titanium-white');
+  }
 
-    @include media("<tablet") {
-        background-color: get-color('white');
-    }
+  @include media('<tablet') {
+    background-color: get-color('white');
+    padding: rem(16px);
+  }
 
-    .hamburger {
+  .hamburger {
+    position: absolute;
+    top: rem(20px);
+    right: rem(16px);
+  }
+
+  .flexWrapper {
+    @include media('<tablet') {
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+      .name {
         position: absolute;
         top: rem(20px);
-        right: rem(16px);
+        right: rem(64px);
+      }
     }
+  }
 
-    .flexWrapper {
-        @include media("<tablet") {
-            flex-direction: column !important;
-            justify-content: flex-start !important;
-            align-items: flex-start !important;
+  .nav {
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+      > {
+        a {
+          opacity: 0.5;
+
+          &:hover {
+            opacity: 1;
+          }
         }
+      }
     }
 
-    .nav {
+    & > a {
+      padding: 1.5rem rem(16px);
+      display: inline-flex;
+      transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      font: {
+        weight: $font-weight-semi;
+      }
+
+      // &:hover,
+      &.active {
+        color: get-color('dark-black');
+        background-color: get-opaque-color('red', 0.25);
         transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
 
-        &:hover {
+      @include media('<tablet') {
+        display: block;
+        padding: rem(16px) 0;
+      }
+    }
+  }
 
-            > {
-                a {
-                    opacity: 0.5;
-
-                    &:hover {
-                        opacity: 1;
-                    }
-                }
-            }
+  .profile {
+    & .user {
+      display: flex;
+      position: relative;
+      button {
+        all: unset;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+      .chevron {
+        transform: rotate(90deg);
+        margin-left: rem(5px);
+        transition: all 0.25s ease-in-out;
+        &.rotate {
+          transform: rotate(-90deg);
         }
-
-        &>a {
-            padding: 1.5rem rem(16px);
-            display: inline-flex;
-            transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-            font: {
-                weight: $font-weight-semi;
-            }
-
-            // &:hover,
-            &.active {
-                color: get-color('dark-black');
-                background-color: get-opaque-color("red", 0.25);
-                transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1)
-            }
-
-            @include media("<tablet") {
-                display: block;
-                padding: rem(16px) 0;
-            }
+      }
+      .dd {
+        position: absolute;
+        top: 44px;
+        right: 0;
+        background-color: get-color('white');
+        min-width: rem(150px);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        border-bottom-right-radius: rem(4px);
+        border-bottom-left-radius: rem(4px);
+        overflow: hidden;
+        transition: height 0.25s ease-in-out;
+        > li {
+          cursor: pointer;
+          padding: rem(12px);
+          &:first-child {
+            padding: 0;
+          }
+          > a {
+            padding: rem(12px);
+            display: block;
+          }
+          &:hover {
+            background-color: get-color('red');
+            color: get-color('white');
+          }
         }
-
-
+      }
     }
 
-    .profile {
-        button {
-            all: unset;
-            cursor: pointer;
-            display: inline-flex;
+    // SEARCH
+    .search-group {
+      position: relative;
 
-            &.user {
-                display: flex;
-                align-items: center;
+      .form-control {
+        all: unset;
+        padding: rem(8px);
+        border-bottom: rem(1px) solid get-color('light-grey');
+        color: get-color('light-black');
+        padding-right: rem(30px);
+      }
 
-                .chevron {
-                    transform: rotate(90deg);
-                }
-            }
-        }
-
-        // SEARCH
-        .search-group {
-            position: relative;
-
-            .form-control {
-                all: unset;
-                padding: rem(8px);
-                border-bottom: rem(1px) solid get-color('light-grey');
-                color: get-color('light-black');
-                padding-right: rem(30px);
-            }
-
-            .Iconsearch {
-                position: absolute;
-                right: rem(10px);
-                bottom: rem(10px);
-            }
-        }
+      .Iconsearch {
+        position: absolute;
+        right: rem(10px);
+        bottom: rem(10px);
+      }
     }
-
+    .name {
+      display: inline-flex;
+      margin: 0 rem(10px);
+      font: {
+        weight: $font-weight-semi;
+      }
+    }
+  }
 }
