@@ -50,7 +50,7 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 body {
@@ -67,5 +67,40 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* SLICK CAROUSEL */
+.slick-prev::before,
+.slick-next::before {
+  font-size: 3rem !important;
+  color: #fa0f00 !important;
+  /* content: '\f053' !important; */
+}
+.slick-next,
+.slick-prev {
+  z-index: 1;
+}
+.slick-prev {
+  left: -15px !important;
+}
+
+.slick-next {
+  right: 15px !important;
+}
+.slick-slide [class^='Card'] {
+  margin-bottom: 0 !important;
+}
+@media screen and (max-width: 767px) {
+  .slick-prev::before,
+  .slick-next::before {
+    font-size: 1.5rem !important;
+  }
+  .slick-prev {
+    left: -5px !important;
+  }
+
+  .slick-next {
+    right: 5px !important;
   }
 }

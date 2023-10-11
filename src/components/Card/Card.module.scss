@@ -50,7 +50,7 @@
       width: 100%;
       height: 100%;
       position: absolute;
-      background: url("./icon-play.svg") no-repeat;
+      background: url('./icon-play.svg') no-repeat;
       background-size: auto 50%;
       background-position: center;
       visibility: hidden;
@@ -103,7 +103,7 @@
 
   // PRIMARY CARD
   &.primary {
-    max-width: $width-sidebar + 50;
+    //max-width: $width-sidebar + 50;
 
     .card-thumb {
       & img {
@@ -134,14 +134,13 @@
     .card-thumb {
       flex: 0 0 40%;
     }
-    
 
     .card-content {
       flex: 0 0 60%;
 
       h3 {
         margin: rem(10px) 0 0;
-        color: get-color('red');
+        color: get-color('black');
         font-size: rem(20px);
         font: {
           weight: $font-weight-semi;
@@ -184,9 +183,7 @@
 
   // TERTIARY CARD
   &.tertiary {
-    max-width: $width-sidebar + 50;
-
-
+    // max-width: $width-sidebar + 50;
 
     .card-thumb {
       & img {
@@ -199,7 +196,7 @@
     .card-content {
       h3 {
         margin: rem(10px) 0 0;
-        color: get-color('red');
+        color: get-color('black');
 
         font: {
           weight: $font-weight-semi;
@@ -229,6 +226,9 @@
     display: flex;
     max-width: 100%;
     border-radius: 0;
+    align-items: center;
+    padding: rem(8px) rem(10px);
+    gap: rem(20px);
 
     a {
       display: flex;
@@ -238,7 +238,6 @@
       text-decoration: none;
       color: get-color('solid-black');
       column-gap: rem(16px);
-
     }
 
     .card-icon {
@@ -265,7 +264,7 @@
 
   // IN PROGRESS CARD
   &.in-progress {
-    max-width: $width-sidebar + 50;
+    //max-width: $width-sidebar + 50;
 
     .card-thumb {
       & img {
@@ -282,19 +281,19 @@
     }
 
     .card-progress {
-      padding:0;
-      width:100%;
-      height:4px;
-      overflow:hidden;
-      background:#e5e5e5;
+      padding: 0;
+      width: 100%;
+      height: 4px;
+      overflow: hidden;
+      background: #e5e5e5;
     }
 
     .card-bar {
-      position:relative;
-      float:left;
-      min-width:1%;
-      height:100%;
-      background:#fa0f00;
+      position: relative;
+      float: left;
+      min-width: 1%;
+      height: 100%;
+      background: #fa0f00;
     }
 
     .card-percent {

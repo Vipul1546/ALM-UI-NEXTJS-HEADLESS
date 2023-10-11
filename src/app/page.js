@@ -10,6 +10,7 @@ import Header from '@/components/Header';
 import Heading from '@/components/Heading/Heading';
 import HeroBanner from '@/components/HeroBanner';
 import Link from 'next/link';
+import SlkillsBg from './banner-parallex.jpeg';
 import styles from './page.module.scss';
 
 const Home = () => {
@@ -119,7 +120,7 @@ const Home = () => {
             </Carousel>
           </Container>
         </section>
-        <section className={styles.sectionSkills}>
+        <section className={styles.sectionSkills} style={{ backgroundImage: `url(${SlkillsBg.src})` }}>
           <Container>
             <Flex container justifyContent='space-between' alignItems='center'>
               <div className={styles.elem}>

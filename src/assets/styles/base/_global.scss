@@ -1,4 +1,4 @@
-@import "../abstracts/variables";
+@import '../abstracts/variables';
 
 * {
   box-sizing: border-box;
@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  color: get-color("solid-black");
+  color: get-color('solid-black');
   font-family: $font-family-primary;
   font-size: $font-size-base;
   margin: 0;
@@ -21,16 +21,16 @@ body {
 }
 
 a {
-  color: get-color("red");
-  text-decoration: underline;
+  color: inherit;
+  text-decoration: none;
 
   &:hover {
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   &:active,
   &:visited {
-    color: get-color("red");
+    color: get-color('red');
     text-decoration: none;
   }
 
@@ -38,14 +38,14 @@ a {
   &.disabled,
   &[disabled],
   &--disabled {
-    color: get-color("light-grey");
+    color: get-color('light-grey');
     cursor: default;
     pointer-events: none;
     text-decoration: none;
   }
 
-  [class^="icon-"],
-  [class*=" icon-"] {
+  [class^='icon-'],
+  [class*=' icon-'] {
     color: inherit;
     font-size: inherit;
     margin-right: rem(8px);
@@ -169,16 +169,16 @@ strong,
   }
 
   &::-webkit-scrollbar-track {
-    background: get-color("light-grey");
+    background: get-color('light-grey');
   }
 
   &::-webkit-scrollbar-thumb {
-    background: get-color("light-orange");
+    background: get-color('light-orange');
     border-radius: rem(25px);
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: get-color("orange-mid-tone");
+    background: get-color('orange-mid-tone');
   }
 }
 
@@ -189,14 +189,14 @@ strong,
   font-weight: inherit;
 
   &--orange {
-    color: get-color("orange");
+    color: get-color('orange');
   }
 
   &--solid-grey {
-    color: get-color("solid-grey");
+    color: get-color('solid-grey');
   }
 }
 
 .bg-color--smoke-white {
-  background-color: get-color("smoke-white");
+  background-color: get-color('smoke-white');
 }

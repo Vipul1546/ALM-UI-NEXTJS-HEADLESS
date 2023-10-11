@@ -14,6 +14,7 @@ const config = {
   },
   docs: {
     autodocs: true,
+    previewSource:'open',
   },
 };
 export default config;

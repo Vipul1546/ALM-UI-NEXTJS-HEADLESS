@@ -4,7 +4,8 @@
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],
       "@/context/*": ["./src/context/*"],
-      "@/constant/*": ["./src/constant/*"]
+      "@/constant/*": ["./src/constant/*"],
+      "@/app/*":["./src/app/*"]
     }
   }
 }

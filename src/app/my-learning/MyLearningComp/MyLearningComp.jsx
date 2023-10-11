@@ -34,21 +34,23 @@ const MyLearningComp = () => {
   return (
     <main className={styles.main}>
       <Container>
+          <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">
+            Resume Last Courses
+          </Heading>
         <Flex container justifyContent="flex-start">
-          {isMobile && !filterOpen ? (
-            <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}>
-              <i class="fa-solid fa-filter"></i>
-            </div>
-          ) : isMobile && filterOpen ? (
-            <SideBar setFilterOpen={setFilterOpen} isMobile />
-          ) : (
-            <SideBar setFilterOpen={setFilterOpen} />
-          )}
+          <div>
+            {isMobile && !filterOpen ? (
+              <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}>
+                <i class="fa-solid fa-filter"></i>
+              </div>
+            ) : isMobile && filterOpen ? (
+              <SideBar setFilterOpen={setFilterOpen} isMobile />
+            ) : (
+              <SideBar setFilterOpen={setFilterOpen} />
+            )}
+          </div>
           <div className={styles['right-panel']}>
             <div className={styles.category}>
-              <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">
-                Resume Last Courses
-              </Heading>
               <Carousel settings={lastPrevCarousel}>
                 {Array(6)
                   .fill()

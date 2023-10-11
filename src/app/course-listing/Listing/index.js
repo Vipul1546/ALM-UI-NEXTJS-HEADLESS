@@ -117,17 +117,25 @@ const Listing = ({ courseList, FilterList, isServer }) => {
     return (
         <main className={styles.main}>
             <Container>
+                <div className={styles["sticky-top-bar"]}>
+                    <Flex container justifyContent='space-between' alignItems='center'>
+                        <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">Courses Page</Heading>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <SwitchView handleToggleClick={handleToggleClick} />
+                            <SortingBox />
+                            <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
+                        </div>
+                    </Flex>
+                </div>
                 <Flex container justifyContent='flex-start'>
-                    {isMobile && !filterOpen ? <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}><i class="fa-solid fa-filter"></i></div> : isMobile && filterOpen ? <SideBar setFilterOpen={setFilterOpen} isMobile /> : <SideBar setFilterOpen={setFilterOpen} />}
+                    <div>
+                        {isMobile && !filterOpen
+                            ? <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}><i class="fa-solid fa-filter"></i></div>
+                            : isMobile && filterOpen
+                                ? <SideBar setFilterOpen={setFilterOpen} isMobile />
+                                : <SideBar setFilterOpen={setFilterOpen} />}
+                    </div>
                     <div className={styles['right-panel']}>
-                        <Flex container justifyContent='space-between' alignItems='center'>
-                            <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">Courses Page</Heading>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <SwitchView handleToggleClick={handleToggleClick} />
-                                <SortingBox />
-                                <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
-                            </div>
-                        </Flex>
                         <Flex container gap='16px' className={styles['list-row']} flexWrap='wrap'>
                             {
                                 isMutating
