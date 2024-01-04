@@ -8,11 +8,11 @@ const ImageNext = ({
   <>
     {href.length > 0 && (
       <a href={href}>
-        <Image className={`${styles.image} ${imageClass}`} src={imagePath} alt={altText} width={500} height={500} />
+        <Image className={`${styles.image} ${styles[imageClass]}`} src={imagePath} alt={altText} width={500} height={500} />
       </a>
     )}
     {href.length === 0 && (
-      <Image className={`${styles.image} ${imageClass}`} src={imagePath} alt={altText} width={500} height={500} />
+      <Image className={`${styles.image} ${styles[imageClass]}`} src={imagePath} alt={altText} width={500} height={500} />
     )}
     {caption.length > 0 && <div className={styles['image-caption']}>{caption}</div>}
   </>

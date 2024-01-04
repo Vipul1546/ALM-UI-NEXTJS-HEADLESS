@@ -36,6 +36,7 @@
   min-height: 1px; // Prevent collapsing
   padding-right: ($grid-gutter-width / 2);
   padding-left: ($grid-gutter-width / 2);
+  box-sizing: border-box;
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
@@ -48,5 +49,5 @@
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
   $num: $size / $columns;
-  margin-left: if($num == 0, 0, percentage($num));
+  margin-left: if($num ==0, 0, percentage($num));
 }

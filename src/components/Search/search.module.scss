@@ -1,14 +1,17 @@
 // SEARCH
 .search-group {
     position: relative;
+    box-sizing: border-box;
 
 
     .form-control {
         all: unset;
         padding: rem(8px);
-        border-bottom: rem(1px) solid get-color('light-grey');
+        border-bottom: rem(1px) solid get-color('light-black');
         color: get-color('light-black');
         padding-right: rem(30px);
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .Iconsearch {

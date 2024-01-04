@@ -42,7 +42,7 @@ export const getSearchList = async (param) => {
   }
 };
 
-export const searchSuggestions = async (e) => {
+export const searchSuggestions = async (e = '') => {
   try {
     const res = await api.get(`search/suggestions?suggestionType=accountHistory&query=${e}&limit=10`);
     return res?.data;
@@ -78,3 +78,22 @@ export const getskills = async (id) => {
     console.error({ err })
   }
 };
+
+export const getRecommendations = async (params) => {
+  try {
+    const tempParams = {
+      'strip': 1,
+      'page[limit]': 10,
+      'omitDeprecated': true,
+      'filter.recType': 'peer_group',
+      'filter.loTypes': 'course,learningProgram,certification,jobAid',
+      'include': 'learningObject.instances,learningObject.skills.skillLevel.skill'
+    }
+    const actualParams = params || tempParams;
+    const response = await api.get(`/recommendations?${new URLSearchParams({ ...actualParams })}`);
+    return response.data;
+  } catch (exception) {
+    console.log("Reached exception block while fetching suggestions :: ", exception);
+    return [];
+  }
+}

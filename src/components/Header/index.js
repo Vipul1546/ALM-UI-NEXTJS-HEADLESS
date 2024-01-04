@@ -4,7 +4,7 @@ import Container from '@/components/Container/Container';
 import { useAuth } from "@/context/authContext";
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Chevron from '../../assets/icons/Chevron';
 import IconUser from '../../assets/icons/IconUser';
 import useWindowSize from "../../utils/customhooks/useWindowSize";
@@ -14,7 +14,6 @@ import Search from '../Search';
 import styles from './header.module.scss';
 
 const Header = () => {
-    const contentRef = useRef();
     const router = useRouter()
     const [open, setOpen] = useState(false);
     const [dropDown, setDropDown] = useState(false);
@@ -28,7 +27,6 @@ const Header = () => {
         if (user) logout()
         else router.push('/login')
     }
-    console.log('contentRef', contentRef)
     return (
         <header className={`${styles['main-header']} ${styles[isHeaderSecondary]}`}>
             <Container>
@@ -42,8 +40,7 @@ const Header = () => {
                         }
                         <Link href="/course-listing" className={usePathname() === '/course-listing' ? styles.active : ''}>Courses</Link>
                         {isMobile && <div onClick={logInOutHandler}>{user ? 'Logout' : 'Login'}</div>}
-                        <Link href="/" className={usePathname() === '/course-listing' ? styles.active : ''}>Catalogs</Link>
-                        <Link href="/" className={usePathname() === '/about-us' ? styles.active : ''}>About Us</Link>
+                        <Link href="/" className={usePathname() === '/catalogs' ? styles.active : ''}>Catalogs</Link>
                         <Link href="/" className={usePathname() === '/contact-us' ? styles.active : ''}>Contact Us</Link>
                     </nav>
                         {!isMobile && <div className={styles.profile}>
@@ -53,7 +50,7 @@ const Header = () => {
                                 {user ? <div className={styles.user} onClick={() => setDropDown(!dropDown)}><button>
                                     <span className={styles.name}>Hi, {name}</span><IconUser /><Chevron className={styles.chevron + " " + (dropDown ? styles.rotate : '')} height={'10px'} width={'10px'} />
                                 </button>
-                                    {dropDown && (<ul ref={contentRef} className={styles.dd}>
+                                    {dropDown && (<ul className={styles.dd}>
                                         <li><Link href="/my-learning">My Learning</Link></li>
                                         <li onClick={logInOutHandler}>Logout</li>
                                     </ul>)}

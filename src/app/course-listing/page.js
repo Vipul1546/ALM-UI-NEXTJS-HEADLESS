@@ -19,7 +19,7 @@ const CourseListing = async ({ searchParams }) => {
   const courseList = await getCoursesList({
     'page[limit]': 12,
     'filter.loTypes': 'course',
-    'filter.catalogIds': 163584,
+    'filter.catalogIds': 167871,
     'filter.skillName': [...skillFilter],
     sort: decodeURIComponent(sort),
     'filter.ignoreEnhancedLP': true,

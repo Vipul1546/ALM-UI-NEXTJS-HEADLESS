@@ -5,7 +5,7 @@ const Loader = ({ text }) => {
 
     return (<div className={styles['loading']}>
         <div className={styles['loading-text']}>
-            <Image src="https://www.adobe.com/content/dam/cc/icons/Adobe_Corporate_Horizontal_Red_HEX.svg"
+            <Image src="/logo/Wonder_white.png"
                 width={50}
                 height={50}
                 alt="Logo" />
