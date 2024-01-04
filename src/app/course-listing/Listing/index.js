@@ -18,10 +18,10 @@ import Heading from '@/components/Heading/Heading';
 import { FILTER_PARAM_MAPPING, LISTING } from '@/constants/almConstant';
 import { getDuration } from '@/helper';
 import { getCoursesList, getSearchList } from '@/services/alm';
-import { getEnv } from '../../../utils/getEnv';
-import SwitchView from '../SwitchView/SwitchView';
 
 const Listing = ({ courseList, FilterList, isServer }) => {
+    console.log('asdf')
+
     const { courseListing,
         updateCourseListing,
         appliedFilters,
@@ -37,7 +37,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
     const searchParams = useSearchParams()
 
     const [filterOpen, setFilterOpen] = useState(false);
-    const [toggleView, setToggleView] = useState('list');
+    const [toggleView, setToggleView] = useState('grid');
     const { width, height } = useWindowSize();
     const isMobile = width < 768;
 
@@ -58,7 +58,6 @@ const Listing = ({ courseList, FilterList, isServer }) => {
         updateFilters([...FilterList])
         updateCourseListing({ ...courseList })
         setIsClient(true)
-        const { ALM_TOKEN_URL } = getEnv()
     }, [])
 
     useEffect(() => {
@@ -73,7 +72,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
         let listingParams = {
             'page[limit]': 12,
             'filter.loTypes': 'course',
-            'filter.catalogIds': 163584,
+            'filter.catalogIds': 167871,
             sort: sort?.value || 'name',
             'filter.ignoreEnhancedLP': true,
         }
@@ -121,7 +120,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
                     <Flex container justifyContent='space-between' alignItems='center'>
                         <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">Courses Page</Heading>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <SwitchView handleToggleClick={handleToggleClick} />
+                            {/* <SwitchView handleToggleClick={handleToggleClick} /> */}
                             <SortingBox />
                             <Chevron className={styles.chevron} height={'10px'} width={'10px'} />
                         </div>
@@ -161,6 +160,9 @@ const Listing = ({ courseList, FilterList, isServer }) => {
                                                 duration={`Duration: ${duration}`}
                                                 category={course.attributes.enrollmentType}
                                                 style={toggleView == 'grid' ? '' : { flex: '0 0 100%' }}
+                                                desc={
+                                                    'From Make-up School to Nail Art courses, London Academy offers a number of world-class courses and training programs.'
+                                                  }
                                             />
 
                                         }

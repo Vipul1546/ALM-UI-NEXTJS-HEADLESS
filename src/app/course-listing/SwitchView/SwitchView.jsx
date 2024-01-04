@@ -6,7 +6,7 @@ import { useState } from 'react';
 import styles from './switchView.module.scss';
 
 const SwitchView = ({ handleToggleClick }) => {
-  const [activeView, setactiveView] = useState('list');
+  const [activeView, setactiveView] = useState('grid');
   const handleClick = type => {
     setactiveView(type);
     handleToggleClick(type);

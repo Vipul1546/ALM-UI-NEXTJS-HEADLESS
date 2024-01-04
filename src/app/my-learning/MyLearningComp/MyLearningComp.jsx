@@ -5,14 +5,18 @@ import Carousel from '@/components/Carousel/Carousel';
 import Container from '@/components/Container/Container';
 import Flex from '@/components/Flex/Flex';
 import Heading from '@/components/Heading/Heading';
+import RecommendedCard from '@/components/Recommended/RecommendedCard';
 import SideBar from '@/components/SideBar';
 import { getDuration } from '@/helper';
-import { useState } from 'react';
+import { getRecommendations } from '@/services/alm';
+import { useEffect, useState } from 'react';
 import useWindowSize from '../../../utils/customhooks/useWindowSize';
 import styles from '../mylearning.module.scss';
+import { prepRecommendedCardData } from './helper';
 
 const MyLearningComp = () => {
   const [filterOpen, setFilterOpen] = useState(false);
+  const [recommendations, setRecommendations] = useState(null);
   const { width, height } = useWindowSize();
   const isMobile = width < 768;
   const lastPrevCarousel = {
@@ -31,12 +35,23 @@ const MyLearningComp = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    getRecommendations().then(results => {
+      if (results) {
+        const formattedResults = prepRecommendedCardData(results);
+        console.log("results 2 :: ", formattedResults);
+        setRecommendations(formattedResults);
+      }
+    })
+  }, []);
+
   return (
     <main className={styles.main}>
       <Container>
-          <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">
-            Resume Last Courses
-          </Heading>
+        <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">
+          Resume Last Courses
+        </Heading>
         <Flex container justifyContent="flex-start">
           <div>
             {isMobile && !filterOpen ? (
@@ -99,27 +114,29 @@ const MyLearningComp = () => {
               <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">
                 Recommended Courses
               </Heading>
-              <Carousel settings={lastPrevCarousel}>
-                {Array(6)
-                  .fill()
-                  .map((_, idx) => {
+              {recommendations ?
+                Object.keys(recommendations).map((type) => <Carousel key={type} settings={lastPrevCarousel}>
+                  {recommendations[type].map((course, idx) => {
                     return (
-                      <Card
-                        key={idx}
-                        variant={'tertiary'}
-                        imagePath={`https://picsum.photos/350/22${idx}`}
+                      <RecommendedCard
+                        key={course.id}
+                        imgSrc={course.imgSrc}
                         altText={'test image'}
-                        authorName={'John Doe'}
-                        authorTitle={'React Native'}
-                        students={`Rs. 1400`}
-                        title={'React Native Recommended Courses'}
-                        duration={`Total: ${getDuration(100 * idx)}`}
+                        variant={'recommendation'}
+                        courseDuration={course.duration}
+                        courseAuthorName={course.authors}
+                        ratingsCount={course.ratingsCount}
+                        averageRatings={course.averageRatings}
+                        coursePublishDate={course.publishedDate}
+                        courseTitle={'React Native Recommended Courses'}
+                        courseRecommendationReason={course.recommendationReason}
                         icon={<IconUser />}
                         category={'some type'}
                       />
                     );
                   })}
-              </Carousel>
+                </Carousel>)
+                : <p>No Recommended courses found.</p>}
             </div>
           </div>
         </Flex>

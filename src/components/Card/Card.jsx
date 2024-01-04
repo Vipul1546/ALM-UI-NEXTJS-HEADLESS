@@ -13,6 +13,7 @@ const Card = ({
   username,
   likes,
   title,
+  desc,
   authorImg,
   authorAltText,
   authorName,
@@ -61,11 +62,20 @@ const Card = ({
           )}
           {variant == 'tertiary' && (
             <>
-              <ul className={styles['card-list']}>
-                <li>{students}</li>
-                <li>{duration}</li>
-              </ul>
               <h3>{title}</h3>
+              {desc ? (
+                <>
+                  <div class={styles['featured-desc']}>
+                    <p>{desc}</p>
+                  </div>
+                  <div class={styles['border-seperator']}></div>
+                </>
+              ) : (
+                <ul className={styles['card-list']}>
+                  <li>{students}</li>
+                  <li>{duration}</li>
+                </ul>
+              )}
             </>
           )}
           <div className={styles['card-bottom']}>
@@ -79,11 +89,23 @@ const Card = ({
                 </p>
               </>
             )}
-            <div className={styles['card-comments']}>
+            {/* <div className={styles['card-comments']}>
               {variant == 'tertiary' && <i className="fas fa-user"></i>}
               {variant == 'tertiary' ? authorName : duration}
-            </div>
-            <div className={styles['card-like']}>{icon}</div>
+            </div> */}
+            {desc ? (
+              <a class={styles['read-link']} href="#">
+                Read More »
+              </a>
+            ) : (
+              <>
+                <div className={styles['card-comments']}>
+                  {variant == 'tertiary' && <i className="fas fa-user"></i>}
+                  {variant == 'tertiary' ? authorName : duration}
+                </div>
+                <div className={styles['card-like']}>{icon}</div>
+              </>
+            )}
           </div>
         </div>
       </>

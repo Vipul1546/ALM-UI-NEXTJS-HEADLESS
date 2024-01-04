@@ -38,14 +38,18 @@ const Search = () => {
 
   const getSearchResults = async text => {
     const searchParam = text || searchParams.get('search');
-    setSuggestions([]);
-    setSearchValue('');
-    router.push(`/course-listing?search=${searchParam}`);
-    updateAppliedFilter({
-      ...appliedFilters,
-      isSearch: true,
-      searchPhrase: searchParam,
-    });
+    if(searchParam){
+      setSuggestions([]);
+      setSearchValue('');
+      router.push(`/course-listing?search=${searchParam}`);
+      updateAppliedFilter({
+        ...appliedFilters,
+        isSearch: true,
+        searchPhrase: searchParam,
+      });
+    }else{
+      router.push(`/course-listing`);
+    }
   };
 
   return (
@@ -58,7 +62,7 @@ const Search = () => {
         onKeyDown={handleKeyDown}
         onChange={e => setSearchValue(e.target.value)}
       />
-      <button className={styles.Iconsearch}>
+      <button className={styles.Iconsearch} onClick={() => getSearchResults('')}>
         <i className="fas fa-search"></i>
       </button>
       <ul className={styles['list-group']}>

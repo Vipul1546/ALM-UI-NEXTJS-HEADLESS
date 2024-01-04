@@ -1,0 +1,144 @@
+.main {
+  min-height: 100vh;
+  background: get-color('smoke-white');
+
+  .sticky-top-bar {
+    position: sticky;
+    top: rem(69px);
+    background: #f6f6f6;
+    z-index: 2;
+  }
+
+  font: {
+    family: $font-family-primary;
+  }
+
+  h2 {
+    @extend %h2;
+
+    margin-block: rem(16px);
+  }
+
+  & .right-panel {
+    padding-left: rem(24px);
+    width: calc(100% - 300px);
+    background-color: get-color('smoke-white');
+
+    @include media("<tablet") {
+      width: 100%;
+      padding: 0 rem(16px);
+    }
+  }
+
+  & .list-row {
+    >* {
+      flex: 0 0 32%;
+      margin: 0;
+
+      @include media("<tablet") {
+        flex: 0 0 100%;
+      }
+    }
+  }
+
+  & .sortBy {
+    cursor: pointer;
+    padding: rem(16px);
+    display: inline-block;
+
+    >svg {
+      transform: rotate(90deg);
+    }
+  }
+
+  .btn-float {
+    position: fixed;
+    bottom: rem(20px);
+    right: rem(20px);
+    background-color: get-color('red');
+    border-radius: 50%;
+    color: get-color('white');
+    z-index: 1;
+    padding: rem(16px);
+    display: flex;
+    align-items: center;
+  }
+
+  .sectionSkills {
+    padding: rem(180px) 0;
+    background: url('https://as1.ftcdn.net/v2/jpg/06/21/10/88/1000_F_621108870_Ra5BpGTj7xm2uCanl2n9WywoENmX7A68.jpg') no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    color: get-color('white');
+    position: relative;
+
+    &::after {
+      content: '';
+      inset: 0;
+      position: absolute;
+      background-color: get-opaque-color('red', 0.25);
+    }
+
+    @include media('<tablet') {
+      padding: rem(64px) 0;
+      background-position: 70%;
+    }
+
+    .elem {
+      @extend %h2;
+      z-index: 1;
+
+      @include media('<tablet') {
+        font: {
+          size: $font-size-base;
+        }
+      }
+    }
+
+    .explore-product {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+
+      & h2,
+      & p {
+        @extend .elem;
+      }
+
+      & p {
+        font-size: rem(20px);
+      }
+    }
+  }
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    background: rgb(var(--card-rgb) 0.1);
+    border: 1px solid rgb(var(--card-border-rgb) 0.15);
+  }
+
+  .card:hover span {
+    transform: translateX(4px);
+  }
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
