@@ -9,7 +9,6 @@ const CourseListing = async ({ searchParams }) => {
   const { sort = 'name', Skills = '' } = searchParams;
   const skillFilter = Skills && decodeURIComponent(Skills).split(',')
   const { TYPES } = FILTERS
-
   const data = await getCatalogList({
     'page[offset]': 0,
     'page[limit]': 10,
