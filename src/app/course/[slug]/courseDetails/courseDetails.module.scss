@@ -3,9 +3,11 @@
 
   & .detail-page {
     &__heading {
-      padding: rem(75px);
+      padding: rem(75px) rem(75px) rem(32px) rem(75px);
       position: relative;
       z-index: 0;
+      background: no-repeat;
+      background-size: cover;
 
       & .title {
         color: get-color('white');
@@ -15,6 +17,16 @@
       & .description {
         color: get-color('white');
         font-size: $font-size-base + 8;
+        margin-bottom: rem(10px);
+      }
+
+      & .progressBarContainer {
+        width: 75%;
+        display: flex;
+        align-items: center;
+        color: get-color('white');
+        gap: rem(20px);
+        margin-top: rem(20px);
       }
 
       & .enrollnow {
@@ -48,6 +60,7 @@
       background-color: get-color('smoke-white');
 
       & .detail {
+        min-height: calc(100vh - 450px);
         width: 70%;
         margin: rem(10px);
         padding: rem(25px);
@@ -96,12 +109,16 @@
 
       & .card {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: start;
         box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
         margin: rem(10px);
         padding: rem(24px);
         background-color: get-color('white');
 
+        &>button {
+          margin-bottom: rem(20px);
+        }
 
         & .cource-detail-container {
           height: rem(350px);
@@ -110,6 +127,10 @@
           & .list {
             & .listitem {
               padding-bottom: rem(20px);
+
+              & span {
+                display: block;
+              }
             }
           }
 

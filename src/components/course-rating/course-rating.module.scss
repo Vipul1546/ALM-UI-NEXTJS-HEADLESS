@@ -1,0 +1,30 @@
+.course-rating {
+    &__border {
+        padding: rem(10px);
+        border: 1px solid #fd60b1;
+    }
+
+    &-stars {
+        display: flex;
+        align-items: center;
+
+        & p {
+            padding-top: rem(20px);
+        }
+    }
+
+    & h4 {
+        margin: 0;
+    }
+
+    & svg {
+        cursor: pointer;
+        margin-right: rem(10px);
+    }
+
+    & button {
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        margin-left: auto;
+    }
+}

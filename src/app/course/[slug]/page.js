@@ -7,7 +7,7 @@ import DetailPage from "./courseDetails/courseDetails";
 const Pdp = async ({ params }) => {
     const { slug } = params
     const data = await getCoursesDetails(slug, {
-        'include': 'instances.loResources'
+        'include': 'instances.loResources,instances.enrollment.loResourceGrades,skills.skillLevel.skill'
     });
     const {
         attributes,

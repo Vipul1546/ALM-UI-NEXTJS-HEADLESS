@@ -13,7 +13,7 @@ const FluidicPlayer = ({ loid, loResourcesId, accountId, userId }) => {
         cpPlayerLib.startPlayer(loid, accountId, userId, token, "player", function (data) {
             // document.getElementById("moduleId").innerHTML = "Current module : " + JSON.stringify(data);
             return data;
-        })
+        });
     }, [])
     return (
         <>

@@ -17,7 +17,7 @@ const CourseListing = async ({ searchParams }) => {
   });
 
   const courseList = await getCoursesList({
-    'page[limit]': 12,
+    'page[limit]': 24,
     'filter.loTypes': 'course',
     'filter.catalogIds': 167871,
     'filter.skillName': [...skillFilter],

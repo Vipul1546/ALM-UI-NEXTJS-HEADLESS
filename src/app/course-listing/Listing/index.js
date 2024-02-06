@@ -20,7 +20,6 @@ import { getDuration } from '@/helper';
 import { getCoursesList, getSearchList } from '@/services/alm';
 
 const Listing = ({ courseList, FilterList, isServer }) => {
-    console.log('asdf')
 
     const { courseListing,
         updateCourseListing,
@@ -70,7 +69,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
         let courseList = {}
         setIsFetching(true);
         let listingParams = {
-            'page[limit]': 12,
+            'page[limit]': 24,
             'filter.loTypes': 'course',
             'filter.catalogIds': 167871,
             sort: sort?.value || 'name',
@@ -96,7 +95,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
         startTransition(() => {
             // Refresh the current route and fetch new data from the server without
             // losing client-side browser or React state.
-            const newUrlParams = new URLSearchParams(urlSearchParams.toString());
+            const newUrlParams = new URLSearchParams();
             if (sort?.value) newUrlParams.set('sort', encodeURIComponent(sort?.value));
             if (isSearch) newUrlParams.set('search', encodeURIComponent(searchPhrase));
             if (Object.keys(filters).length > 0) {

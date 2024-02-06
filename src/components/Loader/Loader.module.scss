@@ -43,6 +43,11 @@
             }
         }
     }
+
+    & img {
+        height: rem(200px);
+        width: rem(150px);
+    }
 }
 
 @keyframes blur-text {

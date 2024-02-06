@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './ProgressBar.module.scss';
 
-const ProgressBar = ({
-  bgcolor, progress, height, textColor, 
-}) => {
+const ProgressBar = ({ bgcolor, progress, height, textColor }) => {
   const Parentdiv = {
     height,
   };
@@ -19,9 +17,8 @@ const ProgressBar = ({
 
   return (
     <div style={Parentdiv} className={styles.progressbar}>
-      <div style={Childdiv} className={styles.progress}>
-        <span style={progresstext} className={styles.progress__text}>{`${progress}%`}</span>
-      </div>
+      <div style={Childdiv} className={styles.progress}></div>
+      <span style={progresstext} className={styles.progressbar__text}>{`${progress}%`}</span>
     </div>
   );
 };

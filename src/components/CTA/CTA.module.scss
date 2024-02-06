@@ -14,7 +14,7 @@ $hover: get-color('abbey');
 
   &:hover {
     background-color: $hover;
-    border: none;
+    border: 1px solid $hover;
   }
 }
 

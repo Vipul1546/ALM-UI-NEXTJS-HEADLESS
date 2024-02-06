@@ -139,6 +139,7 @@ const ProductList = () => {
                                     desc={
                                         'From Make-up School to Nail Art courses, London Academy offers a number of world-class courses and training programs.'
                                       }
+                                    isVideoIconRequired = {false}
                                 />
 
                             }

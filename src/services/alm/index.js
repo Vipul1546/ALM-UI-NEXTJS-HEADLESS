@@ -25,6 +25,42 @@ export const getToken = async () => {
   return data;
 };
 
+export const postEnrollCourse = async (loId,loInstanceId) => {
+  try {
+    const res = await api.post(`enrollments?${new URLSearchParams({ loId })}`);
+    return res?.data;
+  } catch (err) {
+    console.error({ err })
+  }
+};
+
+export const postBookMarkCourse = async (loId) => {
+  try {
+    const res = await api.post(`/learningObjects/${loId}/bookmark`);
+    return res?.data;
+  } catch (err) {
+    console.error({ err })
+  }
+};
+
+export const deleteBookMarkCourse = async (loId) => {
+  try {
+    const res = await api.delete(`/learningObjects/${loId}/bookmark`);
+    return res?.data;
+  } catch (err) {
+    console.error({ err })
+  }
+};
+
+export const patchRating = async (loId, body) => {
+  try {
+    const res = await api.patch(`/enrollments/${loId}/rate`, body);
+    return res?.data;
+  } catch (err) {
+    console.error({ err })
+  }
+};
+
 export const getCatalogList = async (param) => {
   try {
     const res = await api.get(`catalogs?${new URLSearchParams({ ...param })}`);

@@ -2,18 +2,20 @@
   width: 100%;
   background-color: get-color('smoke-white');
   border-radius: rem(40px);
+  position: relative;
 
   & .progress {
     height: 100%;
     border-radius: rem(40px);
-    display: flex;
-    justify-content: end;
-    align-items: center;
+  }
 
-    &__text {
-      color: get-color('solid-black');
-      font-weight: $font-weight-bold;
-      padding-right: rem(16px);
-    }
+  &__text {
+    color: get-color('solid-black');
+    font-weight: $font-weight-bold;
+    padding-right: rem(16px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }

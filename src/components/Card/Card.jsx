@@ -23,6 +23,7 @@ const Card = ({
   icon,
   progress,
   style,
+  isVideoIconRequired = true,
 }) => {
   let CardTag =
     variant != 'texticon' ? (
@@ -35,7 +36,7 @@ const Card = ({
           )}
           {imagePath && <ImageNext imagePath={imagePath} altText={altText} />}
 
-          {variant != 'texticon' && <span className={styles['icon-play']}></span>}
+          {variant != 'texticon' && isVideoIconRequired && <span className={styles['icon-play']}></span>}
         </div>
         <div className={styles['card-content']}>
           {variant == 'primary' && (
