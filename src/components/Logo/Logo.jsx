@@ -6,7 +6,7 @@ const Logo = () => {
   const { isWhiteLogo } = useAlmContext();
   return (
     <div className={styles.logo}>
-      <img src={isWhiteLogo ? '/logo/Wonder_white.png' : '/logo/Wonder_black.png'} alt="Logo Wonder Beauty" />
+      <img src={isWhiteLogo ? '/logo/Wonder_white.png' : '/logo/wonder_black.png'} alt="Logo Wonder Beauty" />
     </div>
   );
 };
