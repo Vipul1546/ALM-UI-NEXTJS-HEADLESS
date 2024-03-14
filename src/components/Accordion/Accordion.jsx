@@ -50,14 +50,14 @@ const Accordion = ({ variant = 'primary', iconType }) => {
           {Array(5)
             .fill(1)
             .map((_, i) => (
-              <figure className={styles.item}>
+              <figure className={styles.item} key={`accordion_${i}`}>
                 <img
                   src="https://assets.website-files.com/617fa48948c7ab24b715140e/6183bce7320d030e82c15028_hero_person-1.webp"
                   loading="eager"
                   srcset="https://assets.website-files.com/617fa48948c7ab24b715140e/6183bce7320d030e82c15028_hero_person-1-p-500.webp 500w, https://assets.website-files.com/617fa48948c7ab24b715140e/6183bce7320d030e82c15028_hero_person-1-p-800.webp 800w, https://assets.website-files.com/617fa48948c7ab24b715140e/6183bce7320d030e82c15028_hero_person-1.webp 980w"
                   data-w-id="0b84718e-c201-e886-a3e6-fbde4d3f3945"
                   sizes="(max-width: 991px) 100vw, 9vw"
-                  alt=""></img>
+                  alt="accordion"></img>
                 <figcaption className={styles.caption}>
                   <h2>{i + 1}</h2>
                   <p>Don't you dare to hover me</p>
@@ -74,7 +74,7 @@ const Accordion = ({ variant = 'primary', iconType }) => {
         Array.isArray(dataObj) &&
         dataObj.map((item, idx) => (
           <AccoElem
-            key={idx}
+            key={`AccoElem_${idx}`}
             item={item}
             active={active === item.tabNav}
             setActive={setActive}

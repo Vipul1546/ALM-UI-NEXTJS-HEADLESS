@@ -106,6 +106,7 @@ const ProductList = () => {
     return (
         <main className={styles.main}>
             <section className={styles.sectionSkills} style={{ backgroundImage: `url(${SlkillsBg.src})` }}>
+                <div className={styles['background-texture']}></div>
                 <Container>
                     <a href='/course-listing' className={styles['explore-product']}>
                     <h2>Become a Certified Beauty Professional</h2>
@@ -128,7 +129,7 @@ const ProductList = () => {
                                 const href = `/productDetails`;
 
                                 return <Card
-                                    key={idx}
+                                    key={`ProductListing_${idx}`}
                                     href={href}
                                     variant='tertiary'
                                     imagePath={product.img.src}

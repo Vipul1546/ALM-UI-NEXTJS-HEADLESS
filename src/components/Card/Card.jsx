@@ -1,21 +1,20 @@
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import ImageNext from '../Image/ImageNext';
 import styles from './Card.module.scss';
 
 const Card = ({
-  variant,
+  variant = 'primary',
   onClick,
   href,
   category,
-  imagePath,
-  altText,
-  username,
-  likes,
+  imagePath = '',
+  altText = 'alt text',
+  username = '',
+  likes = 0,
   title,
   desc,
   authorImg,
-  authorAltText,
+  authorAltText = 'author alt text',
   authorName,
   authorTitle,
   students,
@@ -24,6 +23,7 @@ const Card = ({
   progress,
   style,
   isVideoIconRequired = true,
+  enableBackgroundTexture = true,
 }) => {
   let CardTag =
     variant != 'texticon' ? (
@@ -34,6 +34,7 @@ const Card = ({
               <span>{category}</span>
             </div>
           )}
+          {enableBackgroundTexture && <div className={styles['background-texture']}></div>}
           {imagePath && <ImageNext imagePath={imagePath} altText={altText} />}
 
           {variant != 'texticon' && isVideoIconRequired && <span className={styles['icon-play']}></span>}
@@ -66,10 +67,10 @@ const Card = ({
               <h3>{title}</h3>
               {desc ? (
                 <>
-                  <div class={styles['featured-desc']}>
+                  <div className={styles['featured-desc']}>
                     <p>{desc}</p>
                   </div>
-                  <div class={styles['border-seperator']}></div>
+                  <div className={styles['border-seperator']}></div>
                 </>
               ) : (
                 <ul className={styles['card-list']}>
@@ -95,7 +96,7 @@ const Card = ({
               {variant == 'tertiary' ? authorName : duration}
             </div> */}
             {desc ? (
-              <a class={styles['read-link']} href="#">
+              <a className={styles['read-link']} href="#">
                 Read More »
               </a>
             ) : (
@@ -123,24 +124,6 @@ const Card = ({
       {href ? <Link href={href}> {CardTag} </Link> : CardTag}
     </div>
   );
-};
-
-Card.propTypes = {
-  variant: PropTypes.string.isRequired,
-  imagePath: PropTypes.string.isRequired,
-  altText: PropTypes.string.isRequired,
-  username: PropTypes.string,
-  likes: PropTypes.string,
-  comments: PropTypes.string,
-};
-
-Card.defaultProps = {
-  variant: 'primary',
-  imagePath: '',
-  altText: '',
-  username: '',
-  likes: '0',
-  comments: '0',
 };
 
 export default Card;

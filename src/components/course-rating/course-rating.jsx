@@ -42,7 +42,7 @@ const CourseRating = ({
     setCurrentRating(newRatingObject);
 
     for (let i = 0; i <= rate; i++) {
-      starArray[i] = '#fd60b1';
+      starArray[i] = 'full';
     }
     setStarArrayData([...starArray]);
   };
@@ -79,7 +79,7 @@ const CourseRating = ({
                 onClick={() => {
                   handleStarClick(idx);
                 }}
-                key={idx}
+                key={`star_${idx}`}
               />
             );
           })}
@@ -87,7 +87,7 @@ const CourseRating = ({
           {submitEnabled && (
             <CTA
               addOnClass={currentRating.ratingChanged ? 'outlined' : 'disabled'}
-              variant="danger"
+              variant="theme-button"
               type="button"
               onClick={submitRating}>
               Submit

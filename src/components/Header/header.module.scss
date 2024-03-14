@@ -8,9 +8,10 @@
   position: fixed;
   top: 0;
   width: 100%;
+  color: var(--header-text-color);
 
   // box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
-  background-color: get-opaque-color('white', 0.75);
+  background-color: var(--header-background);
 
   &.secondary {
     border-bottom: rem(1px) solid get-color('titanium-white');
@@ -32,6 +33,7 @@
       flex-direction: column !important;
       justify-content: flex-start !important;
       align-items: flex-start !important;
+
       .name {
         position: absolute;
         top: rem(20px);
@@ -55,7 +57,7 @@
       }
     }
 
-    & > a {
+    &>a {
       padding: 1.5rem rem(16px);
       display: inline-flex;
       transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -82,45 +84,58 @@
     & .user {
       display: flex;
       position: relative;
+
       button {
         all: unset;
         cursor: pointer;
         display: flex;
         align-items: center;
       }
+
       .chevron {
-        transform: rotate(90deg);
+        //transform: rotate(90deg);
         margin-left: rem(5px);
         transition: all 0.25s ease-in-out;
+        font-size: rem(10px);
+
         &.rotate {
-          transform: rotate(-90deg);
+          transform: rotate(-180deg);
         }
       }
+
       .dd {
         position: absolute;
         top: 44px;
         right: 0;
-        background-color: get-color('white');
+        background-color: var(--header-background);
         min-width: rem(150px);
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         border-bottom-right-radius: rem(4px);
         border-bottom-left-radius: rem(4px);
         overflow: hidden;
         transition: height 0.25s ease-in-out;
-        > li {
+
+        >li {
           cursor: pointer;
           padding: rem(12px);
+
           &:first-child {
             padding: 0;
           }
-          > a {
+
+          >a {
             padding: rem(12px);
             display: block;
           }
+
           &:hover {
-            background-color: get-color('red');
+            background-color: var(--dropdown-hover-color);
             color: get-color('white');
           }
+        }
+
+        &.theme-dd>li {
+          padding: rem(12px);
         }
       }
     }
@@ -133,7 +148,7 @@
         all: unset;
         padding: rem(8px);
         border-bottom: rem(1px) solid get-color('light-grey');
-        color: get-color('light-black');
+        color: var(--header-text-color);
         padding-right: rem(30px);
       }
 
@@ -143,9 +158,11 @@
         bottom: rem(10px);
       }
     }
+
     .name {
       display: inline-flex;
       margin: 0 rem(10px);
+
       font: {
         weight: $font-weight-semi;
       }

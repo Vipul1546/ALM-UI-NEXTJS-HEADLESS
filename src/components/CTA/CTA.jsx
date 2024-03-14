@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types';
 import styles from './CTA.module.scss';
 
-const CTA = ({ tag, variant, children, href, type, addOnClass, onClick }) => {
+const CTA = ({
+  tag = 'button',
+  variant = 'primary',
+  children,
+  href = '',
+  type = 'button',
+  addOnClass = '',
+  onClick = () => {},
+}) => {
   const Tag = tag ? tag : 'button';
 
   const createCTA = () => (
@@ -17,20 +25,12 @@ const CTA = ({ tag, variant, children, href, type, addOnClass, onClick }) => {
 };
 
 CTA.propTypes = {
-  tag: PropTypes.string.isRequired,
+  tag: PropTypes.string,
   variant: PropTypes.string.isRequired,
   addOnClass: PropTypes.string,
   children: PropTypes.node.isRequired,
   href: PropTypes.string,
   type: PropTypes.string,
   onClick: PropTypes.func,
-};
-CTA.defaultProps = {
-  tag: 'button',
-  variant: 'primary',
-  href: '',
-  type: 'button',
-  onClick: () => {},
-  addOnClass: '',
 };
 export default CTA;

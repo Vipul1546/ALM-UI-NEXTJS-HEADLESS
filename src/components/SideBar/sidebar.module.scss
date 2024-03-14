@@ -22,7 +22,7 @@
     }
 
     .link {
-        color: get-color('red');
+        color: var(--primary-button-color);
         position: relative;
 
         font: {
@@ -31,7 +31,7 @@
 
         &::after {
             content: '';
-            background: get-color('red');
+            background: var(--primary-button-color);
             width: 0;
             display: inline-block;
             height: rem(1px);

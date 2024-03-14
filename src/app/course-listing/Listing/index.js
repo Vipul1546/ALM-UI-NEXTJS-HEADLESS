@@ -128,7 +128,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
                 <Flex container justifyContent='flex-start'>
                     <div>
                         {isMobile && !filterOpen
-                            ? <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}><i class="fa-solid fa-filter"></i></div>
+                            ? <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}><i className="fa-solid fa-filter"></i></div>
                             : isMobile && filterOpen
                                 ? <SideBar setFilterOpen={setFilterOpen} isMobile />
                                 : <SideBar setFilterOpen={setFilterOpen} />}
@@ -147,7 +147,7 @@ const Listing = ({ courseList, FilterList, isServer }) => {
                                             const href = `/course/${course.id}`
 
                                             return <Card
-                                                key={idx}
+                                                key={`course_listing_${idx}`}
                                                 href={href}
                                                 variant={toggleView == 'list' ? 'secondary' : 'tertiary'}
                                                 imagePath={bannerImage}

@@ -40,10 +40,9 @@ const MyLearningComp = () => {
     getRecommendations().then(results => {
       if (results) {
         const formattedResults = prepRecommendedCardData(results);
-        console.log("results 2 :: ", formattedResults);
         setRecommendations(formattedResults);
       }
-    })
+    });
   }, []);
 
   return (
@@ -56,7 +55,7 @@ const MyLearningComp = () => {
           <div>
             {isMobile && !filterOpen ? (
               <div onClick={() => setFilterOpen(!filterOpen)} className={styles['btn-float']}>
-                <i class="fa-solid fa-filter"></i>
+                <i className="fa-solid fa-filter"></i>
               </div>
             ) : isMobile && filterOpen ? (
               <SideBar setFilterOpen={setFilterOpen} isMobile />
@@ -72,7 +71,7 @@ const MyLearningComp = () => {
                   .map((_, idx) => {
                     return (
                       <Card
-                        key={idx}
+                        key={`mylearning_${idx}`}
                         variant={'in-progress'}
                         imagePath={`https://picsum.photos/350/22${idx}`}
                         altText={'test image'}
@@ -94,7 +93,7 @@ const MyLearningComp = () => {
                   .map((_, idx) => {
                     return (
                       <Card
-                        key={idx}
+                        key={`carousel_${idx}`}
                         variant={'tertiary'}
                         imagePath={`https://picsum.photos/350/22${idx}`}
                         altText={'test image'}
@@ -114,29 +113,33 @@ const MyLearningComp = () => {
               <Heading customClass={styles['section-heading']} type="h2" weight="heading-extra-bold">
                 Recommended Courses
               </Heading>
-              {recommendations ?
-                Object.keys(recommendations).map((type) => <Carousel key={type} settings={lastPrevCarousel}>
-                  {recommendations[type].map((course, idx) => {
-                    return (
-                      <RecommendedCard
-                        key={course.id}
-                        imgSrc={course.imgSrc}
-                        altText={'test image'}
-                        variant={'recommendation'}
-                        courseDuration={course.duration}
-                        courseAuthorName={course.authors}
-                        ratingsCount={course.ratingsCount}
-                        averageRatings={course.averageRatings}
-                        coursePublishDate={course.publishedDate}
-                        courseTitle={'React Native Recommended Courses'}
-                        courseRecommendationReason={course.recommendationReason}
-                        icon={<IconUser />}
-                        category={'some type'}
-                      />
-                    );
-                  })}
-                </Carousel>)
-                : <p>No Recommended courses found.</p>}
+              {recommendations ? (
+                Object.keys(recommendations).map((type, id) => (
+                  <Carousel key={`Carousel_type_${id}`} settings={lastPrevCarousel}>
+                    {recommendations[type].map((course, idx) => {
+                      return (
+                        <RecommendedCard
+                          key={`recommendedCard_${idx}`}
+                          imgSrc={course.imgSrc}
+                          altText={'test image'}
+                          variant={'recommendation'}
+                          courseDuration={course.duration}
+                          courseAuthorName={course.authors}
+                          ratingsCount={course.ratingsCount}
+                          averageRatings={course.averageRatings}
+                          coursePublishDate={course.publishedDate}
+                          courseTitle={'React Native Recommended Courses'}
+                          courseRecommendationReason={course.recommendationReason}
+                          icon={<IconUser />}
+                          category={'some type'}
+                        />
+                      );
+                    })}
+                  </Carousel>
+                ))
+              ) : (
+                <p>No Recommended courses found.</p>
+              )}
             </div>
           </div>
         </Flex>

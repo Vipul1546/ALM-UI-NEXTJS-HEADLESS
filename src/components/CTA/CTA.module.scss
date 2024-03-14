@@ -62,6 +62,14 @@ $hover: get-color('abbey');
     }
   }
 
+  &.theme-button {
+    background-color: var(--primary-button-color);
+
+    &.outlined {
+      @include outlined(var(--primary-button-color));
+    }
+  }
+
   &:hover {
     background-color: $hover;
   }

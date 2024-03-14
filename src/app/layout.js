@@ -5,6 +5,7 @@ import { Outfit } from 'next/font/google';
 import PropTypes from 'prop-types';
 import '../assets/styles/base/_normalize.scss';
 import '../assets/styles/base/_reset.scss';
+import './global-theme.css';
 import './globals.css';
 
 const outfit = Outfit({ subsets: ['latin'] });

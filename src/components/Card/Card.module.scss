@@ -39,6 +39,14 @@
   .card-thumb {
     position: relative;
 
+    & .background-texture {
+      background: var(--background-texture);
+      background-size: cover;
+      position: absolute;
+      height: rem(220px);
+      width: 100%;
+    }
+
     & img {
       width: 100%;
       height: 100%;

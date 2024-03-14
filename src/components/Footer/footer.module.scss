@@ -1,7 +1,9 @@
 .footer-main {
     font-size: $font-size-base - 2;
-    background: get-color('titanium-white');
+    //background: get-color('titanium-white');
     padding: rem(14px);
+    background-color: var(--header-background);
+    color: var(--header-text-color);
 
     .flexWrapper {
         @include media("<tablet") {

@@ -66,7 +66,7 @@ const CourseDetails = ({ data }) => {
   }
 
   const headingBackGround = {
-    'background-image': 'url(' + attributes.bannerUrl + ')',
+    'backgroundImage': 'url(' + attributes.bannerUrl + ')',
   };
 
   const [modalData, setModalData] = useState({
@@ -168,7 +168,6 @@ const CourseDetails = ({ data }) => {
 
   const handleRating = (rating)=>{
     patchRating(loEnrollment.data.id, {"rating":rating}).then(data=>{
-      console.log(data);
     });
   }
 
@@ -184,7 +183,7 @@ const CourseDetails = ({ data }) => {
             <CourseRating rating={attributes.rating.averageRating} submitEnabled={false}/>
             <div className={styles.progressBarContainer}>
               <div>Progress: </div>
-              <ProgressBar bgcolor={'#fd60b1'} textColor={'#000000'} progress={calculateProgress()} height={15} />
+              <ProgressBar bgcolor={'var(--star-color)'} textColor={'#000000'} progress={calculateProgress()} height={15} />
             </div>
           </div>
           <div className={styles['detail-page__body']}>
@@ -206,7 +205,7 @@ const CourseDetails = ({ data }) => {
                         const title = res.attributes.localizedMetadata[0].name;
                         return (
                           <>
-                            <Card key={idx}
+                            <Card key={`card_${idx}`}
                               onClick={()=>{togleModal(res.id)}}
                               variant={'texticon'}
                               title={title}
@@ -216,10 +215,9 @@ const CourseDetails = ({ data }) => {
                             ></Card>
 
                             {isEnrolled && modalData.isModalEnable && modalData.videoId === res.id &&(
-                              <Modal variant='modal-lg' title={title} showButton={false} showClose={false}>
+                              <Modal key={`modal_${idx}`} variant='modal-lg' title={title} showButton={false} showClose={false}>
                                 <div className={styles['video-container']}>
                                   <FluidicPlayer
-                                    key={idx}
                                     loid={courseId}
                                     loResourcesId={res?.id}
                                     accountId="116411"
@@ -230,7 +228,7 @@ const CourseDetails = ({ data }) => {
                             )}
 
                             {!isEnrolled && modalData.isModalEnable && modalData.videoId === res.id &&(
-                              <Modal variant='modal-sm' title={title} onCloseModal={togleModal} onSuccess={sucessModal} successButtonText='Continue' closeButtonText='Cancel' showButton={true} showClose={true}>
+                              <Modal key={`modal-2_${idx}`} variant='modal-sm' title={title} onCloseModal={togleModal} onSuccess={sucessModal} successButtonText='Continue' closeButtonText='Cancel' showButton={true} showClose={true}>
                                 <p>Clicking on a Module will enroll you in the Course/ Learning Path/ Certification/ Job Aid and launch. This behavior will be remembered and can be modified from Profile Settings. Do you wish to continue?</p>
                               </Modal>
                             )}
@@ -243,8 +241,8 @@ const CourseDetails = ({ data }) => {
               </div>
             </div>
             <div className={styles.card}>
-              <CTA variant='danger' addOnClass='full-width' type='button' onClick={handleEnroll}>{enrollmentButtonText}</CTA>
-              <CTA variant='danger' addOnClass='full-width' type='button' onClick={handleSave}>{isSaved?'Saved':'Save'}</CTA>
+              <CTA variant='theme-button' addOnClass='full-width' type='button' onClick={handleEnroll}>{enrollmentButtonText}</CTA>
+              <CTA variant='theme-button' addOnClass='full-width' type='button' onClick={handleSave}>{isSaved?'Saved':'Save'}</CTA>
               {isEnrolled && <CourseRating rating={indivisualCurrentRating} handleSubmit={(data)=>{handleRating(data)}} />}
               <div className={styles['cource-detail-container']}>
                 <div className={styles.list}>
@@ -252,14 +250,14 @@ const CourseDetails = ({ data }) => {
                   <div className={styles.listitem}>
                     Skills Covered :
                     {loSkillArray.map((skill,idx) => (
-                      <span key={skill.name+idx}>{skill.name} - ({skill.lavel})</span>
+                      <span key={`skill_${idx}`}>{skill.name} - ({skill.lavel})</span>
                     ))}
                   </div>
                 </div>
                 <div className={styles.authorlist}>
                   <div className={styles.authortitle}>Author(s)</div>
-                  {attributes.authorNames?.map(author => (
-                    <div className={styles.author} key={author}>
+                  {attributes.authorNames?.map((author,idx) => (
+                    <div className={styles.author} key={author+idx}>
                       <i className="fas fa-user"></i>
                       &nbsp;{author}
                     </div>
@@ -267,8 +265,8 @@ const CourseDetails = ({ data }) => {
                   <div>
                     <div className={styles.authortitle}>Tags</div>
                     <ul className={styles.tags}>
-                      {attributes.tags?.map(tag => (
-                        <li key={tag}>{tag}</li>
+                      {attributes.tags?.map((tag,idx) => (
+                        <li key={`tag_${idx}`}>{tag}</li>
                       ))}
                     </ul>
                   </div>

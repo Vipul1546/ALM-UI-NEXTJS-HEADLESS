@@ -135,6 +135,7 @@ const Home = () => {
               <li className={styles['product-section']}>
                 <div>
                   <Link className={styles.link} variant={'link'} href="/product-listing">
+                    <div className={styles['background-texture']}></div>
                     <img
                       src={ProductP1.src}
                       alt="p1"
@@ -146,6 +147,7 @@ const Home = () => {
               <li className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/product-listing">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={ProductP2.src}
                       alt="p2"
@@ -157,6 +159,7 @@ const Home = () => {
               <li className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/product-listing">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={ProductP3.src}
                       alt="p3"
@@ -168,6 +171,7 @@ const Home = () => {
               <li className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/product-listing">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={ProductP4.src}
                       alt="p4"
@@ -190,6 +194,7 @@ const Home = () => {
           <div className={styles['product-section']}>
                 <div>
                   <Link className={styles.link} variant={'link'} href="/productDetails">
+                  <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct6.src}
                       alt="p1"
@@ -202,6 +207,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct5.src}
                       alt="p2"
@@ -214,6 +220,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct1.src}
                       alt="p3"
@@ -226,6 +233,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct2.src}
                       alt="p4"
@@ -238,6 +246,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct3.src}
                       alt="p4"
@@ -250,6 +259,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct4.src}
                       alt="p4"
@@ -262,6 +272,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                   <Link className={styles.link} variant={'link'} href="/productDetails">
+                  <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct6.src}
                       alt="p1"
@@ -274,6 +285,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct5.src}
                       alt="p2"
@@ -286,6 +298,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct1.src}
                       alt="p3"
@@ -298,6 +311,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct2.src}
                       alt="p4"
@@ -310,6 +324,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct3.src}
                       alt="p4"
@@ -322,6 +337,7 @@ const Home = () => {
               <div className={styles['product-section']}>
                 <div>
                 <Link className={styles.link} variant={'link'} href="/productDetails">
+                <div className={styles['background-texture']}></div>
                     <img
                       src={singleProduct4.src}
                       alt="p4"
@@ -351,7 +367,7 @@ const Home = () => {
                 .map((_, idx) => {
                   return (
                     <Card
-                      key={idx}
+                      key={`homepage_${idx}`}
                       variant={'tertiary'}
                       imagePath={`https://picsum.photos/350/22${idx}`}
                       altText={'test image'}
@@ -418,6 +434,7 @@ const Home = () => {
         </section> */}
          <section className={styles.sectionSkills} style={{ backgroundImage: `url(${SlkillsBg.src})` }}>
         <Container>
+            <div className={styles['background-texture']}></div>
             <a href='/course-listing' className={styles['explore-product']}>
               <h2>Become a Certified Beauty Professional</h2>
               <p>Explore our courses: Transforming Passion into Expertise</p>

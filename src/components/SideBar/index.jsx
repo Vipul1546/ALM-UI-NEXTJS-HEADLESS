@@ -23,7 +23,7 @@ const SideBar = ({ setFilterOpen, isMobile }) => {
           Reset
         </a>
       </Flex>
-      {filters && filters.map(filter => <Filters filter={filter} />)}
+      {filters && filters.map((filter, idx) => <Filters filter={filter} key={`filter_${idx}`} />)}
       {isMobile && (
         <CTA primary variant="primary" onClick={() => setFilterOpen(false)}>
           Apply

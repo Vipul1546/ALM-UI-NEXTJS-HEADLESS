@@ -1,10 +1,11 @@
 .course-rating {
     &__border {
         padding: rem(10px);
-        border: 1px solid #fd60b1;
+        border: 1px solid var(--primary-button-color);
     }
 
     &-stars {
+        color: var(--star-color);
         display: flex;
         align-items: center;
 
@@ -17,9 +18,11 @@
         margin: 0;
     }
 
-    & svg {
+    & svg,
+    i {
         cursor: pointer;
-        margin-right: rem(10px);
+        margin-right: rem(5px);
+        font-size: rem(18px);
     }
 
     & button {

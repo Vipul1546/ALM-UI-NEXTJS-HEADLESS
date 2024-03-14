@@ -9,62 +9,60 @@ import bannerImage from './banner-image-removebg-preview.png';
 import styles from './herobanner.module.scss';
 
 const SearchSuggestionsKeys = async () => {
-  const [searchKeys, setSearchKeys] = useState([])
+  const [searchKeys, setSearchKeys] = useState([]);
   useEffect(() => {
     const fetchSearchSuggestion = async () => {
-      const searchTerms = await searchSuggestions()
-      console.log({ searchTerms })
-      setSearchKeys(searchTerms?.data)
-
-    }
-    fetchSearchSuggestion()
-  }, [])
+      const searchTerms = await searchSuggestions();
+      setSearchKeys(searchTerms?.data);
+    };
+    fetchSearchSuggestion();
+  }, []);
 
   return (
     <>
-      {
-        searchKeys?.length > 0 &&
-        (<div className={styles['popular-search']}>
+      {searchKeys?.length > 0 && (
+        <div className={styles['popular-search']}>
           <label>Popular Search:</label>
           <ul>
-            {
-              searchKeys.length > 0
-              && searchKeys?.map((s) => (<li key={s?.attributes?.text}><Link href={`/course-listing?search=${s?.attributes?.text}`}>{s?.attributes?.text}</Link></li>))
-            }
+            {searchKeys.length > 0 &&
+              searchKeys?.map((s, idx) => (
+                <li key={`searchKey_${idx}`}>
+                  <Link href={`/course-listing?search=${s?.attributes?.text}`}>{s?.attributes?.text}</Link>
+                </li>
+              ))}
           </ul>
-        </div>)
-      }
+        </div>
+      )}
     </>
-  )
-}
+  );
+};
 
 const HeroBanner = ({ ver = 2 }) => {
-
   return (
     <>
-      {
-        ver == 2
-          ? <div className={`${styles["bannerV2"]} ${styles["banner"]}`}>
-            <div className={styles["background"]}></div>
-            <div className={styles["background-texture"]}></div>
-            <Container>
-            <header className={styles["header"]}>
-                <div className={styles["left-content"]}>
-                  <p className={styles["stay-home"]}>Gift With Beauty Learning Experience!!</p>
-                  <h1>Welcome to WONDER International </h1>
-                  <p></p>
-                  <p className={styles["para"]}>
-                    Wonder INTERNATIONAL LONDON BEAUTY SCHOOL BELIEVES THAT IN UPCOMING TIME WE NEED MORE EXPERTS AND PROFESSIONALS IN THE BEAUTY & FASHION INDUSTRY THAT’S WHY UKIBS PHRASES “CREATING EXPERTS”
-                  </p>
-                  <button></button>
-                  {/* <Search />
+      {ver == 2 ? (
+        <div className={`${styles['bannerV2']} ${styles['banner']}`}>
+          <div className={styles['background']}></div>
+          <div className={styles['background-texture']}></div>
+          <Container>
+            <header className={styles['header']}>
+              <div className={styles['left-content']}>
+                <p className={styles['stay-home']}>Gift With Beauty Learning Experience!!</p>
+                <h1>Welcome to WONDER International </h1>
+                <p></p>
+                <p className={styles['para']}>
+                  Wonder INTERNATIONAL LONDON BEAUTY SCHOOL BELIEVES THAT IN UPCOMING TIME WE NEED MORE EXPERTS AND
+                  PROFESSIONALS IN THE BEAUTY & FASHION INDUSTRY THAT’S WHY UKIBS PHRASES “CREATING EXPERTS”
+                </p>
+                <button></button>
+                {/* <Search />
                   <Suspense fallback={<ComponentLoader />}>
                     <SearchSuggestionsKeys />
                   </Suspense> */}
-                </div>
-                <div className={styles['image-block']}>
-                  <Image src="/bg1.png" width={500} height={500} />
-                </div>
+              </div>
+              <div className={styles['image-block']}>
+                <Image src="/bg1.png" alt="bg1" width={500} height={500} />
+              </div>
               {/* <svg width="60vw" height="90vh" viewBox="0 0 728 914" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="Drawing">
                   <g id="Ellipse 1" filter="url(#filter0_b)">
@@ -107,35 +105,36 @@ const HeroBanner = ({ ver = 2 }) => {
                 </defs>
               </svg> */}
             </header>
-            </Container>
-          </div>
-          : <div className={styles.banner}>
-            <Container variant={styles.flex}>
-              <Flex
-                container
-                justifyContent="space-between"
-                alignItems="flex-end"
-                height="100%"
-                className={styles.flexWrpper}>
-                <summary className={styles.summary}>
-                  <Heading className={styles.title} type="h1" weight="heading-extra-bold">
-                    We Have All Kinds Of <span>Courses</span> Collection
-                  </Heading>
-                  <div className={styles.search}>
-                    {/* <Search /> */}
-                    {/* <button type="button">
+          </Container>
+        </div>
+      ) : (
+        <div className={styles.banner}>
+          <Container variant={styles.flex}>
+            <Flex
+              container
+              justifyContent="space-between"
+              alignItems="flex-end"
+              height="100%"
+              className={styles.flexWrpper}>
+              <summary className={styles.summary}>
+                <Heading className={styles.title} type="h1" weight="heading-extra-bold">
+                  We Have All Kinds Of <span>Courses</span> Collection
+                </Heading>
+                <div className={styles.search}>
+                  {/* <Search /> */}
+                  {/* <button type="button">
                   <i className="fas fa-search"></i>
                 </button> */}
-                  </div>
-                  {/* <Suspense fallback={<ComponentLoader />}>
+                </div>
+                {/* <Suspense fallback={<ComponentLoader />}>
                     <SearchSuggestionsKeys />
                   </Suspense> */}
-                </summary>
-                <img src={bannerImage.src} alt="" />
-              </Flex>
-            </Container>
-          </div>
-      }
+              </summary>
+              <img src={bannerImage.src} alt="banner image" />
+            </Flex>
+          </Container>
+        </div>
+      )}
     </>
   );
 };

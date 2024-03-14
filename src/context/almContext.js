@@ -13,6 +13,7 @@ export const AlmContextProvider = ({ children }) => {
         isSearch: false,
         searchPhrase: ''
     });
+    const [isWhiteLogo, setIsWhiteLogo] = useState(false);
 
     const updateCourseListing = (courseListing) => {
         setCourseListing(courseListing);
@@ -24,15 +25,21 @@ export const AlmContextProvider = ({ children }) => {
         setAppliedFilters(appliedFilters);
     };
 
+    const updateIsWhiteLogo = (isWhite)=>{
+        setIsWhiteLogo(isWhite);
+    }
+
     const storeData = useMemo(
         () => ({
             courseListing,
             filters,
             appliedFilters,
+            isWhiteLogo,
             updateFilters: updateFilters,
             updateCourseListing: updateCourseListing,
-            updateAppliedFilter: updateAppliedFilter
-        }), [courseListing, filters, appliedFilters, updateCourseListing, updateFilters, updateAppliedFilter]
+            updateAppliedFilter: updateAppliedFilter,
+            updateIsWhiteLogo : updateIsWhiteLogo,
+        }), [courseListing, filters, appliedFilters,isWhiteLogo, updateCourseListing, updateFilters, updateAppliedFilter, updateIsWhiteLogo]
     )
 
     return (

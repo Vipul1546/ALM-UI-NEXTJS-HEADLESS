@@ -113,7 +113,6 @@ const prepRecommendedCardData = (apiResponse) => {
             });
         }
     }
-    console.log("results :: ", results);
     return results;
 }
 

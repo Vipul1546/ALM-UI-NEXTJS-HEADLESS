@@ -1,12 +1,11 @@
 'use client'
 import IconHamburger from '@/assets/icons/IconHamburger';
 import Container from '@/components/Container/Container';
+import { useAlmContext } from '@/context';
 import { useAuth } from "@/context/authContext";
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import Chevron from '../../assets/icons/Chevron';
-import IconUser from '../../assets/icons/IconUser';
 import useWindowSize from "../../utils/customhooks/useWindowSize";
 import Flex from '../Flex/Flex';
 import Logo from '../Logo/Logo';
@@ -14,19 +13,44 @@ import Search from '../Search';
 import styles from './header.module.scss';
 
 const Header = () => {
+    const { updateIsWhiteLogo } = useAlmContext()
     const router = useRouter()
     const [open, setOpen] = useState(false);
     const [dropDown, setDropDown] = useState(false);
+    const [themeDropDown, setThemeDropDown] = useState(false);
     const { width, height } = useWindowSize();
     const { isAuthenticated, user, login, loading, logout } = useAuth()
     const isHeaderSecondary = usePathname() !== '/' ? 'secondary' : "";
     const isMobile = width < 768;
-    const name = user?.data?.attributes?.name
+    const name = user?.data?.attributes?.name;
+    const themesForWhiteLogo = ['dark-theme', 'secondary-theme'];
 
     const logInOutHandler = () => {
         if (user) logout()
         else router.push('/login')
     }
+    const themeHandler = (theme)=>{
+        const body = document.body;
+        if(themesForWhiteLogo.indexOf(theme)>-1){
+            updateIsWhiteLogo(true);
+        }else{
+            updateIsWhiteLogo(false);
+        }
+
+        if (body.classList) {
+            let classesToRemove = [];
+            body.classList.forEach(function(className) {
+                if (className.indexOf('theme') !== -1) {
+                    classesToRemove.push(className);
+                }
+            });
+            classesToRemove.forEach(function(className) {
+                body.classList.remove(className);
+            });
+        }
+        body.classList.add(theme);
+    }
+
     return (
         <header className={`${styles['main-header']} ${styles[isHeaderSecondary]}`}>
             <Container>
@@ -47,8 +71,9 @@ const Header = () => {
                             <Flex gap={'1rem'} container alignItems='center'>
                                 <Search />
                                 {/* <button className={styles.notification}><IconBell /></button> */}
-                                {user ? <div className={styles.user} onClick={() => setDropDown(!dropDown)}><button>
-                                    <span className={styles.name}>Hi, {name}</span><IconUser /><Chevron className={styles.chevron + " " + (dropDown ? styles.rotate : '')} height={'10px'} width={'10px'} />
+                                {user ? <div className={styles.user} onClick={() => {setThemeDropDown(false);setDropDown(!dropDown);}}><button>
+                                    <span className={styles.name}>Hi, {name}</span><i className="fa fa-user" aria-hidden="true"></i>
+                                    <i className={`fa fa-chevron-down ${styles.chevron + " " + (dropDown ? styles.rotate : '')}`} aria-hidden="true"></i>
                                 </button>
                                     {dropDown && (<ul className={styles.dd}>
                                         <li><Link href="/my-learning">My Learning</Link></li>
@@ -56,6 +81,19 @@ const Header = () => {
                                     </ul>)}
 
                                 </div> : <button className={styles.notification} onClick={logInOutHandler}>{'Login'}</button>}
+
+                                <div className={styles.user} onClick={() => {setThemeDropDown(!themeDropDown);setDropDown(false);}}><button>
+                                <span className={styles.name}></span><i className="fa fa-wrench" aria-hidden="true"></i><i className={`fa fa-chevron-down ${styles.chevron + " " + (dropDown ? styles.rotate : '')}`} aria-hidden="true"></i>
+                                </button>
+                                    {themeDropDown && (<ul className={`${styles.dd} ${styles['theme-dd']}`}>
+                                        <li onClick={() => themeHandler('primary-theme')}>Primary</li>
+                                        <li onClick={() => themeHandler('secondary-theme')}>Secondary</li>
+                                        <li onClick={() => themeHandler('dark-theme')}>Dark</li>
+                                        <li onClick={() => themeHandler('light-theme')}>Light</li>
+                                        <li onClick={() => themeHandler('default-theme')}>Default</li>
+                                    </ul>)}
+
+                                </div>
                             </Flex>
                         </div>}
                     </>}

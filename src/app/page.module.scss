@@ -161,6 +161,16 @@
         font-size: rem(20px);
       }
     }
+
+    & .background-texture {
+      background: var(--background-texture);
+      background-size: cover;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
   }
 }
 
@@ -345,6 +355,15 @@
         &::after {
           width: 0;
         }
+      }
+
+      & .background-texture {
+        background: var(--background-texture);
+        background-size: cover;
+        position: absolute;
+        height: 15.625rem;
+        width: 100%;
+        margin-bottom: 1.25rem;
       }
     }
   }

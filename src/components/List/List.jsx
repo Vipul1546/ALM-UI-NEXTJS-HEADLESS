@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import ImageNext from '../Image/ImageNext';
 import listStyle from './List.module.scss';
 
-const List = ({
-  arrayList, listStyleType, listType, variant, 
-}) => {
+const List = ({ arrayList, listStyleType, listType, variant }) => {
   const styles = {
     listStyle: {
       'list-style-type': listStyleType,
@@ -15,10 +13,10 @@ const List = ({
   const renderSwitch = () => {
     switch (listType) {
       case 'normal':
-        return arrayList.map((element) => <li>{element}</li>);
+        return arrayList.map(element => <li>{element}</li>);
       case 'teaser':
-        return arrayList.map((element) => (
-          <li className={listStyle.teaser}>
+        return arrayList.map((element, idx) => (
+          <li className={listStyle.teaser} key={`teaser_${idx}`}>
             <a href={element.href}>
               <div>
                 {element.img !== undefined && <ImageNext imagePath={element.img} altText={element.altText} />}

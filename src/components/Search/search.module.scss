@@ -8,7 +8,7 @@
         all: unset;
         padding: rem(8px);
         border-bottom: rem(1px) solid get-color('light-black');
-        color: get-color('light-black');
+        color: var(--header-text-color);
         padding-right: rem(30px);
         width: 100%;
         box-sizing: border-box;

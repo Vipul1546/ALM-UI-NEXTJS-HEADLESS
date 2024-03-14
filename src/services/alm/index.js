@@ -106,7 +106,6 @@ export const getCoursesDetails = async (courseId = '', param) => {
 };
 
 export const getskills = async (id) => {
-  console.log("skilll")
   try {
     const res = await api.get('skills');
     return res?.data;

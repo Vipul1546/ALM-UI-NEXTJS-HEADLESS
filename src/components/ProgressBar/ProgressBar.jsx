@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './ProgressBar.module.scss';
 
-const ProgressBar = ({ bgcolor, progress, height, textColor }) => {
+const ProgressBar = ({ bgcolor = '#99ff66', progress = 50, height = 30, textColor = '#000000' }) => {
   const Parentdiv = {
     height,
   };
@@ -28,13 +28,6 @@ ProgressBar.propTypes = {
   progress: PropTypes.number,
   height: PropTypes.number,
   textColor: PropTypes.string,
-};
-
-ProgressBar.defaultProps = {
-  bgcolor: '#99ff66',
-  progress: 50,
-  height: 30,
-  textColor: '#000000',
 };
 
 export default ProgressBar;

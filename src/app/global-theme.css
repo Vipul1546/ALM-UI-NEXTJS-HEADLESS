@@ -1,0 +1,114 @@
+body {
+  --prymary-color: #ff83c3e6;
+  --lavel-color: #8b64b4;
+  --title-color: #3b365e;
+  --subtitle-color: #3b365ecb;
+
+  /* Header specific colors */
+  --header-background: #ffffffbf;
+  --header-text-color: #000;
+
+  /* card css */
+  --background-texture: none;
+
+  /* Dropdown */
+  --dropdown-hover-color: #fd60b1;
+
+  /* button */
+  --primary-button-color: #fd60b1;
+
+  /* star color */
+  --star-color: #fd60b1;
+}
+
+.dark-theme {
+  --prymary-color: #000000e6;
+  --lavel-color: #8b64b4;
+  --title-color: #3b365e;
+  --subtitle-color: #3b365ecb;
+
+  /* Header specific colors */
+  --header-background: var(--prymary-color);
+  --header-text-color: #fff;
+
+  /* card css */
+  --background-texture: linear-gradient(to top, var(--prymary-color), rgb(255 255 255 / 1%));
+
+  /* Dropdown */
+  --dropdown-hover-color: #8b64b4;
+
+  /* button */
+  --primary-button-color: #000;
+
+  /* star color */
+  --star-color: #ffd700;
+}
+
+.light-theme {
+  --prymary-color: #f3eef1e6;
+  --lavel-color: #8b64b4;
+  --title-color: #3b365e;
+  --subtitle-color: #3b365ecb;
+
+  /* Header specific colors */
+  --header-background: var(--prymary-color);
+  --header-text-color: #000;
+
+  /* card css */
+  --background-texture: linear-gradient(to top, var(--prymary-color), rgb(255 255 255 / 1%));
+
+  /* Dropdown */
+  --dropdown-hover-color: #8b64b4;
+
+  /* button */
+  --primary-button-color: #000;
+
+  /* star color */
+  --star-color: #ffd700;
+}
+
+.primary-theme {
+  --prymary-color: #83acffe6;
+  --lavel-color: #c61fff;
+  --title-color: #3b365e;
+  --subtitle-color: #3b365ecb;
+
+  /* Header specific colors */
+  --header-background: var(--prymary-color);
+  --header-text-color: #000;
+
+  /* card css */
+  --background-texture: linear-gradient(to top, var(--prymary-color), rgb(255 255 255 / 1%));
+
+  /* Dropdown */
+  --dropdown-hover-color: #3b365ecb;
+
+  /* button */
+  --primary-button-color: #83acff;
+
+  /* star color */
+  --star-color: #0849ca;
+}
+
+.secondary-theme {
+  --prymary-color: #42620ce6;
+  --lavel-color: #740de1;
+  --title-color: #3b365e;
+  --subtitle-color: #3b365ecb;
+
+  /* Header specific colors */
+  --header-background: var(--prymary-color);
+  --header-text-color: #fff;
+
+  /* card css */
+  --background-texture: linear-gradient(to top, var(--prymary-color), rgb(255 255 255 / 1%));
+
+  /* Dropdown */
+  --dropdown-hover-color: #740de1;
+
+  /* button */
+  --primary-button-color: #42620c;
+
+  /* star color */
+  --star-color: #ffd700;
+}
